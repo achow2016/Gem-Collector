@@ -1,0 +1,21 @@
+the js array
+
+var array = [1,2,3,4,5...];
+
+ajax code from stackoverflow. 
+http://stackoverflow.com/questions/2013728/passing-javascript-array-to-php-through-jquery-ajax
+
+
+$.ajax({
+	type: "POST",
+	url: "server.php",
+	data: { jsArray : array},
+	success : function() { 
+		//function after passing array
+	}
+});
+
+manipulate with php after using ajax code.
+
+<? $myArray = $REQUEST['jsArray']; ?>
+
