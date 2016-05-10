@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<head>
+<script>
+
+var direction;
+
+/* Function to run when clicking left arrow. 
+onclick="chooseLeft(); direction();" 
+Multiple function calls for event.
+*/
+
+function chooseLeft() {
+	direction = 0;
+}
+
+//Function to run when clicking right arrow. Same as above.
+
+function chooseRight() {
+	direction = 1;
+}
+
+//Takes the choice 
+function direction() {
+	//Left
+	if(direction == 0) {
+		sign = -1;
+	} else {
+		//Right
+		sign = 1;	
+	}
+}
+
+
+</script>
+</head>
+<body>
+</body>
+</html>
