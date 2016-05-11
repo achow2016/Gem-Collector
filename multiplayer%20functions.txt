@@ -1,0 +1,127 @@
+the js array
+
+var array = [1,2,3,4,5...];
+
+ajax code from stackoverflow. 
+http://stackoverflow.com/questions/2013728/passing-javascript-array-to-php-through-jquery-ajax
+
+
+$.ajax({
+	type: "POST",
+	url: "server.php",
+	data: { jsArray : array},
+	success : function() { 
+		//function after passing array
+	}
+});
+
+manipulate with php after using ajax code.
+
+<? $myArray = $REQUEST['jsArray']; ?>
+
+Inserting PHP array into MySQL Database Table as Row
+
+some times you need to insert an array to be a row in a MySQL table, to turn out the idea , suppose  you have the following MySQL table:
+
+CREATE TABLE `wp_templates` (
+`ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`template_type` varchar(255) NOT NULL,
+`template_name` varchar(255) NOT NULL,
+`template_path` varchar(255)  NOT NULL,
+PRIMARY KEY (`ID`)
+)  ;
+
+and suppose you have also the following array:
+
+<?php
+
+$template = array( ‘template_type’ => ‘static’ ,  ‘template_name’ => ‘Latest News’ , ‘template_path’ => ‘/templates/last_news.php’);
+
+?>
+
+you may want the code that will add this array to the table shown above, the code is very simple as the following:
+
+ <?php
+
+//Firstly we get the array keys to be the MySQL column names.
+
+$mysql_cols = implode(“, “,array_keys($template));
+
+//We escape values in array for security reasons.
+
+$mysql_values = array_map(‘mysql_real_escape_string’, array_values($template));
+
+// Prepare the array values to be the sql row values.
+
+$mysql_values  = implode(“, “, $mysql_values );
+
+// Just write the MySQL statement as the following.
+
+$sql = “INSERT INTO `wp_templates`($mysql_cols ) VALUES ($mysql_values)”;
+
+?>
+
+we need ajax to call php functions after the page has loaded.
+
+http://stackoverflow.com/questions/5984545/how-to-call-a-php-function-in-javascript
+
+You need to use ajax. There is a basic example:
+
+myscripts.js
+
+function AjaxCaller(){
+    var xmlhttp=false;
+    try{
+        xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+    }catch(e){
+        try{
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }catch(E){
+            xmlhttp = false;
+        }
+    }
+
+    if(!xmlhttp && typeof XMLHttpRequest!='undefined'){
+        xmlhttp = new XMLHttpRequest();
+    }
+    return xmlhttp;
+}
+
+function callPage(url, div){
+    ajax=AjaxCaller(); 
+    ajax.open("GET", url, true); 
+    ajax.onreadystatechange=function(){
+        if(ajax.readyState==4){
+            if(ajax.status==200){
+                div.innerHTML = ajax.responseText;
+            }
+        }
+    }
+    ajax.send(null);
+}
+
+function check_year_event(year_id, event_id) {
+ var year = document.getElementById(year_id).value;
+ var event = document.getElementById(event_id).value;
+
+    callPage('file.php?year='+year+'&'+'event=+'+event,document.getElementById(targetId));
+}
+file.php
+
+<?php 
+
+     function checkYearandEvent($year, $event) {
+      $year_event = mysql_query("SELECT * FROM year_event WHERE year = '$event' AND event = '$event'")
+
+      if (mysql_num_rows($year_event) > 0) {
+       // do this
+      }
+
+     }
+    echo checkYearandEvent($_GET['year'], $_GET['event']);
+?>
+
+use ajax to fetch sql table data. node.js is alternative but only
+on some servers.
+
+http://www.w3schools.com/php/php_ajax_database.asp
