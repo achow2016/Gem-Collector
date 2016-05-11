@@ -125,3 +125,79 @@ use ajax to fetch sql table data. node.js is alternative but only
 on some servers.
 
 http://www.w3schools.com/php/php_ajax_database.asp
+
+run php ajax onclick
+
+Just try this:
+<button type="button">Click Me</button>
+<p></p>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("button").click(function(){
+
+            $.ajax({
+                type: 'POST',
+                url: 'script.php',
+                success: function(data) {
+                    alert(data);
+                    $("p").text(data);
+
+                }
+            });
+   });
+});
+</script>
+In script.php
+
+<?php 
+  echo "You win";
+ ?>
+to
+use php to fetch row from sql
+we canbfetch 
+http://www.w3schools.com/php/func_mysqli_fetch_row.asp
+
+fetch last row from sql
+
+SELECT TOP 1 * FROM MyTable ORDER BY MyColumn ASC
+Will give you the first, and
+
+SELECT TOP 1 * FROM MyTable ORDER BY MyColumn DESC
+will give you the last.
+
+convert sql row ro php array
+
+$result = mysql_query("SELECT name FROM products");
+$names=array();
+while ($row = mysql_fetch_row($result)) $names[]=$row[0];
+mysql_free_result($result);
+
+convert php array to js array
+To convert you PHP array to JS , you can do it like this :
+
+var js_array = [<?php echo '"'.implode('","',  $disabledDaysRange ).'"' ?>];
+or using JSON_ENCODE :
+
+var js_array =<?php echo json_encode($disabledDaysRange );?>;
+Example without JSON_ENCODE:
+
+<script type='text/javascript'>
+    <?php
+    $php_array = array('abc','def','ghi');
+    ?>
+    var js_array = [<?php echo '"'.implode('","', $php_array).'"' ?>];
+    alert(js_array[0]);
+</script>
+Example with JSON_ENCODE :
+
+<script type='text/javascript'>
+    <?php
+    $php_array = array('abc','def','ghi');
+    ?>
+    var js_array =<?php echo json_encode($disabledDaysRange );?>;
+    alert(js_array[0]);
+</script>
+
+check interval to see if sql table changed (if player has made move)
+
+http://stackoverflow.com/questions/19956129/javascript-periodically-getting-the-last-row-of-mysql
