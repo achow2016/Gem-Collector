@@ -39,4 +39,3 @@ for(i = 0; i < MAX_CELL; i++){
 			}
 };
 
-	
