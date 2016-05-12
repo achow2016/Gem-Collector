@@ -192,7 +192,7 @@ function checkBossBox(currentCell){
     var cellNum = currentCell;
     
     if(cellNum == 0 || cellNum == 6){
-        retrun false;
+        return false;
     }else{
         return true;
     }
@@ -217,7 +217,7 @@ function checkNumGem(gem){
     var gem = gem;
     
     if(gem <= 50){
-            retrun true;
+            return true;
     }else if(gem >= 50){
         return false;
     }else{
@@ -236,11 +236,11 @@ function changeTurn(){
     
     if(cell(currentCell) == 0 
         && cell(currentCell+1) == 0
-        && holdingGems == 0
+        && holdingGems == 0)
         {
         if(!combo){             
 
-            return true:
+            return true;
 
         }else{
 
