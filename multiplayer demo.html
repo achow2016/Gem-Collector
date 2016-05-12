@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js">
+</script>
+</head>
+<body>
+<button onclick="initialSeed()">Click to start</button>
+<p onclick="choseOne()" id="one" style="background-color:yellow; width:100px; height:100px"></p>
+<p onclick="choseTwo()" id="two" style="background-color:yellow; width:100px; height:100px"></p>
+<script>
+
+
+var Squares = [];
+var Inhand;
+function initialSeed() {
+	Squares[0] = 5;
+	Squares[1] = 5;
+
+	document.getElementById("one").innerHTML = Squares[0];
+	document.getElementById("two").innerHTML = Squares[1];
+	}
+	
+function choseOne()	{
+	Inhand = Squares[0];
+	Squares[0] = 0;
+	Inhand--;
+	Squares[1] += 1;
+	document.getElementById("one").innerHTML = Squares[0];
+	document.getElementById("two").innerHTML = Squares[1];
+	
+	//should pass js array to php
+	//server.php is the php documment to run after.
+	//php document must have <? $arrayName = $_REQUEST['jsArray']; ?>
+	$.ajax({
+	type: "POST",
+	url: "server.php",
+	data: { jsArray : Squares},
+	success : function() { 
+		//js function after passing array
+		
+	}
+});
+	
+	}
+	
+	
+	
+</script>
+</body>
+</html>
