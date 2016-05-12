@@ -1,6 +1,6 @@
 function move() {
 	Index = chosenCell;
-	if (0 < index && index < 6) {
+	if (1 < index && index < 5) {
 		direction = chosenArrow;
 		if (direction == 0) {
 			sign = 1;
@@ -9,7 +9,7 @@ function move() {
 			n = N;
 			i = I;
 			while (n != 0) {
-				if ((i == 11 && sign == 1) || i == 0 && sign == (-1) {
+				if ((i == 11 && sign == 1) || i == 0 && sign == (-1)) {
 					i = (-6) * sign + 6;
 				}
 				cells[i + sign].addUp();
