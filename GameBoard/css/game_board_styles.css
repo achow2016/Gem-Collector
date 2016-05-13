@@ -63,6 +63,7 @@ body {
     border-bottom-left-radius: 11em;
     border: 0.5em solid white;
     border-bottom: 0em;
+    position: relative;
 }
 
 #Boss2 {
@@ -70,6 +71,7 @@ body {
     border-bottom-right-radius: 11em;
     border: 0.5em solid white;
     border-bottom: 0em;
+    position: relative;
 }
 
 .GameBoard {
@@ -77,6 +79,7 @@ body {
 	height: 8em;
 	border-right: 0.5em solid white;
 	border-top: 0.5em solid white;
+	position: relative;
 	float: left;
 }
 
@@ -92,12 +95,14 @@ body {
 	float: left;
 	border-top: 0.5em solid white;
 	border-bottom: 0.5em solid white;
+	position: relative;
 }
 
 #Square1 {
 	width: 8em;
 	height: 8em;
 	float: left;
+	position: relative;
 }
 
 .BottomSquare {
@@ -105,9 +110,25 @@ body {
 }
 
 .ScoreMark {
-	width: 3em;
-	height: 3em;
+	width: 2em;
+	height: 2em;
+	border-top: 0.5em solid white;
 	border-right: 0.5em solid white;
+	float: left;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+#Boss1Mark{
+	width: 2em;
+	height: 2em;
+	border-top: 0.5em solid white;
+	border-left: 0.5em solid white;
+	float: right;
+	position: absolute;
+	bottom: 0;
+	right: 0;
 }
 
 #Question {
