@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 </html>
 <head>
-	<link href="GameBoardStyle.css" rel="stylesheet" type="text/css">
+	<link href="css/game_board_styles.css" rel="stylesheet" type="text/css">
+	<script src="js/jquery-2.2.3.min.js"></script>
+	<script src="js/cell.js"></script>
+	<script src="js/masterCell.js"></script>
+	<script src="js/game_engine.js"></script>
 </head>
 <body>
 	<div id="Border">
 		<!--First Line-->
 		<div id="ScorePlayer" class="ScoreBox"></div>
-		<div class="HalfCircle" id="Boss1"></div>
+		<div class="HalfCircle cell" id="Boss1" data-cell=0></div>
 		<div id="ScoreOppnt" class="ScoreBox"></div>
 
 		<!--Second Line-->
 		<div class="BodyBlock"></div>
-		<div class="GameBoard" id="Square1"></div>
-		<div class="GameBoard GameBoardRight" id="Square2"></div>
+		<div class="GameBoard cell" id="Square1" data-cell=11></div>
+		<div class="GameBoard GameBoardRight cell" id="Square2" data-cell=1></div>
 		<div class="BodyBlock"></div>
 		<div class="BodyBlock"></div>
-		<div class="GameBoard" id="Square3"></div>
-		<div class="GameBoard GameBoardRight" id="Square4"></div>
+		<div class="GameBoard cell" id="Square3" data-cell=10></div>
+		<div class="GameBoard GameBoardRight cell" id="Square4" data-cell=2></div>
 		<div class="BodyBlock"></div>
 		<div class="BodyBlock Profile" id="UserProfile"></div>
 		<div class="GameBoard" id="Square5"></div>
