@@ -5,8 +5,9 @@
 </head>
 <body>
 <button onclick="initialSeed()">Click to start</button>
-<p onclick="choseOne()" id="one" style="background-color:yellow; width:100px; height:100px"></p>
-<p onclick="choseTwo()" id="two" style="background-color:yellow; width:100px; height:100px"></p>
+/*ID only for JQUERY eventhandler.*/
+<p id="one" onclick="clickone()" style="background-color:yellow; width:100px; height:100px"></p>
+<p id="two" style="background-color:yellow; width:100px; height:100px"></p>
 <script>
 
 
@@ -19,26 +20,37 @@ function initialSeed() {
 	document.getElementById("one").innerHTML = Squares[0];
 	document.getElementById("two").innerHTML = Squares[1];
 	}
-	
-function choseOne()	{
+//Anonymous function for handling click on ID one*/	
+function clickone()  {
 	Inhand = Squares[0];
 	Squares[0] = 0;
 	Inhand--;
 	Squares[1] += 1;
 	document.getElementById("one").innerHTML = Squares[0];
 	document.getElementById("two").innerHTML = Squares[1];
-	
+}
 	//should pass js array to php
 	//server.php is the php documment to run after.
 	//php document must have <? $arrayName = $_REQUEST['jsArray']; ?>
+	//click runs JS function, onmouseup jquery.
+    	$('#one').onmouseup(function() {
+    
+    	//Extracts Squares array into string seperated by commas.
+    	var squaresToStr = Squares.join(",");
+	//Sends JS Array to PHP.
 	$.ajax({
-	type: "POST",
-	url: "server.php",
-	data: { jsArray : Squares},
-	success : function() { 
-		//js function after passing array
-		
-	}
+           type: 'POST',
+           url: 'server.php',
+           data: {
+                     arrayToString: squaresToString
+                    },
+           success: 
+           //Function to run on success.
+           //function( data ) {
+             //        console.log( data );
+                    }
+           }); 	
+	 
 });
 	
 	}
