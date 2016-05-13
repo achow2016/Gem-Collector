@@ -1,5 +1,5 @@
 <?php
-/*Receives string data from gameinit.html,
+/*This php script receives string data from gameinit.html,
 should process string into array for further use*/
 
 $pass = $POST['arrayToString'];
