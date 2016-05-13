@@ -1,41 +1,74 @@
 <!DOCTYPE html>
 </html>
 <head>
+	<title>Gem Collector</title>
 	<link href="GameBoardStyle.css" rel="stylesheet" type="text/css">
+	<script>
+		function Q1check() {
+  			document.getElementById("Question").style.backgroundImage="url(Pictures/Q.png)";
+  			document.getElementById("Answer").style.backgroundImage="url(Pictures/A.png)";
+  		}
+ 
+ 		function Q1uncheck() {
+ 			document.getElementById("Question").style.backgroundImage="url()";
+ 			document.getElementById("Answer").style.backgroundImage="url()";
+  		}
+
+  		function Q2check() {
+  			document.getElementById("Question2").style.backgroundImage="url(Pictures/Q2.png)";
+  			document.getElementById("Answer2").style.backgroundImage="url(Pictures/A2.png)";
+  		}
+ 
+ 		function Q2uncheck() {
+ 			document.getElementById("Question2").style.backgroundImage="url()";
+ 			document.getElementById("Answer2").style.backgroundImage="url()";
+  		} 
+	</script>
 </head>
 <body>
 	<div id="Border">
 		<!--First Line-->
-		<div id="ScorePlayer" class="ScoreBox"></div>
-		<div class="HalfCircle" id="Boss1"></div>
-		<div id="ScoreOppnt" class="ScoreBox"></div>
+		<div id="ScoreOppnt" class="Block"></div>
+		<div class="BodyBlock"></div>
+		<div class="BodyBlock" id="Answer"></div>
+		<div class="Profile" id="OppntProfile" onmouseover="Q2check()"  onmouseout="Q2uncheck()"></div>
+		<div class="BodyBlock" id="Question2"></div>
+		<div class="BodyBlock"></div>
+		<div class="Block"></div>
 
 		<!--Second Line-->
+		<div class="HalfCircle" id="Boss1"></div>
+		<div class="Pipe">
+			<div class="GameBoard" id="Square7"><div class="ScoreMark"></div></div>
+			<div class="GameBoard BottomSquare" id="Square5"><div class="ScoreMark"></div></div>
+		</div>
+		<div class="Pipe">
+			<div class="GameBoard" id="Square8"><div class="ScoreMark"></div></div>
+			<div class="GameBoard BottomSquare" id="Square4"><div class="ScoreMark"></div></div>
+		</div>
+		<div class="Pipe">
+			<div class="GameBoard" id="Square9"><div class="ScoreMark"></div></div>
+			<div class="GameBoard BottomSquare" id="Square3"><div class="ScoreMark"></div></div>
+		</div>
+		<div class="Pipe">
+			<div class="GameBoard" id="Square10"><div class="ScoreMark"></div></div>
+			<div class="GameBoard BottomSquare" id="Square2"><div class="ScoreMark"></div></div>
+		</div>
+		
+		<div class="LastPipe">
+			<div id="Square11"><div class="ScoreMark"></div></div>
+			<div class="BottomSquare" id="Square1"><div class="ScoreMark"></div></div>
+		</div>	
+		<div class="HalfCircle" id="Boss2"><div class="ScoreMark"></div></div>
+		
+		<!--Third Line-->
+		<div id="ScoreOppnt" class="Block"></div>
 		<div class="BodyBlock"></div>
-		<div class="GameBoard" id="Square1"></div>
-		<div class="GameBoard GameBoardRight" id="Square2"></div>
+		<div class="BodyBlock" id="Answer2"></div>
+		<div class="Profile" id="UserProfile" onmouseover="Q1check()"  onmouseout="Q1uncheck()"></div>
+		<div class="BodyBlock" id="Question"></div>
 		<div class="BodyBlock"></div>
-		<div class="BodyBlock"></div>
-		<div class="GameBoard" id="Square3"></div>
-		<div class="GameBoard GameBoardRight" id="Square4"></div>
-		<div class="BodyBlock"></div>
-		<div class="BodyBlock Profile" id="UserProfile"></div>
-		<div class="GameBoard" id="Square5"></div>
-		<div class="GameBoard GameBoardRight" id="Square6"></div>
-		<div class="BodyBlock Profile" id="OppntProfile"></div>
-		<div class="BodyBlock"></div>
-		<div class="GameBoard" id="Square7"></div>
-		<div class="GameBoard GameBoardRight" id="Square8"></div>
-		<div class="BodyBlock"></div>
-		<div class="BodyBlock"></div>
-		<div class="GameBoard" id="Square9"></div>
-		<div class="GameBoard GameBoardRight" id="Square10"></div>
-		<div class="BodyBlock"></div>
-
-		<!--Fourth Line-->
-		<div class="MidBlock"></div>
-		<div class="HalfCircle" id="Boss2"></div>
-		<div class="MidBlock"></div>
+		<div class="Block"></div>
 	</div>
 </body>
 </html>
