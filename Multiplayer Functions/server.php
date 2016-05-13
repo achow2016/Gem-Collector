@@ -22,6 +22,9 @@ if(!$conn) {
 	die("connection failed!" . mysqli_connect_error());
 	}
 	
-/*Insert data from array into SQL*/
+/*Insert data from array into SQL. Don't need to specify columns
+since whole row is populated except ID.*/
 
-$sql = "INSERT INTO mainGame"	
+$sql = "INSERT INTO mainGame VALUES (arrayName[0],arrayName[1],arrayName[2],
+arrayName[3],arrayName[4],arrayName[5],arrayName[6],arrayName[7],arrayName[8],
+arrayName[9],arrayName[10],arrayName[11]);
