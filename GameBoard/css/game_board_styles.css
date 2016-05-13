@@ -1,74 +1,131 @@
 body {
-	padding: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 10px;
 	margin: 0px 0px 0px 0px;
-	width: 100%;
-	height: 100%;
-	background-color: #83574b;
+	background-image: url(Pictures/Table_re.jpg);
+	width: 60em;
+	height: 28em;
 }
 
 #Border {
-	width: 300px;
+	width: 60em;
+	height: 28em;
+	background-repeat: no-repeat;
 }
 
-.ScoreBox {
-	width: 40px;
-	height: 110px;
+.Block {
+	width: 10em;
+	height: 5.5em;
 	background-color: gray;
 	float: left;
 }
 
-.Block {
-	width: 200px;
-	height: 75px;
+.Pipe {
+	width: 8em;
+	height: 17em;
 	float: left;
-}
-
-.MidBlock {
-	width: 40px;
-	height: 110px;
-	background-color: red;
-	float: left;
-}
-
-.HalfCircle {
-	width: 200px;
-    height: 100px; /* as the half of the width */
-    float: left;
-}
-
-#Boss1 {
-	border-top-left-radius: 110px;  /* 100px of height + 10px of border */
-    border-top-right-radius: 110px; /* 100px of height + 10px of border */
-    border: 10px solid white;
-    border-bottom: 0px;
 }
 
 .BodyBlock {
-	width: 40px;
-	height: 80px;
+	width: 8em;
+	height: 5.5em;
 	background-color: #ce9eeb;
 	float: left;
 }
 
-.GameBoard {
-	width: 95px;
-	height: 70px;
-	border-left: 10px solid white;
-	border-top: 10px solid white;
+.Profile {
+	width: 8em;
+	height: 5.5em;
 	float: left;
 }
 
-.GameBoardRight {
-	border-right: 10px solid white;
+#OppntProfile {
+	background-image: url(Pictures/Profiles/Easy.jpg);
+	background-repeat: no-repeat;
+	background-size: 70%;
+	background-position: center;
 }
 
-.Profile {
-	background-color: blue;
+#UserProfile {
+	background-image: url(Pictures/Profiles/User.jpg);
+	background-repeat: no-repeat;
+	background-size: 70%;
+	background-position: center;
+}
+
+.HalfCircle {
+	width: 9em;
+    height: 17em;
+    float: left;
+}
+
+#Boss1 {
+	border-top-left-radius: 11em;
+    border-bottom-left-radius: 11em;
+    border: 0.5em solid white;
+    border-bottom: 0em;
 }
 
 #Boss2 {
-	border-bottom-left-radius: 110px;  /* 100px of height + 10px of border */
-    border-bottom-right-radius: 110px; /* 100px of height + 10px of border */
-    border-top: 1px;
-    border: 10px solid white;
+	border-top-right-radius: 11em;
+    border-bottom-right-radius: 11em;
+    border: 0.5em solid white;
+    border-bottom: 0em;
+}
+
+.GameBoard {
+	width: 7.5em;
+	height: 8em;
+	border-right: 0.5em solid white;
+	border-top: 0.5em solid white;
+	float: left;
+}
+
+.LastPipe {
+	width: 8em;
+	height: 17em;
+	float: left;
+}
+
+#Square11 {
+	width: 8em;
+	height: 8em;
+	float: left;
+	border-top: 0.5em solid white;
+	border-bottom: 0.5em solid white;
+}
+
+#Square1 {
+	width: 8em;
+	height: 8em;
+	float: left;
+}
+
+.BottomSquare {
+	border-bottom: 0.5em solid white;
+}
+
+.ScoreMark {
+	width: 3em;
+	height: 3em;
+	border-right: 0.5em solid white;
+}
+
+#Question {
+	background-repeat: no-repeat;
+	background-position: left;
+}
+
+#Answer {
+	background-repeat: no-repeat;
+	background-position: right;
+}
+
+#Question2 {
+	background-repeat: no-repeat;
+	background-position: left;
+}
+
+#Answer2 {
+	background-repeat: no-repeat;
+	background-position: right;
 }
