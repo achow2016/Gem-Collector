@@ -1,7 +1,9 @@
 <?php
+/*PHP script initializes SQL table.*/
+
 $servername = "mysql7.000webhost.com";
 $username = "a1753342_player";
-$password = "player123!";
+$password = "****";
 $database = "a1753342_databas";
 
 //create connection
@@ -33,7 +35,7 @@ $sql = "CREATE TABLE mainGame(
 	ElevenSquare INT(999),
 	TwelveSquare INT(999)
 	)"
-	
+/*Close connection to database*/	
 if(mysqli_query($conn, $sql) {
 	echo "ok";
 	} else {
