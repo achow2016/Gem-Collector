@@ -1,7 +1,7 @@
 body {
 	padding: 0px 0px 0px 10px;
 	margin: 0px 0px 0px 0px;
-	background-image: url(Pictures/Table_re.jpg);
+	background-image: url(/pictures/table_re.jpg);
 	width: 60em;
 	height: 28em;
 }
@@ -39,14 +39,14 @@ body {
 }
 
 #OppntProfile {
-	background-image: url(Pictures/Profiles/Easy.jpg);
+	background-image: url(/pictures/Profiles/Easy.jpg);
 	background-repeat: no-repeat;
 	background-size: 70%;
 	background-position: center;
 }
 
 #UserProfile {
-	background-image: url(Pictures/Profiles/User.jpg);
+	background-image: url(/pictures/Profiles/User.jpg);
 	background-repeat: no-repeat;
 	background-size: 70%;
 	background-position: center;
