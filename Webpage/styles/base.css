@@ -1,0 +1,33 @@
+body {
+	background-image: url(../Pictures/Background.jpg);
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+}
+
+.title {
+    font-size: 3em;
+    color: red;
+    font-family: "Showcard Gothic", 'Times New Roman';
+}
+
+#playButton {
+	width: 5em;
+	height: 5em;
+	background-color: white;
+    float: left;
+}
+
+#demoButton {
+	width: 5em;
+	height: 5em;
+	background-color: blue;
+    float: left;
+}
+
+#rankingButton {
+	width: 5em;
+	height: 5em;
+	background-color: gray;
+    float: left;
+}
