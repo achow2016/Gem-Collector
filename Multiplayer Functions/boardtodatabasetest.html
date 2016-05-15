@@ -1,0 +1,63 @@
+<!--Sample page for testing JQuery and initial game set up with one move taken.-->
+<!DOCTYPE html>
+<html>
+<head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+
+<script>
+//Script for onclick, JQuery onmouseup.
+
+var Squares = [];
+var Inhand;
+//Sets square initial pieces in array and on board as <p>
+function initialseed() {
+	Squares[0] = 5;
+	Squares[1] = 5;
+	document.getElementById("one").innerHTML = Squares[0];
+	document.getElementById("two").innerHTML = Squares[1];
+}
+//Anonymous function for handling click on ID one
+function clickone() {
+	Inhand = Squares[0];
+	Squares[0] = 0;
+	Inhand--;
+	Squares[1] += 1;
+	document.getElementById("one").innerHTML = Squares[0];
+	document.getElementById("two").innerHTML = Squares[1];
+}
+//ajax portion
+
+/*should pass js array to php
+	server.php is the php documment to run after.
+	php document must have <? $arrayName = $_REQUEST['jsArray']; ?>
+	click runs JS function, onmouseup jquery.*/
+$(document).ready(function(){
+	$('#one').mouseup(function() {
+    //Extracts Squares array into string (stringsToStr) seperated by commas.
+    var squaresToStr = Squares.join(",");
+	//Sends JS converted string to PHP.
+	$.ajax({
+           type: 'POST',
+           url: 'writemovetoserver.php',
+           data: {'arrayToString': squaresToStr},
+           //change to complete for when php script done.
+		   complete: function(data) {
+				alert(data);//should return last line in php
+		   },  
+           error: function(){
+		   }
+    });
+
+});
+});	
+</script>
+</head>
+<body>
+<button onclick="initialseed()">Click to start</button>
+<!--ID only for JQUERY eventhandler.-->
+<p id="one" onclick="clickone()" style="background-color:yellow; width:100px; height:100px"></p>
+<p id="two" style="background-color:yellow; width:100px; height:100px"></p>
+
+</body>
+</html>
