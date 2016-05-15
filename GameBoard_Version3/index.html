@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+</html>
+<head>
+	<title>Gem Collector</title>
+	
+	<link href="GameBoardStyle.css" rel="stylesheet" type="text/css">
+	<script src="js/jquery-2.2.3.min.js"></script>
+	<script src="js/cell.js"></script>
+	<script src="js/masterCell.js"></script>
+	<script src="js/game_engine.js"></script>
+	<script>
+		function Q1check() {
+  			document.getElementById("Question").style.backgroundImage="url(Pictures/Q.png)";
+  			document.getElementById("Answer").style.backgroundImage="url(Pictures/A.png)";
+  		}
+ 
+ 		function Q1uncheck() {
+ 			document.getElementById("Question").style.backgroundImage="url()";
+ 			document.getElementById("Answer").style.backgroundImage="url()";
+  		}
+
+  		function Q2check() {
+  			document.getElementById("Question2").style.backgroundImage="url(Pictures/Q2.png)";
+  			document.getElementById("Answer2").style.backgroundImage="url(Pictures/A2.png)";
+  		}
+ 
+ 		function Q2uncheck() {
+ 			document.getElementById("Question2").style.backgroundImage="url()";
+ 			document.getElementById("Answer2").style.backgroundImage="url()";
+  		} 
+	</script>
+	
+</head>
+<body>
+	<div id="Border">
+		<!--First Line-->
+		<div id="ScoreOppnt" class="Block"></div>
+		<div class="BodyBlock"></div>
+		<div class="BodyBlock" id="Answer"></div>
+		<div class="Profile" id="OppntProfile" onmouseover="Q2check()"  onmouseout="Q2uncheck()"></div>
+		<div class="BodyBlock" id="Question2"></div>
+		<div class="BodyBlock"></div>
+		<div class="Block"></div>
+
+		<!--Second Line-->
+		<div class="HalfCircle cell" id="Boss1" data-cell=6></div>
+		<div class="Pipe">
+			<div class="GameBoard cell" id="Square7" data-cell=7><div class="ScoreMark"></div></div>
+			<div class="GameBoard BottomSquare cell" id="Square5" data-cell=5><div class="ScoreMark"></div></div>
+		</div>
+		<div class="Pipe">
+			<div class="GameBoard cell" id="Square8" data-cell=8><div class="ScoreMark"></div></div>
+			<div class="GameBoard BottomSquare cell" id="Square4" data-cell=4><div class="ScoreMark"></div></div>
+		</div>
+		<div class="Pipe">
+			<div class="GameBoard cell" id="Square9" data-cell=9><div class="ScoreMark"></div></div>
+			<div class="GameBoard BottomSquare cell" id="Square3" data-cell=3><div class="ScoreMark"></div></div>
+		</div>
+		<div class="Pipe">
+			<div class="GameBoard cell" id="Square10" data-cell=10><div class="ScoreMark"></div></div>
+			<div class="GameBoard BottomSquare cell" id="Square2" data-cell=2><div class="ScoreMark"></div></div>
+		</div>
+		
+		<div class="LastPipe">
+			<div id="Square11 cell"><div class="ScoreMark" data-cell=11></div></div>
+			<div class="BottomSquare cell" id="Square1" data-cell=1><div class="ScoreMark"></div></div>
+		</div>	
+		<div class="HalfCircle cell" id="Boss2" data-cell=0><div class="ScoreMark"></div></div>
+		
+		<!--Third Line-->
+		<div id="ScoreOppnt" class="Block"></div>
+		<div class="BodyBlock"></div>
+		<div class="BodyBlock" id="Answer2"></div>
+		<div class="Profile" id="UserProfile" onmouseover="Q1check()"  onmouseout="Q1uncheck()"></div>
+		<div class="BodyBlock" id="Question"></div>
+		<div class="BodyBlock"></div>
+		<div class="Block"></div>
+	</div>
+</body>
+</html>

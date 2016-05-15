@@ -1,0 +1,152 @@
+body {
+	padding: 0px 0px 0px 10px;
+	margin: 0px 0px 0px 0px;
+	background-image: url(Pictures/Table_re.jpg);
+	width: 60em;
+	height: 28em;
+}
+
+#Border {
+	width: 60em;
+	height: 28em;
+	background-repeat: no-repeat;
+}
+
+.Block {
+	width: 10em;
+	height: 5.5em;
+	background-color: gray;
+	float: left;
+}
+
+.Pipe {
+	width: 8em;
+	height: 17em;
+	float: left;
+}
+
+.BodyBlock {
+	width: 8em;
+	height: 5.5em;
+	background-color: #ce9eeb;
+	float: left;
+}
+
+.Profile {
+	width: 8em;
+	height: 5.5em;
+	float: left;
+}
+
+#OppntProfile {
+	background-image: url(Pictures/Profiles/Easy.jpg);
+	background-repeat: no-repeat;
+	background-size: 70%;
+	background-position: center;
+}
+
+#UserProfile {
+	background-image: url(Pictures/Profiles/User.jpg);
+	background-repeat: no-repeat;
+	background-size: 70%;
+	background-position: center;
+}
+
+.HalfCircle {
+	width: 9em;
+    height: 17em;
+    float: left;
+}
+
+#Boss1 {
+	border-top-left-radius: 11em;
+    border-bottom-left-radius: 11em;
+    border: 0.5em solid white;
+    border-bottom: 0em;
+    position: relative;
+}
+
+#Boss2 {
+	border-top-right-radius: 11em;
+    border-bottom-right-radius: 11em;
+    border: 0.5em solid white;
+    border-bottom: 0em;
+    position: relative;
+}
+
+.GameBoard {
+	width: 7.5em;
+	height: 8em;
+	border-right: 0.5em solid white;
+	border-top: 0.5em solid white;
+	position: relative;
+	float: left;
+}
+
+.LastPipe {
+	width: 8em;
+	height: 17em;
+	float: left;
+}
+
+#Square11 {
+	width: 8em;
+	height: 8em;
+	float: left;
+	border-top: 0.5em solid white;
+	border-bottom: 0.5em solid white;
+	position: relative;
+}
+
+#Square1 {
+	width: 8em;
+	height: 8em;
+	float: left;
+	position: relative;
+}
+
+.BottomSquare {
+	border-bottom: 0.5em solid white;
+}
+
+.ScoreMark {
+	width: 2em;
+	height: 2em;
+	border-top: 0.5em solid white;
+	border-right: 0.5em solid white;
+	float: left;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+#Boss1Mark{
+	width: 2em;
+	height: 2em;
+	border-top: 0.5em solid white;
+	border-left: 0.5em solid white;
+	float: right;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+
+#Question {
+	background-repeat: no-repeat;
+	background-position: left;
+}
+
+#Answer {
+	background-repeat: no-repeat;
+	background-position: right;
+}
+
+#Question2 {
+	background-repeat: no-repeat;
+	background-position: left;
+}
+
+#Answer2 {
+	background-repeat: no-repeat;
+	background-position: right;
+}
