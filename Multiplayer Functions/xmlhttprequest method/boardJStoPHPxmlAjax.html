@@ -1,0 +1,54 @@
+<!--Sample page for testing JQuery and initial game set up with one move taken.-->
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<script>
+
+var Squares = [];
+var Inhand;
+var squaresToStr;
+//Sets square initial pieces in array and on board as <p>
+function initialseed() {
+	Squares = [5,5,5,5,5,5,5,5,5,5,5,5];
+	document.getElementById("one").innerHTML = Squares[0];
+	document.getElementById("two").innerHTML = Squares[1];
+}
+//Anonymous function for handling click on ID one
+function clickone() {
+	Inhand = Squares[0];
+	Squares[0] = 0;
+	Inhand--;
+	Squares[1] += 1;
+	document.getElementById("one").innerHTML = Squares[0];
+	document.getElementById("two").innerHTML = Squares[1];
+	//apply array to JS parameter.
+	sendtophp.apply(Squares[0],[Squares[1]);
+	
+}
+//open xmlhttprequest, check, convert array to string and send to php.
+function sendtophp(a,b) {
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+           
+			if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				squaresToStr = Squares.join(",");
+				xmlhttp.open( "POST", "writemovetoserver.php");
+				xmlhttp.setRequestHeader( "Content-Type", "application/json");
+				xmlhttp.send(squarestostring);
+			}
+
+		};
+}
+</script>
+</script>
+</head>
+<body>
+<button onclick="initialseed()">Click to start</button>
+<!--ID only for JQUERY eventhandler.-->
+<p id="one" onclick="clickone()" onmouseup="sendtophp()" style="background-color:yellow; width:100px; height:100px"></p>
+<p id="two" style="background-color:yellow; width:100px; height:100px"></p>
+
+</body>
+</html>
