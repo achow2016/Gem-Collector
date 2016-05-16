@@ -8,6 +8,7 @@
 	<script src="js/cell.js"></script>
 	<script src="js/masterCell.js"></script>
 	<script src="js/game_engine.js"></script>
+    <script src="js/arrow.js"></script>
 	<script>
      function Q1check() {
          document.getElementById("Question").style.backgroundImage = "url(Pictures/Q.png)";
@@ -47,58 +48,64 @@
             </div>
         </div>
 		<div class="Pipe">
-			<div class="GameBoard cell" id="Square7" data-cell=7>
-                <div class="ScoreMark">
+			<div class="GameBoard cell" id="Square7" data-cell=7 onclick="chosenCell=7">
+                <div class="NumberMark">
                 </div>
             </div>
-			<div class="GameBoard BottomSquare cell" id="Square5" data-cell=5>            
-                <div class="ScoreMark">
+			<div class="GameBoard BottomSquare cell" id="Square5" data-cell=5 onclick="chosenCell=5">
+                <div class="arrowSignLeft"><img id="cell5Left"></div>
+                <div class="NumberMark">
                 </div>
-            </div>
-		</div>
-		<div class="Pipe">
-			<div class="GameBoard cell" id="Square8" data-cell=8>
-                <div class="ScoreMark">
-                </div>
-            </div>
-			<div class="GameBoard BottomSquare cell" id="Square4" data-cell=4>
-                <div class="ScoreMark">
-                </div>
+                <div class="arrowSignRight"><img id="cell5Left"></div>
             </div>
 		</div>
 		<div class="Pipe">
-			<div class="GameBoard cell" id="Square9" data-cell=9>
-                <div class="ScoreMark">
+			<div class="GameBoard cell" id="Square8" data-cell=8 onclick="chosenCell=8">
+                <div class="NumberMark">
                 </div>
             </div>
-			<div class="GameBoard BottomSquare cell" id="Square3" data-cell=3>
-                <div class="ScoreMark">
+			<div class="GameBoard BottomSquare cell" id="Square4" data-cell=4 onclick="chosenCell=4">
+                <div class="arrowSignLeft"><img id="cell4Left"></div>
+                <div class="NumberMark">
                 </div>
+                <div class="arrowSignRight"><img id="cell4Right"></div>
             </div>
 		</div>
 		<div class="Pipe">
-			<div class="GameBoard cell" id="Square10" data-cell=10>
-                <div class="ScoreMark">
+			<div class="GameBoard cell" id="Square9" data-cell=9 onclick="chosenCell=9">
+                <div class="NumberMark">
                 </div>
             </div>
-			<div class="GameBoard BottomSquare cell" id="Square2" data-cell=2>
-                <div class="ScoreMark">
+			<div class="GameBoard BottomSquare cell" id="Square3" data-cell=3 onclick="chosenCell=3">
+                <div class="arrowSign"><img id="cell3Left"></div>
+                <div class="NumberMark">
+                </div>
+                <div class="arrowSign"><img id="cell3Left"></div>
+            </div>
+		</div>
+		<div class="Pipe">
+			<div class="GameBoard cell" id="Square10" data-cell=10 onclick="chosenCell=10">
+                <div class="NumberMark">
+                </div>
+            </div>
+			<div class="GameBoard BottomSquare cell" id="Square2" data-cell=2 onclick="chosenCell=2">
+                <div class="NumberMark">
                 </div>
             </div>
 		</div>
 		
 		<div class="LastPipe">
-			<div id="Square11" class="cell" data-cell=11>
-                <div class="ScoreMark">
+			<div id="Square11" class="cell" data-cell=11 onclick="chosenCell=11">
+                <div class="NumberMark">
                 </div>
             </div>
-			<div class="BottomSquare cell" id="Square1" data-cell=1>
-                <div class="ScoreMark">
+			<div class="BottomSquare cell" id="Square1" data-cell=1 onclick="chosenCell=1">
+                <div class="NumberMark">
                 </div>
             </div>
 		</div>	
 		<div class="HalfCircle cell" id="Boss2" data-cell=0>
-            <div class="ScoreMark">
+            <div class="NumberMark">
             </div>
         </div>
 		

@@ -109,7 +109,7 @@ body {
 	border-bottom: 0.5em solid white;
 }
 
-.ScoreMark {
+.NumberMark {
 	width: 2em;
 	height: 2em;
 	border-top: 0.5em solid white;
@@ -134,6 +134,23 @@ body {
 .cell:hover {
     opacity: 0.5;
     transition: 0.3s
+}
+
+.arrowSignBox {
+    width: 1em;
+    height: 8em;
+}
+
+.arrowSignLeft {
+    position: absolute;
+    top: 35%;
+    left: 0;
+}
+
+.arrowSignRight {
+    position: absolute;
+    top: 35%;
+    right: 0;
 }
 
 #Question {

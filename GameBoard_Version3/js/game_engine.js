@@ -4,6 +4,9 @@ $(document).ready(startGameEngine);
 //Creating the maximum number of cells 
 var MAX_CELL = 12;
 
+//Chosen cell number
+var chosenCell;
+
 //Creating turn object
 var TURN = {
     BLACK: 0,
@@ -33,7 +36,7 @@ GameBoard.prototype = {
     direction: null,
     cells: null,
     //Setup cell variable
-    setupInternalCells: function() {
+    setupInternalCells: function () {
         var i;
         //Creating an array name cells
         this.cells = [];
@@ -49,14 +52,21 @@ GameBoard.prototype = {
         }
     },
     //Mouse listener
-    setupEventListener: function() {
+    setupEventListener: function () {
         var that = this;
-        $('div.cell').on('click', function() {
+        $('div.cell').on('click', function () {
             var cell = $(this);
             var cellId = cell.data('cell');
             var validRange = CELL_RANGE[that.turn];
             if (cellId >= validRange[0] && cellId <= validRange[1]) {
                 that.getDirection(cellId);
+
+                //test code for arrow()
+                arrow();
+                window.getDirectionEnabled = flase;
+                var m = alert(sign);
+
+
                 var sign;
                 if (that.direction == DIRECTION.RIGHT) {
                     sign = -1;
@@ -70,11 +80,11 @@ GameBoard.prototype = {
         });
     },
     //Deciding player turn
-    setupTurn: function(turn) {
-        this.turn = turn; 
+    setupTurn: function (turn) {
+        this.turn = turn;
     },
     //Get the direction from player (not done yet)
-    getDirection: function(cellId) {
+    getDirection: function (cellId) {
         //Temporary method to test busines logic, Ebon will complete this in sprint 2
         var r = confirm('Go right?');
         if (r == true) {
