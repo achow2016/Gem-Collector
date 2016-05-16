@@ -39,14 +39,14 @@ body {
 }
 
 #OppntProfile {
-	background-image: url(Pictures/profiles/Easy.jpg);
+	background-image: url(Pictures/Profiles/Easy.jpg);
 	background-repeat: no-repeat;
 	background-size: 70%;
 	background-position: center;
 }
 
 #UserProfile {
-	background-image: url(Pictures/profiles/User.jpg);
+	background-image: url(Pictures/Profiles/User.jpg);
 	background-repeat: no-repeat;
 	background-size: 70%;
 	background-position: center;
@@ -144,14 +144,14 @@ body {
 }
 
 .arrowSignLeft {
-	background-image: url(pictures/arrowLeft.png);
+	background-image: url(Pictures/arrowLeft.png);
     position: absolute;
     top: 35%;
     left: 0;
 }
 
 .arrowSignRight {
-	background-image: url(pictures/arrowRight.png);
+	background-image: url(Pictures/arrowRight.png);
     position: absolute;
     top: 35%;
     right: 0;
