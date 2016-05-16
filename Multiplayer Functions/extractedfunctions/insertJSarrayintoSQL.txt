@@ -1,3 +1,4 @@
+<?php
 /*
 This php script receives string data from gameinit.html,
 should process string into array for further use
