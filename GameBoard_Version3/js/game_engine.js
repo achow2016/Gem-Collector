@@ -59,36 +59,71 @@ GameBoard.prototype = {
             var cellId = cell.data('cell');
             var validRange = CELL_RANGE[that.turn];
             if (cellId >= validRange[0] && cellId <= validRange[1]) {
-                that.getDirection(cellId);
-                //test code for arrow()
-                arrow();
-                window.getDirectionEnabled = flase;
-                var m = alert(sign);
-                var sign;
-                if (that.direction == DIRECTION.RIGHT) {
-                    sign = -1;
-                } else {
-                    sign = 1;
-                }
-                //to be countinue
+                that.getDirection(cellId).done(function() {
+                    that.makeMove(cellId);
+                });
             } else {
                 return false;
             }
         });
     },
-    //Deciding player turn
+    // Deciding player turn
     setupTurn: function (turn) {
         this.turn = turn;
     },
-    //Get the direction from player (not done yet)
+    // Get the direction from player (not done yet)
     getDirection: function (cellId) {
-        //Temporary method to test busines logic, Ebon will complete this in sprint 2
-        var r = confirm('Go right?');
-        if (r == true) {
-            this.direction = DIRECTION.RIGHT;
+        // Because we want the user to be blocked when we show the arrows
+        // until they clicked one of these arrow no code should run
+        // To do so, we firstly create a defer object and return a promise 
+        // which will be resolved when left or right arrow is clicked.
+        var done = $.Deferred();
+        // Select the div containing 2 arrows
+        var directionDiv = $('#direction-selection');
+        // Now show it
+        directionDiv.toggle(true);
+        // Build the ID to select the cell 
+        var id = '#Square' + cellId;
+        // Using JQuery to grab that
+		var cellDiv = $(id);
+        // Getting the position of the clicked cell
+        var offset = cellDiv.offset();
+        // Moving the arrow container to that new position
+        directionDiv.css({
+            top: offset.top + 12,
+            left: offset.left,
+            position: 'absolute'
+        });
+        // Now setup click event for these arrows
+        var left = directionDiv.find('.arrowSignLeft');
+        var that = this;
+        left.on('click', function() {
+            // Updating the selected direction
+            that.direction = DIRECTION.LEFT;
+            // Hiding the arrow sign after user choose
+            directionDiv.toggle(false);
+            // Resolve the promise
+            done.resolve(); 
+        });
+        var right = directionDiv.find('.arrowSignRight');
+        right.on('click', function() {
+            that.direction = DIRECTION.RIGHT; 
+            directionDiv.toggle(false);
+            done.resolve();
+        });
+        return done.promise();
+    },
+    makeMove: function(cellId) {
+        var sign;
+        if (this.direction == DIRECTION.RIGHT) {
+            sign = -1;
         } else {
-            this.direction = DIRECTION.LEFT;
+            sign = 1;
         }
+        var cell = this.cells[cellId];
+        var holdingGem = cell.getTotalGem();
+        console.log(holdingGem);
+        cell.reset();
     }
 };
 

@@ -8,25 +8,24 @@
 	<script src="js/cell.js"></script>
 	<script src="js/masterCell.js"></script>
 	<script src="js/game_engine.js"></script>
-    <script src="js/arrow.js"></script>
 	<script>
      function Q1check() {
-         document.getElementById("Question").style.backgroundImage = "url(pictures/Q.png)";
-         document.getElementById("Answer").style.backgroundImage = "url(pictures/A.png)";
+         $("#Question").css("background-image", "url(pictures/Q.png)");
+         $("#Answer").css("background-image", "url(pictures/A.png)");
      }
 
      function Q1uncheck() {
-         document.getElementById("Question").style.backgroundImage = "url()";
-         document.getElementById("Answer").style.backgroundImage = "url()";
+         $("#Question").css("background-image", "url()");
+         $("#Answer").css("background-image", "url()");
      }
      function Q2check() {
-         document.getElementById("Question2").style.backgroundImage = "url(pictures/Q2.png)";
-         document.getElementById("Answer2").style.backgroundImage = "url(pictures/A2.png)";
+         $("#Question2").css("background-image", "url(pictures/Q2.png)");
+         $("#Answer2").css("background-image", "url(pictures/A2.png)");
      }
 
      function Q2uncheck() {
-         document.getElementById("Question2").style.backgroundImage = "url()";
-         document.getElementById("Answer2").style.backgroundImage = "url()";
+         $("#Question2").css("background-image", "url()");
+         $("#Answer2").css("background-image", "url()");
      } 
 	</script>
 	
@@ -112,7 +111,7 @@
 		<div class="BodyBlock"></div>
 		<div class="Block"></div>
 	</div>
-    <div class="arrowSign">
+    <div class="arrowSign" id="direction-selection">
         <div class="arrowSignLeft"></div>
         <div class="arrowSignRight"></div>
     </div>

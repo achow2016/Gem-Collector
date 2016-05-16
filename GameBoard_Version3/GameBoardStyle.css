@@ -138,23 +138,24 @@ body {
 }
 
 .arrowSign {
-    width: 1em;
-    height: 8em;
 	display: none;
+	width: 7.5em;
 }
 
 .arrowSignLeft {
 	background-image: url(pictures/arrowLeft.png);
-    position: absolute;
-    top: 35%;
-    left: 0;
+	background-repeat: no-repeat;
+	float: left;
+	width: 20px;
+    height: 40px;
 }
 
 .arrowSignRight {
 	background-image: url(pictures/arrowRight.png);
-    position: absolute;
-    top: 35%;
-    right: 0;
+	background-repeat: no-repeat;
+	float: right;
+	width: 20px;
+    height: 40px;
 }
 
 #Question {
