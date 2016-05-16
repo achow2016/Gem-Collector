@@ -1,5 +1,5 @@
 //Creating parent class name Cell
-function Cell(totalGem){
+function Cell(totalGem) {
 	this.totalGem = totalGem;
 };
 //Creating object for Cell
@@ -16,6 +16,9 @@ Cell.prototype = {
 	//get the total gem on a cell
 	getTotalGem: function() {
 		return this.totalGem;
+	},
+	updateGUI: function() {
+		alert(this.totalGem);
 	}
 }
 

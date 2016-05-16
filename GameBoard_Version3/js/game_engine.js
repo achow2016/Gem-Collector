@@ -43,10 +43,10 @@ GameBoard.prototype = {
         for (i = 0; i < MAX_CELL; i++) {
             //Creating master cells and normal cells
             if (i == 0 || i == 6) {
-                var masterCell = new MasterCell(0, 1);
+                var masterCell = new MasterCell(i, 0, 1);
                 this.cells.push(masterCell);
             } else {
-                var cell = new Cell(5);
+                var cell = new Cell(i, 5);
                 this.cells.push(cell);
             }
         }
@@ -60,13 +60,10 @@ GameBoard.prototype = {
             var validRange = CELL_RANGE[that.turn];
             if (cellId >= validRange[0] && cellId <= validRange[1]) {
                 that.getDirection(cellId);
-
                 //test code for arrow()
                 arrow();
                 window.getDirectionEnabled = flase;
                 var m = alert(sign);
-
-
                 var sign;
                 if (that.direction == DIRECTION.RIGHT) {
                     sign = -1;

@@ -1,7 +1,7 @@
 body {
 	padding: 0px 0px 0px 10px;
 	margin: 0px 0px 0px 0px;
-	background-image: url(Pictures/Table_re.jpg);
+	background-image: url(pictures/Table_re.jpg);
 	width: 60em;
 	height: 28em;
 }
@@ -39,14 +39,14 @@ body {
 }
 
 #OppntProfile {
-	background-image: url(Pictures/Profiles/Easy.jpg);
+	background-image: url(pictures/profiles/Easy.jpg);
 	background-repeat: no-repeat;
 	background-size: 70%;
 	background-position: center;
 }
 
 #UserProfile {
-	background-image: url(Pictures/Profiles/User.jpg);
+	background-image: url(pictures/profiles/User.jpg);
 	background-repeat: no-repeat;
 	background-size: 70%;
 	background-position: center;
@@ -58,7 +58,7 @@ body {
     float: left;
 }
 
-#Boss1 {
+.HalfCircle.left {
 	border-top-left-radius: 11em;
     border-bottom-left-radius: 11em;
     border: 0.5em solid white;
@@ -66,7 +66,7 @@ body {
     position: relative;
 }
 
-#Boss2 {
+.HalfCircle.right {
 	border-top-right-radius: 11em;
     border-bottom-right-radius: 11em;
     border: 0.5em solid white;
@@ -120,15 +120,16 @@ body {
 	left: 0;
 }
 
-#Boss1Mark{
+.HalfCircle.left .NumberMark{
 	width: 2em;
 	height: 2em;
 	border-top: 0.5em solid white;
 	border-left: 0.5em solid white;
 	float: right;
 	position: absolute;
-	bottom: 0;
+	bottom: 0.5em;
 	right: 0;
+	left: 6em;
 }
 
 .cell:hover {
@@ -136,18 +137,21 @@ body {
     transition: 0.3s
 }
 
-.arrowSignBox {
+.arrowSign {
     width: 1em;
     height: 8em;
+	display: none;
 }
 
 .arrowSignLeft {
+	background-image: url(pictures/arrowLeft.png);
     position: absolute;
     top: 35%;
     left: 0;
 }
 
 .arrowSignRight {
+	background-image: url(pictures/arrowRight.png);
     position: absolute;
     top: 35%;
     right: 0;

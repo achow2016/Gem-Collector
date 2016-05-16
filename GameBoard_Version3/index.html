@@ -11,8 +11,8 @@
     <script src="js/arrow.js"></script>
 	<script>
      function Q1check() {
-         document.getElementById("Question").style.backgroundImage = "url(Pictures/Q.png)";
-         document.getElementById("Answer").style.backgroundImage = "url(Pictures/A.png)";
+         document.getElementById("Question").style.backgroundImage = "url(pictures/Q.png)";
+         document.getElementById("Answer").style.backgroundImage = "url(pictures/A.png)";
      }
 
      function Q1uncheck() {
@@ -20,8 +20,8 @@
          document.getElementById("Answer").style.backgroundImage = "url()";
      }
      function Q2check() {
-         document.getElementById("Question2").style.backgroundImage = "url(Pictures/Q2.png)";
-         document.getElementById("Answer2").style.backgroundImage = "url(Pictures/A2.png)";
+         document.getElementById("Question2").style.backgroundImage = "url(pictures/Q2.png)";
+         document.getElementById("Answer2").style.backgroundImage = "url(pictures/A2.png)";
      }
 
      function Q2uncheck() {
@@ -43,8 +43,8 @@
 		<div class="Block"></div>
 
 		<!--Second Line-->
-		<div class="HalfCircle cell" id="Boss1" data-cell=6>
-            <div id="Boss1Mark">
+		<div class="HalfCircle cell left" id="Boss6" data-cell=6>
+            <div class="NumberMark">
             </div>
         </div>
 		<div class="Pipe">
@@ -53,10 +53,8 @@
                 </div>
             </div>
 			<div class="GameBoard BottomSquare cell" id="Square5" data-cell=5 onclick="chosenCell=5">
-                <div class="arrowSignLeft"><img id="cell5Left"></div>
                 <div class="NumberMark">
                 </div>
-                <div class="arrowSignRight"><img id="cell5Left"></div>
             </div>
 		</div>
 		<div class="Pipe">
@@ -65,10 +63,8 @@
                 </div>
             </div>
 			<div class="GameBoard BottomSquare cell" id="Square4" data-cell=4 onclick="chosenCell=4">
-                <div class="arrowSignLeft"><img id="cell4Left"></div>
                 <div class="NumberMark">
                 </div>
-                <div class="arrowSignRight"><img id="cell4Right"></div>
             </div>
 		</div>
 		<div class="Pipe">
@@ -77,10 +73,8 @@
                 </div>
             </div>
 			<div class="GameBoard BottomSquare cell" id="Square3" data-cell=3 onclick="chosenCell=3">
-                <div class="arrowSign"><img id="cell3Left"></div>
                 <div class="NumberMark">
                 </div>
-                <div class="arrowSign"><img id="cell3Left"></div>
             </div>
 		</div>
 		<div class="Pipe">
@@ -104,7 +98,7 @@
                 </div>
             </div>
 		</div>	
-		<div class="HalfCircle cell" id="Boss2" data-cell=0>
+		<div class="HalfCircle cell right" id="Boss0" data-cell=0>
             <div class="NumberMark">
             </div>
         </div>
@@ -118,6 +112,9 @@
 		<div class="BodyBlock"></div>
 		<div class="Block"></div>
 	</div>
-
+    <div class="arrowSign">
+        <div class="arrowSignLeft"></div>
+        <div class="arrowSignRight"></div>
+    </div>
 </body>
 </html>
