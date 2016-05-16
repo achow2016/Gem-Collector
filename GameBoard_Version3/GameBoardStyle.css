@@ -1,7 +1,7 @@
 body {
 	padding: 0px 0px 0px 10px;
 	margin: 0px 0px 0px 0px;
-	background-image: url(pictures/Table_re.jpg);
+	background-image: url(Pictures/Table_re.jpg);
 	width: 60em;
 	height: 28em;
 }
@@ -39,14 +39,14 @@ body {
 }
 
 #OppntProfile {
-	background-image: url(pictures/profiles/Easy.jpg);
+	background-image: url(Pictures/profiles/Easy.jpg);
 	background-repeat: no-repeat;
 	background-size: 70%;
 	background-position: center;
 }
 
 #UserProfile {
-	background-image: url(pictures/profiles/User.jpg);
+	background-image: url(Pictures/profiles/User.jpg);
 	background-repeat: no-repeat;
 	background-size: 70%;
 	background-position: center;
@@ -138,24 +138,23 @@ body {
 }
 
 .arrowSign {
+    width: 1em;
+    height: 8em;
 	display: none;
-	width: 7.5em;
 }
 
 .arrowSignLeft {
 	background-image: url(pictures/arrowLeft.png);
-	background-repeat: no-repeat;
-	float: left;
-	width: 20px;
-    height: 40px;
+    position: absolute;
+    top: 35%;
+    left: 0;
 }
 
 .arrowSignRight {
 	background-image: url(pictures/arrowRight.png);
-	background-repeat: no-repeat;
-	float: right;
-	width: 20px;
-    height: 40px;
+    position: absolute;
+    top: 35%;
+    right: 0;
 }
 
 #Question {
