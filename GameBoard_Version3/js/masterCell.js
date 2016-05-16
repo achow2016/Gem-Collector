@@ -10,6 +10,7 @@ MasterCell.prototype.totalBigGem = null;
 MasterCell.prototype.getTotalBigGem = function() {
 	return this.totalBigGem;
 }
+// Displaying the number of gem on normal cell
 MasterCell.prototype.updateGui = function() {
 	var id = '#Boss' + this.index;
 	var div = $(id);

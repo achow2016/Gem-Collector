@@ -10,21 +10,21 @@ function move(totalGem, totalBigGem) {
 	var turn;
 		if (1 < Index && Index < 5) {
 		direction = chosenArrow;
-		if (direction == 0) {
-			while (turn == 0) {
-				sign = 1;
-				I = index;
-				N = cells[i].getTotalGem();
-				n = N;
-				i = I;
-				cells[i].reset();
-				while (n != 0) {
-					if ((i == 11 && sign == 1) || i == 0 && sign == (-1)) {
-						i = (-6) * sign + 6;
-					}
-					cells[i + sign].addUp();
-					n--;
-					i = i + sign;
+			if (direction == 0) {
+				while (turn == 0) {
+					sign = 1;
+					I = index;
+					N = cells[i].getTotalGem();
+					n = N;
+					i = I;
+					cells[i].reset();
+					while (n != 0) {
+						if ((i == 11 && sign == 1) || i == 0 && sign == (-1)) {
+							i = (-6) * sign + 6;
+						}
+						cells[i + sign].addUp();
+						n--;
+						i = i + sign;
 					}
 				}
 				if (cells[i + sign].getTotalGem() == 0) {

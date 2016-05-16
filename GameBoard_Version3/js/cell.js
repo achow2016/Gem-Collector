@@ -1,3 +1,4 @@
+var sign;
 //Creating parent class name Cell
 function Cell(index, totalGem) { 
 	this.index = index;
@@ -22,6 +23,7 @@ Cell.prototype = {
 	getTotalGem: function() {
 		return this.totalGem;
 	},
+	// Displaying the number of gem on normal cell
 	updateGui: function() {
 		var id = '#Square' + this.index;
 		var div = $(id);

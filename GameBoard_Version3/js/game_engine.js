@@ -61,6 +61,7 @@ GameBoard.prototype = {
             if (cellId >= validRange[0] && cellId <= validRange[1]) {
                 that.getDirection(cellId).done(function() {
                     that.makeMove(cellId);
+                    that.spreadGem(cellId);
                 });
             } else {
                 return false;
@@ -120,10 +121,45 @@ GameBoard.prototype = {
         } else {
             sign = 1;
         }
+        // Getting cell location
+        var cell = this.cells[cellId];
+        // Storing the gem that we pick up
+        var holdingGem = cell.getTotalGem();
+        console.log(sign);
+        cell.reset();
+    },
+    spreadGem: function(cellId, totalGem) {
         var cell = this.cells[cellId];
         var holdingGem = cell.getTotalGem();
-        console.log(holdingGem);
-        cell.reset();
+        var sign = this.sign;
+        while (this.holdingGem != 0) {
+             if ((this.cell == 11 && this.sign == 1) || this.cell == 0 && this.sign == (-1)) {
+	    			this.cell = (-6) * this.sign + 6;
+	    	 }
+             var cellNext = this.cellId + sign;
+             var twoCellNext = this.cellId + (2 * sign);
+             this.cell.addUp();
+	    	 this.holdingGem--;
+             cellId = this.cellNext;
+			 if (this.cells[cellNext].getTotalGem() == 0) {
+				while (this.cells[cellNext].getTotalGem() == 0) {
+					if (this.cells[twoCellNext].getTotalGem() != 0) {
+						score = score + this.cells[twoCellNext].getTotalGem();
+						cellId = this.cells[twoCellNext];
+					} else {
+						turn = 1;
+					}
+				}
+				trun = 1;
+			} else {
+				if ((sign == 1 && cell == 11 || cell == 5)|| (sign == -1 && cell == 1 || cell == 7)) {
+					turn = 1;
+				} else {
+					N = this.cells[cellNext].getTotalGem();
+					cellId = this.cellNext;
+				}
+			}
+        }
     }
 };
 
