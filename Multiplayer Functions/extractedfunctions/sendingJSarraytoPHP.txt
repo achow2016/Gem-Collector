@@ -1,0 +1,43 @@
+var arrayName;
+
+arrayName = [1,1,1,1,1,1,1,1,1,1,1,1];
+
+//For receiving php response.
+var receivePhp;
+
+//apply array to function parameter.
+functionName.apply(arrayName[0],arrayName[1],arrayName[2]
+,arrayName[3],arrayName[4],arrayName[5],arrayName[6],arrayName[7],
+arrayName[8],arrayName[9],arrayName[10],arrayName[11]);
+
+function functionName(a,b,c,d,e,f,g,h,i,j,k,l,m) {
+
+var xmlhttp = new XMLHttpRequest();
+
+	xmlhttp.onreadystatechange = function() {
+		if(xmlhttp.readystate == 4 && xmlhttp.status == 200) {
+
+		//convert array to string.
+
+		arrayToStringName = arrayName.join(",");
+		xmlhttp.open("post", "serverprocessing.php");
+		xmlhttp.setRequestHeader("Content-Type","application/JSON");
+
+		//send string.
+
+		xmlhttp.send(arrayToStringName);
+		
+		//receive ID from php as array.
+		
+		receivePhp = JSON.parse(xmlhttp.responseText);		
+		
+		/*
+		Extract array ID value and process in function for 
+		storing turn/checking turn, etc.		
+		*/
+		
+		
+		nextFunction(receivePhp[0]);
+		}
+	};
+}
