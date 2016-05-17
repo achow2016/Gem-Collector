@@ -29,6 +29,30 @@ Cell.prototype = {
 		var div = $(id);
 		var numDiv = div.find('.NumberMark');
 		numDiv.html(this.totalGem);
+	},
+	getNextOneIndex: function(sign, currentIndex) {
+		// If user want to get next index for a given index we use that index to start 
+		// otherwise use the index of this cell
+		var index = typeof currentIndex != 'undefined' ? currentIndex : this.index;
+		var nextOneIndex;
+		if ((index == 11 && sign == 1) || (index == 0 && sign == -1)) {
+	    	nextOneIndex = (-11) * sign + index;
+	   	} else {
+			nextOneIndex = index + sign;   
+		}
+		return nextOneIndex;
+	},
+	getNextTwoIndex: function(sign, currentIndex) {
+		var index = typeof currentIndex != 'undefined' ? currentIndex : this.index;
+		var nextOneIndex = this.getNextOneIndex(sign, index);
+		var nextTwoIndex = this.getNextOneIndex(sign, nextOneIndex);
+		return nextTwoIndex;
+	},
+	isMaster: function() {
+		return this instanceof MasterCell;
+	},
+	isEmpty: function() {
+		return this.totalGem == 0;
 	}
 }
 

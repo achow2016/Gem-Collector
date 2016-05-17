@@ -9,14 +9,14 @@ var chosenCell;
 
 //Creating turn object
 var TURN = {
-    BLACK: 0,
-    WHITE: 1
+    BLACK: 1,
+    WHITE: -1
 };
 
 //Creating direction object
 var DIRECTION = {
-    LEFT: 0,
-    RIGHT: 1
+    LEFT: 1,
+    RIGHT: -1
 };
 
 //Creating cell range 
@@ -61,7 +61,6 @@ GameBoard.prototype = {
             if (cellId >= validRange[0] && cellId <= validRange[1]) {
                 that.getDirection(cellId).done(function() {
                     that.makeMove(cellId);
-                    that.spreadGem(cellId);
                 });
             } else {
                 return false;
@@ -115,23 +114,46 @@ GameBoard.prototype = {
         return done.promise();
     },
     makeMove: function(cellId) {
-        var sign;
-        if (this.direction == DIRECTION.RIGHT) {
-            sign = -1;
-        } else {
-            sign = 1;
-        }
+        var sign = this.direction;
         // Getting cell location
         var cell = this.cells[cellId];
         // Storing the gem that we pick up
         var holdingGem = cell.getTotalGem();
-        console.log(sign);
         cell.reset();
-    }
-    /*spreadGem: function(cellId, totalGem) {
+        while (holdingGem > 0) {
+            var nextOneCellIndex = cell.getNextOneIndex(sign);
+            var nextOneCell = this.cells[nextOneCellIndex];
+            nextOneCell.addUp();
+            cell = nextOneCell;
+            holdingGem--;
+	    }
+        var landedNextIndex = cell.getNextOneIndex(sign);
+        var landedNextCell = this.cells[landedNextIndex];
+        var landedNextTwoIndex = cell.getNextTwoIndex(sign);
+        var landedNextTwoCell = this.cells[landedNextTwoIndex];
+        if (landedNextCell.isMaster()) {
+           this.turn = this.turn * (-1);
+           console.log('doi luot vi o tiep la o quan', new Date().getTime() / 1000);
+        } else if (landedNextCell.isEmpty()) {
+            if (!landedNextTwoCell.isEmpty()) {
+                console.log('an gem', landedNextTwoCell.getTotalGem(), landedNextTwoCell, new Date().getTime() / 1000);
+                // Remember to reset the winning cell and updating the total score
+                landedNextTwoCell.reset();
+                this.turn = this.turn * (-1);
+            } else {
+                console.log('doi luot vi ko co o an', new Date().getTime() / 1000);
+                this.turn = this.turn * (-1);
+            }
+        } else {
+            // Taking the next landed cell to start over again
+            console.log('lay o landed index de di tiep', landedNextIndex, new Date().getTime() / 1000);
+            this.makeMove(landedNextIndex);
+        }
+    }/*,
+    spreadGem: function(cellId, totalGem) {
         var cell = this.cells[cellId];
         var holdingGem = cell.getTotalGem();
-        var sign = this.sign;
+        var sign = sign;
         while (this.holdingGem != 0) {
              if ((this.cell == 11 && this.sign == 1) || this.cell == 0 && this.sign == (-1)) {
 	    			this.cell = (-6) * this.sign + 6;
