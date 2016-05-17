@@ -3,19 +3,19 @@ body {
 	margin: 0px 0px 0px 0px;
 	background-image: url(pictures/Table_re.jpg);
 	width: 60em;
-	height: 28em;
+	height: 100%;
 }
 
 #Border {
-	width: 60em;
-	height: 28em;
+	width: 62em;
+	height: 29em;
 	background-repeat: no-repeat;
 }
 
 .Block {
-	width: 10em;
-	height: 5.5em;
-	background-color: gray;
+	width: 9em;
+	height: 4.5em;
+	border: 0.5em solid white;
 	float: left;
 }
 
@@ -28,7 +28,6 @@ body {
 .BodyBlock {
 	width: 8em;
 	height: 5.5em;
-	background-color: #ce9eeb;
 	float: left;
 }
 
@@ -110,26 +109,29 @@ body {
 }
 
 .NumberMark {
-	width: 2em;
-	height: 2em;
-	border-top: 0.5em solid white;
-	border-right: 0.5em solid white;
+	width: 1.25em;
+	height: 1.3em;
+	/*border-top: 0.5em solid white;
+	border-right: 0.5em solid white;*/
 	float: left;
 	position: absolute;
 	bottom: 0;
 	left: 0;
+    font-size: 1em;
+    font-family: "Showcard Gothic", 'Times New Roman';
+    color: white;
+    text-align: center;
 }
 
 .HalfCircle.left .NumberMark{
-	width: 2em;
-	height: 2em;
-	border-top: 0.5em solid white;
-	border-left: 0.5em solid white;
+	width: 1.25em;
+	height: 1.3em;
 	float: right;
 	position: absolute;
 	bottom: 0.5em;
 	right: 0;
 	left: 6em;
+    text-align: center;
 }
 
 .cell:hover {
