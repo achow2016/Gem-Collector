@@ -144,7 +144,7 @@ body {
 
 .arrowSignLeft {
 	background-image: url(pictures/arrowLeft.png);
-	background-repeat: none;
+	background-repeat: no-repeat;
     position: absolute;
 	width: 20px;
 	height: 40px;

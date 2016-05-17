@@ -1,8 +1,13 @@
 body {
-	background-image: url(../Pictures/Background.jpg);
+    padding: 0px 0px 0px 0px;
+	background-image: url(../pictures/Background.jpg);
     background-repeat: no-repeat;
     width: 100%;
     height: 100%;
+}
+
+#Wrapper {
+    padding: 0px 0px 0px 0px;
 }
 
 .title {
