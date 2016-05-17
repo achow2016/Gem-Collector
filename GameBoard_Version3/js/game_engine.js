@@ -127,8 +127,8 @@ GameBoard.prototype = {
         var holdingGem = cell.getTotalGem();
         console.log(sign);
         cell.reset();
-    },
-    spreadGem: function(cellId, totalGem) {
+    }
+    /*spreadGem: function(cellId, totalGem) {
         var cell = this.cells[cellId];
         var holdingGem = cell.getTotalGem();
         var sign = this.sign;
@@ -160,7 +160,7 @@ GameBoard.prototype = {
 				}
 			}
         }
-    }
+    }*/
 };
 
 //Creating class GameEngine
