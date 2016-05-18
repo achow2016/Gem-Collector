@@ -4,112 +4,112 @@
 	<title>Gem Collector</title>
 	
 	<link href="GameBoardStyle.css" rel="stylesheet" type="text/css">
-	<script src="js/jquery-2.2.3.min.js"></script>
+	
+    <!--Game board engine script-->
+    <script src="js/jquery-2.2.3.min.js"></script>
 	<script src="js/cell.js"></script>
 	<script src="js/masterCell.js"></script>
 	<script src="js/game_engine.js"></script>
-	<script>
-     function Q1check() {
-         $("#Question").css("background-image", "url(pictures/Q.png)");
-         $("#Answer").css("background-image", "url(pictures/A.png)");
-     }
+    
+    <!--Sends move array VAR to php through ajax-->
+    <script src="js/sendToPhp.js"></script>
+    
+    <!--Uses php returned value to determine if your turn with interval check-->
+    <script src="js/turnManagement.js"></script>
+	
+    <!--Ester eggs script-->
+    <script src="js/Eggs.js"></script>
 
-     function Q1uncheck() {
-         $("#Question").css("background-image", "url()");
-         $("#Answer").css("background-image", "url()");
-     }
-     function Q2check() {
-         $("#Question2").css("background-image", "url(pictures/Q2.png)");
-         $("#Answer2").css("background-image", "url(pictures/A2.png)");
-     }
-
-     function Q2uncheck() {
-         $("#Question2").css("background-image", "url()");
-         $("#Answer2").css("background-image", "url()");
-     } 
-	</script>
+    <!--Set page height-->
+    <!--<script src="js/setGameBoardHeight.js"></script> temporary removed-->
 	
 </head>
 <body>
 	<div id="Border">
 		<!--First Line-->
-		<div id="ScoreOppnt" class="Block"></div>
-		<div class="BodyBlock"></div>
-		<div class="BodyBlock" id="Answer"></div>
-		<div class="Profile" id="OppntProfile" onmouseover="Q2check()"  onmouseout="Q2uncheck()"></div>
-		<div class="BodyBlock" id="Question2"></div>
-		<div class="BodyBlock"></div>
-		<div class="Block"></div>
+        <div id="OppntLine">
+		    <div id="ScoreOppnt" class="ScoreBox"><p class="Words">Gem:</p></div>
+		    <div class="BodyBlock"></div>
+		    <div class="BodyBlock" id="OppntLeft"><img src="pictures/profiles/side/rightWingResized.png" alt="arm"></div>
+		    <div class="Profile" id="OppntProfile" onmouseover="Q2check()"  onmouseout="Q2uncheck()"></div>
+		    <div class="BodyBlock" id="OppntRight"><img src="pictures/profiles/side/leftWingResized.png" alt="arm"></div>
+		    <div class="BodyBlock"></div>
+		    <div class="Block"></div>
+        </div>
 
 		<!--Second Line-->
-		<div class="HalfCircle cell left" id="Boss6" data-cell=6>
-            <div class="NumberMark">
-            </div>
-        </div>
-		<div class="Pipe">
-			<div class="GameBoard cell" id="Square7" data-cell=7 onclick="chosenCell=7">
-                <div class="NumberMark">
+        <div id="GameBoardLine">
+		    <div class="HalfCircle cell left" id="Boss6" data-cell=6>
+                <div class="NumberMark BossRoomMark">
                 </div>
             </div>
-			<div class="GameBoard BottomSquare cell" id="Square5" data-cell=5 onclick="chosenCell=5">
-                <div class="NumberMark">
+		    <div class="Pipe">
+			    <div class="GameBoard cell" id="Square7" data-cell=7 onclick="chosenCell=7">
+                    <div class="NumberMark">
+                    </div>
                 </div>
-            </div>
-		</div>
-		<div class="Pipe">
-			<div class="GameBoard cell" id="Square8" data-cell=8 onclick="chosenCell=8">
-                <div class="NumberMark">
+			    <div class="GameBoard BottomSquare cell" id="Square5" data-cell=5 onclick="chosenCell=5">
+                    <div class="NumberMark">
+                    </div>
                 </div>
-            </div>
-			<div class="GameBoard BottomSquare cell" id="Square4" data-cell=4 onclick="chosenCell=4">
-                <div class="NumberMark">
+		    </div>
+		    <div class="Pipe">
+			    <div class="GameBoard cell" id="Square8" data-cell=8 onclick="chosenCell=8">
+                    <div class="NumberMark">
+                    </div>
                 </div>
-            </div>
-		</div>
-		<div class="Pipe">
-			<div class="GameBoard cell" id="Square9" data-cell=9 onclick="chosenCell=9">
-                <div class="NumberMark">
+			    <div class="GameBoard BottomSquare cell" id="Square4" data-cell=4 onclick="chosenCell=4">
+                    <div class="NumberMark">
+                    </div>
                 </div>
-            </div>
-			<div class="GameBoard BottomSquare cell" id="Square3" data-cell=3 onclick="chosenCell=3">
-                <div class="NumberMark">
+		    </div>
+		    <div class="Pipe">
+			    <div class="GameBoard cell" id="Square9" data-cell=9 onclick="chosenCell=9">
+                    <div class="NumberMark">
+                    </div>
                 </div>
-            </div>
-		</div>
-		<div class="Pipe">
-			<div class="GameBoard cell" id="Square10" data-cell=10 onclick="chosenCell=10">
-                <div class="NumberMark">
+			    <div class="GameBoard BottomSquare cell" id="Square3" data-cell=3 onclick="chosenCell=3">
+                    <div class="NumberMark">
+                    </div>
                 </div>
-            </div>
-			<div class="GameBoard BottomSquare cell" id="Square2" data-cell=2 onclick="chosenCell=2">
-                <div class="NumberMark">
+		    </div>
+		    <div class="Pipe">
+			    <div class="GameBoard cell" id="Square10" data-cell=10 onclick="chosenCell=10">
+                    <div class="NumberMark">
+                    </div>
                 </div>
-            </div>
-		</div>
+			    <div class="GameBoard BottomSquare cell" id="Square2" data-cell=2 onclick="chosenCell=2">
+                    <div class="NumberMark">
+                    </div>
+                </div>
+		    </div>
 		
-		<div class="LastPipe">
-			<div id="Square11" class="cell" data-cell=11 onclick="chosenCell=11">
-                <div class="NumberMark">
+		    <div class="LastPipe">
+			    <div id="Square11" class="cell" data-cell=11 onclick="chosenCell=11">
+                    <div class="NumberMark">
+                    </div>
+                </div>
+			    <div class="BottomSquare cell" id="Square1" data-cell=1 onclick="chosenCell=1">
+                    <div class="NumberMark">
+                    </div>
+                </div>
+		    </div>	
+		    <div class="HalfCircle cell right" id="Boss0" data-cell=0>
+                <div class="NumberMark BossRoomMark">
                 </div>
             </div>
-			<div class="BottomSquare cell" id="Square1" data-cell=1 onclick="chosenCell=1">
-                <div class="NumberMark">
-                </div>
-            </div>
-		</div>	
-		<div class="HalfCircle cell right" id="Boss0" data-cell=0>
-            <div class="NumberMark">
-            </div>
-        </div>
-		
+		</div>
+
 		<!--Third Line-->
-		<div id="ScoreOppnt" class="Block"></div>
-		<div class="BodyBlock"></div>
-		<div class="BodyBlock" id="Answer2"></div>
-		<div class="Profile" id="UserProfile" onmouseover="Q1check()"  onmouseout="Q1uncheck()"></div>
-		<div class="BodyBlock" id="Question"></div>
-		<div class="BodyBlock"></div>
-		<div class="Block"></div>
+        <div id="UserLine">
+		    <div id="ScoreOppnt" class="ScoreBox"><p class="Words">Gem:</p></div>
+		    <div class="BodyBlock"></div>
+		    <div class="BodyBlock" id="UserLeft"><img src="pictures/profiles/side/leftArmResized.png" alt="arm"></div>
+		    <div class="Profile" id="UserProfile" onmouseover="Q1check()"  onmouseout="Q1uncheck()"></div>
+		    <div class="BodyBlock" id="UserRight"><img src="pictures/profiles/side/rightArmResized.png" alt="arm"></div>
+		    <div class="BodyBlock"></div>
+		    <div class="Block"></div>
+        </div>
 	</div>
     <div class="arrowSign" id="direction-selection">
         <div class="arrowSignLeft"></div>

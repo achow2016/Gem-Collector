@@ -3,19 +3,33 @@ body {
 	margin: 0px 0px 0px 0px;
 	background-image: url(pictures/Table_re.jpg);
 	width: 60em;
-	height: 28em;
+	height: 100%;
 }
 
 #Border {
-	width: 60em;
-	height: 28em;
+	width: 62em;
+	height: 29em;
 	background-repeat: no-repeat;
+}
+
+.Words {
+    vertical-align: central;
+    padding: 0.75em 0em 0em 0.5em;
+    font-size: 1em;
+    font-family: "Showcard Gothic", 'Times New Roman';
+    color: white;
+}
+
+.ScoreBox {
+    width: 9em;
+	height: 4.5em;
+	border: 0.5em solid #CCCCCC;
+	float: left;
 }
 
 .Block {
 	width: 10em;
 	height: 5.5em;
-	background-color: gray;
 	float: left;
 }
 
@@ -28,7 +42,6 @@ body {
 .BodyBlock {
 	width: 8em;
 	height: 5.5em;
-	background-color: #ce9eeb;
 	float: left;
 }
 
@@ -39,14 +52,14 @@ body {
 }
 
 #OppntProfile {
-	background-image: url(pictures/Profiles/Easy.jpg);
+	background-image: url(pictures/profiles/Easy.jpg);
 	background-repeat: no-repeat;
 	background-size: 70%;
 	background-position: center;
 }
 
 #UserProfile {
-	background-image: url(pictures/Profiles/User.jpg);
+	background-image: url(pictures/profiles/User.jpg);
 	background-repeat: no-repeat;
 	background-size: 70%;
 	background-position: center;
@@ -61,7 +74,7 @@ body {
 .HalfCircle.left {
 	border-top-left-radius: 11em;
     border-bottom-left-radius: 11em;
-    border: 0.5em solid white;
+    border: 0.5em solid #CCCCCC;
     border-bottom: 0em;
     position: relative;
 }
@@ -69,7 +82,7 @@ body {
 .HalfCircle.right {
 	border-top-right-radius: 11em;
     border-bottom-right-radius: 11em;
-    border: 0.5em solid white;
+    border: 0.5em solid #CCCCCC;
     border-bottom: 0em;
     position: relative;
 }
@@ -77,8 +90,8 @@ body {
 .GameBoard {
 	width: 7.5em;
 	height: 8em;
-	border-right: 0.5em solid white;
-	border-top: 0.5em solid white;
+	border-right: 0.5em solid #CCCCCC;
+	border-top: 0.5em solid #CCCCCC;
 	position: relative;
 	float: left;
 }
@@ -93,8 +106,8 @@ body {
 	width: 8em;
 	height: 8em;
 	float: left;
-	border-top: 0.5em solid white;
-	border-bottom: 0.5em solid white;
+	border-top: 0.5em solid #CCCCCC;
+	border-bottom: 0.5em solid #CCCCCC;
 	position: relative;
 }
 
@@ -106,30 +119,33 @@ body {
 }
 
 .BottomSquare {
-	border-bottom: 0.5em solid white;
+	border-bottom: 0.5em solid #CCCCCC;
 }
 
 .NumberMark {
 	width: 2em;
 	height: 2em;
-	border-top: 0.5em solid white;
-	border-right: 0.5em solid white;
+	/*border-top: 0.5em solid white;
+	border-right: 0.5em solid white;*/
 	float: left;
 	position: absolute;
 	bottom: 0;
 	left: 0;
+    font-size: 1.5em;
+    font-family: "Showcard Gothic", 'Times New Roman';
+    color: white;
+    text-align: center;
 }
 
 .HalfCircle.left .NumberMark{
 	width: 2em;
 	height: 2em;
-	border-top: 0.5em solid white;
-	border-left: 0.5em solid white;
 	float: right;
 	position: absolute;
-	bottom: 0.5em;
-	right: 0;
-	left: 6em;
+    left: 3.75em;
+}
+.BossRoomMark {
+    direction: rtl;
 }
 
 .cell:hover {
@@ -144,7 +160,7 @@ body {
 
 .arrowSignLeft {
 	background-image: url(pictures/arrowLeft.png);
-	background-repeat: none;
+	background-repeat: no-repeat;
     position: absolute;
 	width: 20px;
 	height: 40px;
@@ -163,22 +179,35 @@ body {
     right: 0;
 }
 
-#Question {
+#UserRight {
 	background-repeat: no-repeat;
 	background-position: left;
 }
 
-#Answer {
+#UserRight img {
+    padding-top: 0.35em;
+}
+
+#UserLeft {
 	background-repeat: no-repeat;
 	background-position: right;
 }
 
-#Question2 {
+#UserLeft img {
+    padding-top: 0.35em;
+    margin-left: 70%;
+}
+
+#OppntRight {
 	background-repeat: no-repeat;
 	background-position: left;
 }
 
-#Answer2 {
+#OppntRight img {
+    
+}
+
+#OppntLeft {
 	background-repeat: no-repeat;
 	background-position: right;
 }
@@ -186,4 +215,8 @@ body {
 .high-light {
 	opacity: 0;
     transition: 0.3s
+}
+
+#OppntLeft img {
+    margin-left: 50%;
 }
