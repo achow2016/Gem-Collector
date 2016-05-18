@@ -43,13 +43,15 @@ GameBoard.prototype = {
         for (i = 0; i < MAX_CELL; i++) {
             //Creating master cells and normal cells
             if (i == 0 || i == 6) {
-                var masterCell = new MasterCell(i, 0, 1);
+                var masterCell = new MasterCell(i, 10);
                 this.cells.push(masterCell);
             } else {
                 var cell = new Cell(i, 5);
                 this.cells.push(cell);
             }
         }
+        // var scoreBox = new Score(0);
+        // this.Score.push(scoreBox);
     },
     //Mouse listener
     setupEventListener: function () {
@@ -150,6 +152,7 @@ GameBoard.prototype = {
                 console.log('an gem', landedNextTwoCell.getTotalGem(), landedNextTwoCell, new Date().getTime() / 1000);
                 // Remember to reset the winning cell and updating the total score
                 landedNextTwoCell.reset();
+                // score = landedNextTwoCell.getTotalGem();
                 this.turn = this.turn * (-1);
             } else {
                 console.log('doi luot vi ko co o an', new Date().getTime() / 1000);

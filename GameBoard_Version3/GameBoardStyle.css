@@ -36,6 +36,8 @@ body {
 	height: 4.5em;
 	border: 0.5em solid #CCCCCC;
 	float: left;
+    font-family: "Showcard Gothic", 'Times New Roman';
+    color: white;
 }
 
 .Block {
