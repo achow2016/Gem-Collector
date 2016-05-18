@@ -12,10 +12,24 @@ body {
 	background-repeat: no-repeat;
 }
 
-.Block {
-	width: 9em;
+.Words {
+    vertical-align: central;
+    padding: 0.75em 0em 0em 0.5em;
+    font-size: 1em;
+    font-family: "Showcard Gothic", 'Times New Roman';
+    color: white;
+}
+
+.ScoreBox {
+    width: 9em;
 	height: 4.5em;
-	border: 0.5em solid white;
+	border: 0.5em solid #CCCCCC;
+	float: left;
+}
+
+.Block {
+	width: 10em;
+	height: 5.5em;
 	float: left;
 }
 
@@ -60,7 +74,7 @@ body {
 .HalfCircle.left {
 	border-top-left-radius: 11em;
     border-bottom-left-radius: 11em;
-    border: 0.5em solid white;
+    border: 0.5em solid #CCCCCC;
     border-bottom: 0em;
     position: relative;
 }
@@ -68,7 +82,7 @@ body {
 .HalfCircle.right {
 	border-top-right-radius: 11em;
     border-bottom-right-radius: 11em;
-    border: 0.5em solid white;
+    border: 0.5em solid #CCCCCC;
     border-bottom: 0em;
     position: relative;
 }
@@ -76,8 +90,8 @@ body {
 .GameBoard {
 	width: 7.5em;
 	height: 8em;
-	border-right: 0.5em solid white;
-	border-top: 0.5em solid white;
+	border-right: 0.5em solid #CCCCCC;
+	border-top: 0.5em solid #CCCCCC;
 	position: relative;
 	float: left;
 }
@@ -92,8 +106,8 @@ body {
 	width: 8em;
 	height: 8em;
 	float: left;
-	border-top: 0.5em solid white;
-	border-bottom: 0.5em solid white;
+	border-top: 0.5em solid #CCCCCC;
+	border-bottom: 0.5em solid #CCCCCC;
 	position: relative;
 }
 
@@ -105,33 +119,33 @@ body {
 }
 
 .BottomSquare {
-	border-bottom: 0.5em solid white;
+	border-bottom: 0.5em solid #CCCCCC;
 }
 
 .NumberMark {
-	width: 1.25em;
-	height: 1.3em;
+	width: 2em;
+	height: 2em;
 	/*border-top: 0.5em solid white;
 	border-right: 0.5em solid white;*/
 	float: left;
 	position: absolute;
 	bottom: 0;
 	left: 0;
-    font-size: 1em;
+    font-size: 1.5em;
     font-family: "Showcard Gothic", 'Times New Roman';
     color: white;
     text-align: center;
 }
 
 .HalfCircle.left .NumberMark{
-	width: 1.25em;
-	height: 1.3em;
+	width: 2em;
+	height: 2em;
 	float: right;
 	position: absolute;
-	bottom: 0.5em;
-	right: 0;
-	left: 6em;
-    text-align: center;
+    left: 3.75em;
+}
+.BossRoomMark {
+    direction: rtl;
 }
 
 .cell:hover {
@@ -165,22 +179,39 @@ body {
     right: 0;
 }
 
-#Question {
+#UserRight {
 	background-repeat: no-repeat;
 	background-position: left;
 }
 
-#Answer {
+#UserRight img {
+    padding-top: 0.35em;
+}
+
+#UserLeft {
 	background-repeat: no-repeat;
 	background-position: right;
 }
 
-#Question2 {
+#UserLeft img {
+    padding-top: 0.35em;
+    margin-left: 70%;
+}
+
+#OppntRight {
 	background-repeat: no-repeat;
 	background-position: left;
 }
 
-#Answer2 {
+#OppntRight img {
+    
+}
+
+#OppntLeft {
 	background-repeat: no-repeat;
 	background-position: right;
+}
+
+#OppntLeft img {
+    margin-left: 50%;
 }
