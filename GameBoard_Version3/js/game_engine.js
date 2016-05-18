@@ -59,9 +59,16 @@ GameBoard.prototype = {
             var cellId = cell.data('cell');
             var validRange = CELL_RANGE[that.turn];
             if (cellId >= validRange[0] && cellId <= validRange[1]) {
-                that.getDirection(cellId).done(function() {
-                    that.makeMove(cellId);
-                });
+            // checking totalGem in a cell 
+            // if the totalGem == 0 
+            // dissable the click function
+                if (that.cells[cellId].getTotalGem() == 0) {
+                    return false;
+                } else {
+                    that.getDirection(cellId).done(function() {
+                        that.makeMove(cellId);
+                    });
+                }
             } else {
                 return false;
             }
@@ -114,7 +121,8 @@ GameBoard.prototype = {
         return done.promise();
     },
     makeMove: function(cellId) {
-        var sign = this.direction;
+        var sign = this.direction * this.turn;
+        //console.log(this.direction * this.turn);
         // Getting cell location
         var cell = this.cells[cellId];
         // Storing the gem that we pick up
@@ -125,6 +133,9 @@ GameBoard.prototype = {
             var nextOneCell = this.cells[nextOneCellIndex];
             nextOneCell.addUp();
             cell = nextOneCell;
+            //nextOneCell.highLight();
+            //this.delay(400);
+            //nextOneCell.unHighLight();
             holdingGem--;
 	    }
         var landedNextIndex = cell.getNextOneIndex(sign);
@@ -149,40 +160,14 @@ GameBoard.prototype = {
             console.log('lay o landed index de di tiep', landedNextIndex, new Date().getTime() / 1000);
             this.makeMove(landedNextIndex);
         }
-    }/*,
-    spreadGem: function(cellId, totalGem) {
-        var cell = this.cells[cellId];
-        var holdingGem = cell.getTotalGem();
-        var sign = sign;
-        while (this.holdingGem != 0) {
-             if ((this.cell == 11 && this.sign == 1) || this.cell == 0 && this.sign == (-1)) {
-	    			this.cell = (-6) * this.sign + 6;
-	    	 }
-             var cellNext = this.cellId + sign;
-             var twoCellNext = this.cellId + (2 * sign);
-             this.cell.addUp();
-	    	 this.holdingGem--;
-             cellId = this.cellNext;
-			 if (this.cells[cellNext].getTotalGem() == 0) {
-				while (this.cells[cellNext].getTotalGem() == 0) {
-					if (this.cells[twoCellNext].getTotalGem() != 0) {
-						score = score + this.cells[twoCellNext].getTotalGem();
-						cellId = this.cells[twoCellNext];
-					} else {
-						turn = 1;
-					}
-				}
-				trun = 1;
-			} else {
-				if ((sign == 1 && cell == 11 || cell == 5)|| (sign == -1 && cell == 1 || cell == 7)) {
-					turn = 1;
-				} else {
-					N = this.cells[cellNext].getTotalGem();
-					cellId = this.cellNext;
-				}
-			}
+    },
+    // Only for debug shouldn't use on production
+    delay: function(duration) {
+        var startTime = new Date().getTime();
+        while ((new Date().getTime() - startTime) < duration) {
+            // Wait
         }
-    }*/
+    }
 };
 
 //Creating class GameEngine

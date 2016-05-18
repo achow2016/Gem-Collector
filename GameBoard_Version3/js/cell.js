@@ -53,6 +53,16 @@ Cell.prototype = {
 	},
 	isEmpty: function() {
 		return this.totalGem == 0;
+	},
+	highLight: function() {
+		var id = '#Square' + this.index;
+		var div = $(id);
+		div.toggleClass('high-light', true);
+	},
+	unHighLight: function() {
+		var id = '#Square' + this.index;
+		var div = $(id);
+		div.toggleClass('high-light', false);
 	}
 }
 
