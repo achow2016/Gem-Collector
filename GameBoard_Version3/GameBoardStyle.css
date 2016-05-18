@@ -52,14 +52,14 @@ body {
 }
 
 #OppntProfile {
-	background-image: url(pictures/Profiles/Easy.jpg);
+	background-image: url(pictures/profiles/Easy.jpg);
 	background-repeat: no-repeat;
 	background-size: 70%;
 	background-position: center;
 }
 
 #UserProfile {
-	background-image: url(pictures/Profiles/User.jpg);
+	background-image: url(pictures/profiles/User.jpg);
 	background-repeat: no-repeat;
 	background-size: 70%;
 	background-position: center;
