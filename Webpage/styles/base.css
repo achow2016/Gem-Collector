@@ -2,6 +2,7 @@ body {
     padding: 0px 0px 0px 0px;
 	background-image: url(../pictures/Background.jpg);
     background-repeat: no-repeat;
+    background-color: #7dd4f1;
     width: 100%;
     height: 100%;
 }
@@ -17,22 +18,42 @@ body {
 }
 
 #playButton {
-	width: 5em;
+	width: 10em;
 	height: 5em;
-	background-color: white;
     float: left;
+    margin-left: 2.5em;
+   /*background-image: url(../pictures/ButtonBackground.png);*/
 }
 
 #demoButton {
-	width: 5em;
+	width: 10em;
 	height: 5em;
-	background-color: blue;
     float: left;
+    margin-left: 2.5em;
 }
 
 #rankingButton {
-	width: 5em;
+	width: 15em;
 	height: 5em;
-	background-color: gray;
     float: left;
+    margin-left: 2.5em;
+}
+
+.LinkButton {
+    text-align: center;
+    background-repeat: no-repeat;
+}
+
+.LinkButton a{
+    text-decoration: none;
+    font-size: 2em;
+    color: black;
+    font-family: "Showcard Gothic", 'Times New Roman';
+    position: relative;
+    top: 30%;
+}
+
+.LinkButton a:hover{
+    color: red;
+    transition: 0.35s;
 }
