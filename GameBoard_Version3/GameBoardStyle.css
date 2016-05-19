@@ -192,44 +192,59 @@ body {
     right: 0;
 }
 
-#UserRight {
+#UserRight1 {
 	background-repeat: no-repeat;
 	background-position: left;
 }
 
-#UserRight img {
+#UserRight1 img {
     padding-top: 0.35em;
 }
 
-#UserLeft {
+#UserLeft1 {
 	background-repeat: no-repeat;
 	background-position: right;
 }
 
-#UserLeft img {
+#UserLeft2 {
+	background-repeat: no-repeat;
+	background-position: right;
+}
+
+#UserLeft2 img {
     padding-top: 0.35em;
     margin-left: 70%;
 }
 
-#OppntRight {
+#OppntRight1 {
 	background-repeat: no-repeat;
 	background-position: left;
 }
 
-#OppntRight img {
+#OppntRight2 {
+	background-repeat: no-repeat;
+	background-position: left;
+}
+
+#OppntRight1 img {
     
 }
 
-#OppntLeft {
+#OppntLeft1 {
 	background-repeat: no-repeat;
 	background-position: right;
+}
+
+#OppntLeft2 {
+	background-repeat: no-repeat;
+	background-position: right;
+}
+
+#OppntLeft2 img {
+    margin-left: 50%;
 }
 
 .high-light {
 	opacity: 0;
     transition: 0.3s
-}
-
-#OppntLeft img {
-    margin-left: 50%;
 }
