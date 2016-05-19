@@ -10,6 +10,7 @@
 	<script src="js/cell.js"></script>
 	<script src="js/masterCell.js"></script>
 	<script src="js/game_engine.js"></script>
+    <script src="js/User.js"></script>
     
     <!--Sends move array VAR to php through ajax-->
     <script src="js/sendToPhp.js"></script>
@@ -28,8 +29,10 @@
 	<div id="Border">
 		<!--First Line-->
         <div id="OppntLine">
-		    <div id="ScoreBox2" class="ScoreBox"><p class="Words">Gem:</p></div>
-		    <div id="ScoreBox1" class="ScoreBox"><p class="Words">Gem:</p></div>
+		    <div id="ScoreBox1" class="ScoreBox">
+                <div class="Words">Gem:<span class="gem"></span></div>
+                <div class="Words">Big Gem:<span class="big"></span></div>
+            </div>
 		    <div class="BodyBlock"></div>
 		    <div class="BodyBlock" id="OppntLeft"><img src="pictures/profiles/side/rightWingResized.png" alt="arm"></div>
 		    <div class="Profile" id="OppntProfile" onmouseover="Q2check()"  onmouseout="Q2uncheck()"></div>
@@ -103,8 +106,10 @@
 
 		<!--Third Line-->
         <div id="UserLine">
-		    <div id="ScoreBox1" class="ScoreBox"><p class="Words">Gem:</p></div>
-		    <div id="ScoreBox2" class="ScoreBox"><p class="Words">Gem:</p></div>
+		    <div id="ScoreBox0" class="ScoreBox">
+                <div class="Words">Gem:<span class="gem"></span></div>
+                <div class="Words">Big Gem:<span class="big"></span></div>
+            </div>
 		    <div class="BodyBlock"></div>
 		    <div class="BodyBlock" id="UserLeft"><img src="pictures/profiles/side/leftArmResized.png" alt="arm"></div>
 		    <div class="Profile" id="UserProfile" onmouseover="Q1check()"  onmouseout="Q1uncheck()"></div>

@@ -3,7 +3,7 @@ $(document).ready(startGameEngine);
 
 //Creating the maximum number of cells 
 var MAX_CELL = 12;
-
+var MAX_USER = 2;
 //Chosen cell number
 var chosenCell;
 
@@ -29,34 +29,42 @@ function GameBoard() {
     this.turn = null;
     this.direction = null;
     this.setupInternalCells();
+    this.setupUsers();
 }
 //Creating object for GameBoard
 GameBoard.prototype = {
     turn: null,
     direction: null,
     cells: null,
+    users: null,
     //Setup cell variable
-    setupInternalCells: function () {
+    setupInternalCells: function() {
         var i;
         //Creating an array name cells
         this.cells = [];
         for (i = 0; i < MAX_CELL; i++) {
             //Creating master cells and normal cells
             if (i == 0 || i == 6) {
-                var masterCell = new MasterCell(i, 10);
+                var masterCell = new MasterCell(i, 0, 1);
                 this.cells.push(masterCell);
             } else {
                 var cell = new Cell(i, 5);
                 this.cells.push(cell);
             }
         }
-        // var scoreBox = new Score(0);
-        // this.Score.push(scoreBox);
+    },
+    setupUsers: function() {
+        var i;
+        this.users = [];
+        for (i = 0; i < MAX_USER; i++) {
+            var user = new User(i, 0, 0);
+            this.users.push(user);
+        }
     },
     //Mouse listener
-    setupEventListener: function () {
+    setupEventListener: function() {
         var that = this;
-        $('div.cell').on('click', function () {
+        $('div.cell').on('click', function() {
             var cell = $(this);
             var cellId = cell.data('cell');
             var validRange = CELL_RANGE[that.turn];
@@ -77,11 +85,11 @@ GameBoard.prototype = {
         });
     },
     // Deciding player turn
-    setupTurn: function (turn) {
+    setupTurn: function(turn) {
         this.turn = turn;
     },
     // Get the direction from player (not done yet)
-    getDirection: function (cellId) {
+    getDirection: function(cellId) {
         // Because we want the user to be blocked when we show the arrows
         // until they clicked one of these arrow no code should run
         // To do so, we firstly create a defer object and return a promise 
@@ -148,27 +156,32 @@ GameBoard.prototype = {
            this.turn = this.turn * (-1);
            console.log('doi luot vi o tiep la o quan', new Date().getTime() / 1000);
         } else if (landedNextCell.isEmpty()) {
-            if (!landedNextTwoCell.isEmpty()) {
-                console.log('an gem', landedNextTwoCell.getTotalGem(), landedNextTwoCell, new Date().getTime() / 1000);
-                // Remember to reset the winning cell and updating the total score
-                landedNextTwoCell.reset();
-                // score = landedNextTwoCell.getTotalGem();
-                this.turn = this.turn * (-1);
-            } else {
-                console.log('doi luot vi ko co o an', new Date().getTime() / 1000);
-                this.turn = this.turn * (-1);
-            }
+            //while (landedNextCell.isEmpty()) {
+                if (!landedNextTwoCell.isEmpty()) {
+                    console.log('an gem', landedNextTwoCell.getTotalGem(), landedNextTwoCell, new Date().getTime() / 1000);
+                    if (landedNextTwoCell.isMaster()) {
+                        var smallGem = landedNextTwoCell.getTotalGem();
+                        var bigGem = landedNextTwoCell.getTotalBigGem();
+                        landedNextTwoCell.resetMaster();
+                    } else {
+                        var smallGem = landedNextTwoCell.getTotalGem();
+                        landedNextTwoCell.reset();
+                    }
+                    // Updating the totalGem and total bigGem to the user 
+                    //var n = this.turn * (-1);
+                    var n = (this.turn - 1) / (-2);
+                    this.users[n].gainGem(smallGem, bigGem);
+              //      cell = landedNextTwoIndex;
+                    this.turn = this.turn * (-1);
+                } else {
+                    console.log('doi luot vi ko co o an', new Date().getTime() / 1000);
+                    this.turn = this.turn * (-1);
+                }
+            //}
         } else {
             // Taking the next landed cell to start over again
             console.log('lay o landed index de di tiep', landedNextIndex, new Date().getTime() / 1000);
             this.makeMove(landedNextIndex);
-        }
-    },
-    // Only for debug shouldn't use on production
-    delay: function(duration) {
-        var startTime = new Date().getTime();
-        while ((new Date().getTime() - startTime) < duration) {
-            // Wait
         }
     }
 };
