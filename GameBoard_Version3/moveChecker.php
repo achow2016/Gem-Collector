@@ -1,30 +1,44 @@
 <?php
+/*
+This php script receives last ID from table to determine turns.
+*/
 
-$SQLCommand = "SELECT * FROM gameboard ORDER BY id DESC Limit 1";
+/*
+connect to database.
+*/
 
-$result = mysql_query($SQLCommand); //This line executes the MySQL query above
+$servername = "mysql7.000webhost.com";
+$username = "a1753342_user";
+$password = "bladeands0ul";
+$dbname = "a1753342_main";
 
-$sqlline = array(); //Array to hold all line data
+$conn = mysqli_connect($servername, $username, $password, $dbname);
 
-$index = 0;
-while($row = mysql_fetch_assoc($result)){ 
-    //loop to store data in an associative array.
-     $sqlline[$index] = $row;
-     $index++;
+//Check connection.
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
 }
-$properarray = array_values($_sqlline);
 
-//should return row ID (or turn number)
-echo $properarray[0];
-?>
+//select last row ID.
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title></title>
-    </head>
-    <body>
-        
-    </body>
-</html>
+$sql = SELECT id FROM gameboard WHERE idate = (SELECT max(ID) FROM gameboard);
+
+//puts query info into variable.
+
+$result = $conn->query($sql);
+
+//change query into asociative array.
+
+$row = $result->fetch_assoc();
+
+//change into indexed array.
+
+$row = array_values($row);
+
+//echo back the row ID for checking.
+
+echo $row[0];    
+}
+
+

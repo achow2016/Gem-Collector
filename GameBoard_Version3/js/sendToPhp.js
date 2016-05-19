@@ -26,6 +26,7 @@ function transmitToPhp(array) {
                 moveId = parseInt(moveId.substr(0,4));				
 				};
 				
-//Move to next function, to wait for new turn with interval checking.
-intervalChecker();		
+/*Move to timer function, to wait for new turn with interval checking.
+Passes integer for turn as parameter.*/
+receiveTurn(moveId);		
 }

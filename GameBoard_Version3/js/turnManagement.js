@@ -4,17 +4,17 @@ check through interval to decide if another turn can be made.
 */
 
 
-//Global turn id for client to store turn number.
+//Will use moveId Global turn id for client to store turn number.
 
-var myturnid;
+var myTurnId;
 
 //Stores turn id fom JSON.parse.
 
-var receiveid;
+var receiveId;
 
-//Takes turn id from remoteturnid through assignment.
+//Takes turn id from remoteturnid through assignment in loop.
 
-var remoteturnid;
+var remoteTurnId;
 
 /*
 This function will receive turn id, from php 
@@ -25,42 +25,68 @@ for turn made by other player by comparing row id.
 
 function receiveTurn(turnId) {
 	//store int turn id to global variable
-	myturnid = turnId;
+	myTurnId = turnId;
 	intervalcheckturn();
 }
 
 /*
-launches function to check turn id every second unless condition
+launches function to check turn id every half second unless condition
 met, like if turn id received is even or odd (first or second).
 */
 
-function intervalcheckturn(){
-	if(!condition) {
-	setInterval(checkTurn(), 1000);
-	}
-}
+var firstTurnOdd;
 
+var secondTurnEven;
+
+function intervalcheckturn() {
+    //If You go first, return ID must be even for you to take a turn.
+    if (iAmFirst == 1) {
+        if (iAmFirst == 1 & (remoteTurnId % 2 != 0)) {
+            setInterval(checkTurn(), 500);
+        } else {
+            //Move to function to start your turn.
+            takeMyTurn();
+        }
+    }
+    //If You go second, return ID must be odd for you to take a turn.
+    if (iAmSecond == 1) {
+        if (iAmSecond == 1 & (remoteTurnId % 2 == 0)) {
+            setInterval(checkTurn(), 500);
+        } else {
+            //Move to function to start your turn.
+            takeMyTurn();
+        }
+    }
+}
 /*
 This function will check database for additional lines.
 */
 
 function checkTurn() {
-	
+    var stringTurn;
 	/*Check if remote id is equal to player.
 	use other loop to start new turn if different.*/
 	var xmlhttp = new XMLHttpRequest();
 	//Take turns on 1,3 2,4 (example) which is why +2!
 	if(remoteturnid != myturnid + 2) {
-	xmlhttp.onreadystatechange = function() {
-		if(xmlhttp.readystate == 4 && xmlhttp.status == 200) {
-			xmlhttp.open("post", "moveChecker.php");
-			xmlhttp.send();
-			receiveid = JSON.parse(xmlhttp.responseText);
-			//what to do with id?
-			remoteturnid = receiveid;
-			} else {
-				//to player turn
-			}
+	    //convert to string to send.
+        stringTurn = myTurnId.toString();
+        xmlhttp.open("post", "moveChecker.php", true);
+        //Set content type for POSTing turn string.
+        xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		//Send.
+        xmlhttp.send();
+        //get response turn ID.
+        if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				//applies id as mess to remoteTurnId.
+                remoteTurnId = xmlhttp.responseText; 
+				//Snips extra off move ID and applies it to a usable global Int Var.
+                remoteTurnId = parseInt(remoteTurnId.substr(0,4));				
+				};
+			   
 		}
 	}
-}	
+
+
+
+
