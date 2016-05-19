@@ -1,41 +1,32 @@
 //receive php response.
 var receivePhp;
 
-
-//apply array to function parameter.
-functionName.apply(cells[0],cells[1],cells[2]
-,cells[3],cells[4],cells[5],cells[6],cells[7],
-cells[8],cells[9],cells[10],cells[11]);
-
-function transmitToPhp(a,b,c,d,e,f,g,h,i,j,k,m) {
+/*call this function with array name as parameter (cells)
+to transmit array*/
+function transmitToPhp(array) {
     
-
-var xmlhttp = new XMLHttpRequest();
-
-	xmlhttp.onreadystatechange = function() {
-		if(xmlhttp.readystate == 4 && xmlhttp.status == 200) {
-
-		//convert array to string.
-
-		arrayToStringName = arrayName.join(",");
-		xmlhttp.open("post", "serverprocessing.php");
-		xmlhttp.setRequestHeader("Content-Type","application/JSON");
-
-		//send string.
-
-		xmlhttp.send(arrayToStringName);
+    //New XMLHttpRequest object.
+    var xmlhttp = new XMLHttpRequest();
+    //Convert array into string.
+    cellsToString = cells.toString();
+	//Encode string for POST sending.
+    var payload = "datasent=" + encodeURIComponent(cellsToString);
+	//Open connection to PHP page for processing.
+    xmlhttp.open( "POST", "storeMoveToSql.php", true);
+	//Set content type for POSTing string.
+    xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    //Send it.
+    xmlhttp.send(stringsent);
 		
-		//receive ID from php as array.
-		
-		receivePhp = JSON.parse(xmlhttp.responseText);		
-		
-		/*
-		Extract array ID value and process in function for 
-		storing turn/checking turn, etc.		
-		*/
-		
-		
-		receiveTurn(receivePhp[0]);
-		}
-	};
+	//get response ID.
+    if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				//applies id as mess to moveId.
+                moveId = xmlhttp.responseText; 
+				//Snips extra off move ID and converts it to a usable global Int Var.
+                moveId = parseInt(moveId.substr(0,4));				
+				};
+				
+/*Move to timer function, to wait for new turn with interval checking.
+Passes integer for turn as parameter.*/
+receiveTurn(moveId);		
 }
