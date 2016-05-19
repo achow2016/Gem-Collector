@@ -34,16 +34,42 @@ launches function to check turn id every half second unless condition
 met, like if turn id received is even or odd (first or second).
 */
 
+//Mark player as going first. (Odd)
 var firstTurnOdd;
 
+//Mark player as going second. (even)
 var secondTurnEven;
 
-function intervalcheckturn() {
+//To turn on or off interval checking.
+var intervalSwitch;
+
+//Store timer function so you can switch it off.
+var storeInterval;
+
+function intervalCheckTurn() {
     //If You go first, return ID must be even for you to take a turn.
+    
+    //Set interval to check.
+    if (intervalSwitch == 0) {
+            storeInterval = setInterval(intervalCheckTurn(), 500);
+            intervalSwitch = 1;
+    }
+    
+    //If first in turn order.
     if (iAmFirst == 1) {
         if (iAmFirst == 1 & (remoteTurnId % 2 != 0)) {
-            setInterval(checkTurn(), 500);
+           //pull move ID here with function.
+           
+           .
         } else {
+            //switch to taking turn here.
+            
+            //reset interval check for next turn.
+            intervalSwitch = 0;
+            //disable interval loop.
+            clearInterval(storeInterval);
+            //update the gameboard before taking turn.
+            updateGameboard();
             //Move to function to start your turn.
             takeMyTurn();
         }
@@ -51,8 +77,18 @@ function intervalcheckturn() {
     //If You go second, return ID must be odd for you to take a turn.
     if (iAmSecond == 1) {
         if (iAmSecond == 1 & (remoteTurnId % 2 == 0)) {
-            setInterval(checkTurn(), 500);
+            //pull move ID here with function.
+            
+            
         } else {
+            //switch to taking turn here.
+            
+            //reset interval check for next turn.
+            intervalSwitch = 0;
+            //disable interval loop.
+            clearInterval(storeInterval);
+            //update the gameboard before taking turn.
+            updateGameboard();
             //Move to function to start your turn.
             takeMyTurn();
         }
