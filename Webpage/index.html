@@ -3,6 +3,9 @@
 <head>
 	<link href="styles/base.css" rel="stylesheet" type="text/css">
     <script src="js/getSetHeight.js"></script>
+
+    <!--Popup script-->
+    <script src="js/popUp.js"></script>
 </head>
 <body>
     <div id="Wrapper"></div>
@@ -23,7 +26,14 @@
 
     <!--LeaderBoard-->
 	<div id="rankingButton" class="LinkButton">
-        <a href="">Leaderborad</a>
+        <a id="rankingLink" href="">Leaderborad</a>
     </div>
+
+    <!--Popup-->
+    <div id="popUp">
+        <span class="close">x</span>
+        <div id="popUpContent"></div>
+    </div>
+
 </body>
 </html>
