@@ -1,13 +1,21 @@
 function Q1check() {
-         $("#UserRight1").css("background-image", "url(pictures/Q.png)");
+         $("#UserRight1").css("background-image", "url(pictures/newQLeft.png)");
          $("#UserRight1 img").css("display", "none");
-         $("#OppntLeft2").css("background-image", "url(pictures/A.png)");
+         $("#UserRight2").css("background-image", "url(pictures/newQRight.png)");
+         $("#UserRight2 img").css("display", "none");
+         $("#OppntLeft1").css("background-image", "url(pictures/newALeft.png)");
+         $("#OppntLeft1 img").css("display", "none");
+         $("#OppntLeft2").css("background-image", "url(pictures/newARight.png)");
          $("#OppntLeft2 img").css("display", "none");
      }
 
      function Q1uncheck() {
          $("#UserRight1").css("background-image", "url()");
          $("#UserRight1 img").css("display", "initial");
+         $("#UserRight2").css("background-image", "url()");
+         $("#UserRight2 img").css("display", "initial");
+         $("#OppntLeft1").css("background-image", "url()");
+         $("#OppntLeft1 img").css("display", "initial");
          $("#OppntLeft2").css("background-image", "url()");
          $("#OppntLeft2 img").css("display", "initial");
      }

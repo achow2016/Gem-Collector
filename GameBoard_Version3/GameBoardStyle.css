@@ -197,6 +197,11 @@ body {
 	background-position: left;
 }
 
+#UserRight2 {
+	background-repeat: no-repeat;
+	background-position: left;
+}
+
 #UserRight1 img {
     padding-top: 0.35em;
 }
