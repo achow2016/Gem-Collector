@@ -10,6 +10,20 @@
 
     <!--Skeleton-->
     <script src="js/changeSkeSke.js"></script>
+    <script src="js/sendScoreAndWritePhp.js"></script>
+
+    <script>
+        var queryString;
+
+        function preProcessing() {
+            
+            $(document).ready(function () {
+                $("button").click(function () {
+                    queryString = $("form").serialize();
+                });
+            });
+        }
+    </script>
 
 </head>
 <body>
@@ -56,7 +70,7 @@
 
                     <!--Leaderboard-->
                 <div id="leaderboard">
-                <form id="scoreForm">
+                <form id="scoreForm" action="">
                 Name<input type="text" name="name"></input>
                 <br>Score<input type="text" name="score"></input>
                 <button type="button" onclick="sendScore()">Send</button>
@@ -94,6 +108,10 @@
                     $conn->close();
                 ?>
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> c96bc2e52f0cea7ea82c7c0990dc523893dd37be
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
