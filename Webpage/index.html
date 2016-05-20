@@ -3,13 +3,37 @@
 <head>
 	<link href="styles/base.css" rel="stylesheet" type="text/css">
     <script src="js/getSetHeight.js"></script>
+
+    <!--Popup script-->
+    <script src="js/popUp.js"></script>
 </head>
 <body>
     <div id="Wrapper"></div>
+
+    <!--Title-->
     <p class="title"><b>Gem</b></p>
     <p class="title"><b>Collector</b></p>
-	<div id="playButton"></div>
-	<div id="demoButton"></div>
-	<div id="rankingButton"></div>
+
+    <!--Play-->
+	<div id="playButton" class="LinkButton">
+        <a href="">Play</a>
+    </div>
+
+    <!--Tutorial-->
+	<div id="demoButton" class="LinkButton">
+        <a href="">Tutorial</a>
+    </div>
+
+    <!--LeaderBoard-->
+	<div id="rankingButton" class="LinkButton">
+        <a id="rankingLink" href="">Leaderborad</a>
+    </div>
+
+    <!--Popup-->
+    <div id="popUp">
+        <span class="close">x</span>
+        <div id="popUpContent"></div>
+    </div>
+
 </body>
 </html>
