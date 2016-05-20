@@ -37,7 +37,7 @@
 
         <!--Music-->
          <div id="music">
-            <img id="SkeSke" src="pictures/skeske.png" alt="skeske" onclick="changeSkeSke()">
+            <img id="SkeSke" src="pictures/skeleton10default.gif" alt="skeske" onclick="changeSkeSke()">
         </div>
 
         <!--Play-->
@@ -108,7 +108,10 @@
                     $conn->close();
                 ?>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> c96bc2e52f0cea7ea82c7c0990dc523893dd37be
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
