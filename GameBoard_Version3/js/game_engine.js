@@ -63,7 +63,6 @@ GameBoard.prototype = {
     },
     //Mouse listener
     setupEventListener: function () {
-        updateGameboard();
         var that = this;
         $('div.cell').on('click', function () {
             var cell = $(this);
@@ -80,6 +79,7 @@ GameBoard.prototype = {
                         that.makeMove(cellId);
                     });
                 }
+                updateGameboard();
             } else {
                 return false;
             }
