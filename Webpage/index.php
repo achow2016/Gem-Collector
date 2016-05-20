@@ -23,7 +23,7 @@
 
         <!--Music-->
          <div id="music">
-            <img id="SkeSke" src="pictures/skeske.png" alt="skeske" onclick="changeSkeSke()">
+            <img id="SkeSke" src="pictures/skeleton10default.gif" alt="skeske" onclick="changeSkeSke()">
         </div>
 
         <!--Play-->
