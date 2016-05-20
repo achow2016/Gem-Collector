@@ -67,7 +67,7 @@
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
-                    echo "<table><tr><th>ID</th><th>Name</th></tr>";
+                    echo "<table width=400><tr><th>Name</th><th>Score</th></tr>";
                     // output data of each row
                     while($row = $result->fetch_assoc()) {
                         echo "<tr><td>" . $row["Name"]. "</td><td>" . $row["Score"]. " " . $row["lastname"]. "</td></tr>";
