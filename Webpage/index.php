@@ -24,7 +24,7 @@
 
         <!--Play-->
 	    <div id="playButton" class="LinkButton">
-            <a href="index.html">Play</a>
+            <a href="levels.html">Play</a>
         </div>
 
         <!--Tutorial-->
@@ -49,7 +49,8 @@
                 <h4 class="modal-title">Modal Header</h4>
             </div>
             <div class="modal-body">
-            <?php
+                <!--Leaderboard-->
+                <?php
                 $servername = "mysql7.000webhost.com";
                 $username = "a1753342_user";
                 $password = "bladeands0ul";
@@ -77,7 +78,7 @@
                     }
 
                     $conn->close();
-                ?>  
+                ?>
 
             </div>
             <div class="modal-footer">
