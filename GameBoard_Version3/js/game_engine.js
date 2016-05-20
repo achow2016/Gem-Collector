@@ -137,6 +137,7 @@ GameBoard.prototype = {
         var cell = this.cells[cellId];
         // Storing the gem that we pick up
         var holdingGem = cell.getTotalGem();
+        console.log(holdingGem);
         cell.reset();
         while (holdingGem > 0) {
             var nextOneCellIndex = cell.getNextOneIndex(sign);
@@ -158,19 +159,25 @@ GameBoard.prototype = {
         } else if (landedNextCell.isEmpty()) {
             //while (landedNextCell.isEmpty()) {
                 if (!landedNextTwoCell.isEmpty()) {
+                    var n;
+                    if (this.turn == -1) {
+                        n = 1;
+                    } else {
+                        n = 0;
+                    }
                     console.log('an gem', landedNextTwoCell.getTotalGem(), landedNextTwoCell, new Date().getTime() / 1000);
                     if (landedNextTwoCell.isMaster()) {
                         var smallGem = landedNextTwoCell.getTotalGem();
                         var bigGem = landedNextTwoCell.getTotalBigGem();
+                        this.users[n].gainGem(smallGem, bigGem);
                         landedNextTwoCell.resetMaster();
                     } else {
                         var smallGem = landedNextTwoCell.getTotalGem();
+                        this.users[n].gainGem(smallGem, bigGem);
                         landedNextTwoCell.reset();
                     }
                     // Updating the totalGem and total bigGem to the user 
                     //var n = this.turn * (-1);
-                    var n = (this.turn - 1) / (-2);
-                    this.users[n].gainGem(smallGem, bigGem);
               //      cell = landedNextTwoIndex;
                     this.turn = this.turn * (-1);
                 } else {

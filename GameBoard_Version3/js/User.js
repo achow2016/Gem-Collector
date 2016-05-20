@@ -18,7 +18,7 @@ User.prototype = {
         bigGemDiv.html(this.totalBigGem)
     },
     gainGem: function(totalGem, totalBigGem) {
-        this.totalGem = totalGem;
+        this.totalGem = this.totalGem + totalGem;
         this.totalBigGem = totalBigGem;
         this.updateGui();
     }
