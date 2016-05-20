@@ -22,6 +22,10 @@ body {
     padding: 0px 0px 0px 0px;
 }
 
+#SkeskeRoom {
+    text-align: right;
+}
+
 #GameBoardLine {
     padding: 0px 0px 0px 0px;
 }
