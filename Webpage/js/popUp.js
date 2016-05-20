@@ -1,7 +1,12 @@
-var popUpBox = document.getElementById('popUp');
-var rank = document.getElementById('rankLink');
+var popUpBox = document.getElementById("popUp");
+var rank = document.getElementById("rankLink");
 var content = "Leaderboard";
 rank.onclick = function() {
+    popUpBox.style.display = "block";
+    popUpContent.innerHTML = content;
+}
+
+function popUp() {
     popUpBox.style.display = "block";
     popUpContent.innerHTML = content;
 }
