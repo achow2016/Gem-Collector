@@ -29,7 +29,7 @@ Cell.prototype = {
         var div = $(id);
         var numDiv = div.find('.NumberMark');
         numDiv.html(this.totalGem);
-        displayGem(this.totalGem);
+
     },
     getNextOneIndex: function (sign, currentIndex) {
         // If user want to get next index for a given index we use that index to start 
