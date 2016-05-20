@@ -1,13 +1,13 @@
-var popUP = document.getElementById('popUp');
-var rankingLink = document.getElementById('rankingLink');
+var popUpBox = document.getElementById('popUp');
+var rank = document.getElementById('rankLink');
 var content = "Leaderboard";
-rankingLink.onclick = function () {
-    popUp.style.display = "block";
-    /*content*/
+rank.onclick = function() {
+    popUpBox.style.display = "block";
+    popUpContent.innerHTML = content;
 }
 
 //get <span> that closes the popUp div
 var span = document.getElementByClassName('close')[0];
-sapn.onclick = function () {
+sapn.onclick = function() {
     popUp.style.display = "none";
 }

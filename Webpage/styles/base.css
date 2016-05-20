@@ -44,7 +44,7 @@ body {
     background-repeat: no-repeat;
 }
 
-.LinkButton a{
+.LinkButton a, p{
     text-decoration: none;
     font-size: 2em;
     color: black;
@@ -53,12 +53,17 @@ body {
     top: 30%;
 }
 
-.LinkButton a:hover{
+.LinkButton a:hover, p:hover{
     color: red;
     transition: 0.35s;
 }
 
 #popUp {
+    width: 10em;
+    background-color: gray;
+}
+
+.popUpStyle {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
