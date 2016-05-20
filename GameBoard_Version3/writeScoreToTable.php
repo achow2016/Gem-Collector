@@ -15,8 +15,8 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$sql = "INSERT INTO leaderboard (name, score) VALUES ($_POST["name"],$_POST["score"])";
+$sql = "INSERT INTO Leaderboard (name, score) VALUES ($_POST["name"],$_POST["score"])";
 
-
+//debug this
 
 ?>
