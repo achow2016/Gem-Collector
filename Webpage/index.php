@@ -8,6 +8,7 @@
 	
     <link href="styles/base.css" rel="stylesheet" type="text/css">
     <script src="js/getSetHeight.js"></script>
+    <script src="js/sendScoreAndWritePhp.js"></script>
 
 </head>
 <body>
@@ -49,37 +50,14 @@
                 <h4 class="modal-title">Modal Header</h4>
             </div>
             <div class="modal-body">
-                <!--Leaderboard-->
-                <?php
-                $servername = "mysql7.000webhost.com";
-                $username = "a1753342_user";
-                $password = "bladeands0ul";
-                $dbname = "a1753342_main";
-
-                // Create connection
-                $conn = new mysqli($servername, $username, $password, $dbname);
-                // Check connection
-                if ($conn->connect_error) {
-                    die("Connection failed: " . $conn->connect_error);
-                } 
-
-                $sql = "SELECT Name, Score FROM Leaderboard";
-                $result = $conn->query($sql);
-
-                if ($result->num_rows > 0) {
-                    echo "<table width=400><tr><th>Name</th><th>Score</th></tr>";
-                    // output data of each row
-                    while($row = $result->fetch_assoc()) {
-                        echo "<tr><td>" . $row["Name"]. "</td><td>" . $row["Score"]. " " . $row["lastname"]. "</td></tr>";
-                    }
-                    echo "</table>";
-                    } else {
-                        echo "0 results";
-                    }
-
-                    $conn->close();
-                ?>
-
+                    <!--Leaderboard-->
+                <div id="leaderboard">
+                <form id="scoreForm" onsubmit="sendScore()">
+                Name<input type="text" name="name"></input>
+                <br>Score<input type="text" name="score"></input>
+                <input type="submit" value="Submit">
+                </form>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
