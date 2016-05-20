@@ -76,6 +76,13 @@ Cell.prototype = {
         }
         return nextOneIndex;
     },
+    // Get the id of the next two cell 
+    getNextTwoIndex: function(sign, currentIndex) {
+		var index = typeof currentIndex != 'undefined' ? currentIndex : this.index;
+		var nextOneIndex = this.getNextOneIndex(sign, index);
+		var nextTwoIndex = this.getNextOneIndex(sign, nextOneIndex);
+		return nextTwoIndex;
+	},
     // Checking the cell is master cell or not 
     isMaster: function () {
         return this instanceof MasterCell;

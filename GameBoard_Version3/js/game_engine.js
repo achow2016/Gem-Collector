@@ -162,6 +162,7 @@ GameBoard.prototype = {
         var nextOneCellIndex = cell.getNextOneIndex(sign);
         var nextOneCell = this.cells[nextOneCellIndex];
         if (nextOneCell.getTotalGem() != 0) {
+            alert('Turn Change');
             // No more gem to gain. Change turn
             this.turn = this.turn * (-1);
         } else {
@@ -189,6 +190,7 @@ GameBoard.prototype = {
                 // Spread the gem 
                 this.spreadGem(gameState);
             } else {
+                alert('Turn Change');
                 // End turn if the total gem of the next cell is not empty but it is a master cell
                 this.turn = this.turn * (-1);
             }
@@ -196,6 +198,7 @@ GameBoard.prototype = {
             var landedNextTwoCellIndex = landedCell.getNextTwoIndex(sign); 
             var landedNextTwoCell = this.cells[landedNextTwoCellIndex];
             if (landedNextTwoCell.getTotalGem() == 0) {
+                alert('Turn Change');
                 // When the next box is empty and the next two box is also empty
                 // end turn
                 this.turn = this.turn * (-1);
