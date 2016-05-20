@@ -1,7 +1,4 @@
 <?php
-//$_POST["name"]
-//$_POST["score"]
-
 /*
 connect to database.
 */
@@ -15,7 +12,7 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$sql = "INSERT INTO Leaderboard (name, score) VALUES ($_POST["name"],$_POST["score"])";
+$sql = "INSERT INTO Leaderboard (Name, Score) VALUES ($_GET["name"],$_GET["score"])";
 
 //debug this
 
