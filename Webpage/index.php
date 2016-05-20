@@ -10,6 +10,20 @@
 
     <!--Skeleton-->
     <script src="js/changeSkeSke.js"></script>
+    <script src="js/sendScoreAndWritePhp.js"></script>
+
+    <script>
+        var queryString;
+
+        function preProcessing() {
+            
+            $(document).ready(function () {
+                $("button").click(function () {
+                    queryString = $("form").serialize();
+                });
+            });
+        }
+    </script>
 
 </head>
 <body>
@@ -53,16 +67,16 @@
                 <h4 class="modal-title">Modal Header</h4>
             </div>
             <div class="modal-body">
-<<<<<<< HEAD
+
                     <!--Leaderboard-->
                 <div id="leaderboard">
-                <form id="scoreForm">
+                <form id="scoreForm" action="">
                 Name<input type="text" name="name"></input>
                 <br>Score<input type="text" name="score"></input>
                 <button type="button" onclick="sendScore()">Send</button>
                 </form>
                 </div>
-=======
+
                 <!--Leaderboard-->
                 <?php
                 $servername = "mysql7.000webhost.com";
@@ -94,7 +108,7 @@
                     $conn->close();
                 ?>
 
->>>>>>> d9e7a078b4319a9c1fa51f31f4e7f0a97a3a503e
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
