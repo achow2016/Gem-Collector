@@ -25,7 +25,7 @@
 
         <!--Play-->
 	    <div id="playButton" class="LinkButton">
-            <a href="">Play</a>
+            <a href="index.html">Play</a>
         </div>
 
         <!--Tutorial-->
