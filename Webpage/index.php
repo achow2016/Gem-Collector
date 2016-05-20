@@ -52,15 +52,15 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Modal Header</h4>
+                <h4 class="modal-title">Leaderboards</h4>
             </div>
             <div class="modal-body">
 
                     <!--Leaderboard-->
                 <div id="leaderboard">
                 <form id="scoreForm" action="">
-                Name<input type="text" name="name"></input>
-                <br>Score<input type="text" name="score"></input>
+                Name<input type="text" name="name" id="name"></input>
+                <br>Score<input type="text" name="score" id="score"></input>
                 <button type="button" onclick="sendScore()" id="select">Send</button>
                 </form>
                 </div>
