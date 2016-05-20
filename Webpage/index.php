@@ -52,10 +52,10 @@
             <div class="modal-body">
                     <!--Leaderboard-->
                 <div id="leaderboard">
-                <form id="scoreForm" onsubmit="sendScore()">
+                <form id="scoreForm">
                 Name<input type="text" name="name"></input>
                 <br>Score<input type="text" name="score"></input>
-                <input type="submit" value="Submit">
+                <button type="button" onclick="sendScore()">Send</button>
                 </form>
                 </div>
             </div>
