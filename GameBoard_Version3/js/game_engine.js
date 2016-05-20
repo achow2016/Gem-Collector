@@ -38,7 +38,7 @@ GameBoard.prototype = {
     cells: null,
     users: null,
     //Setup cell variable
-    setupInternalCells: function() {
+    setupInternalCells: function () {
         var i;
         //Creating an array name cells
         this.cells = [];
@@ -53,7 +53,7 @@ GameBoard.prototype = {
             }
         }
     },
-    setupUsers: function() {
+    setupUsers: function () {
         var i;
         this.users = [];
         for (i = 0; i < MAX_USER; i++) {
@@ -62,20 +62,21 @@ GameBoard.prototype = {
         }
     },
     //Mouse listener
-    setupEventListener: function() {
+    setupEventListener: function () {
+        updateGameboard();
         var that = this;
-        $('div.cell').on('click', function() {
+        $('div.cell').on('click', function () {
             var cell = $(this);
             var cellId = cell.data('cell');
             var validRange = CELL_RANGE[that.turn];
             if (cellId >= validRange[0] && cellId <= validRange[1]) {
-            // checking totalGem in a cell 
-            // if the totalGem == 0 
-            // dissable the click function
+                // checking totalGem in a cell 
+                // if the totalGem == 0 
+                // dissable the click function
                 if (that.cells[cellId].getTotalGem() == 0) {
                     return false;
                 } else {
-                    that.getDirection(cellId).done(function() {
+                    that.getDirection(cellId).done(function () {
                         that.makeMove(cellId);
                     });
                 }
@@ -85,11 +86,11 @@ GameBoard.prototype = {
         });
     },
     // Deciding player turn
-    setupTurn: function(turn) {
+    setupTurn: function (turn) {
         this.turn = turn;
     },
     // Get the direction from player (not done yet)
-    getDirection: function(cellId) {
+    getDirection: function (cellId) {
         // Because we want the user to be blocked when we show the arrows
         // until they clicked one of these arrow no code should run
         // To do so, we firstly create a defer object and return a promise 
@@ -102,7 +103,7 @@ GameBoard.prototype = {
         // Build the ID to select the cell 
         var id = '#Square' + cellId;
         // Using JQuery to grab that
-		var cellDiv = $(id);
+        var cellDiv = $(id);
         // Getting the position of the clicked cell
         var offset = cellDiv.offset();
         // Moving the arrow container to that new position
@@ -114,23 +115,23 @@ GameBoard.prototype = {
         // Now setup click event for these arrows
         var left = directionDiv.find('.arrowSignLeft');
         var that = this;
-        left.on('click', function() {
+        left.on('click', function () {
             // Updating the selected direction
             that.direction = DIRECTION.LEFT;
             // Hiding the arrow sign after user choose
             directionDiv.toggle(false);
             // Resolve the promise
-            done.resolve(); 
+            done.resolve();
         });
         var right = directionDiv.find('.arrowSignRight');
-        right.on('click', function() {
-            that.direction = DIRECTION.RIGHT; 
+        right.on('click', function () {
+            that.direction = DIRECTION.RIGHT;
             directionDiv.toggle(false);
             done.resolve();
         });
         return done.promise();
     },
-    makeMove: function(cellId) {
+    makeMove: function (cellId) {
         var sign = this.direction * this.turn;
         //console.log(this.direction * this.turn);
         // Getting cell location
@@ -148,42 +149,42 @@ GameBoard.prototype = {
             //this.delay(400);
             //nextOneCell.unHighLight();
             holdingGem--;
-	    }
+        }
         var landedNextIndex = cell.getNextOneIndex(sign);
         var landedNextCell = this.cells[landedNextIndex];
         var landedNextTwoIndex = cell.getNextTwoIndex(sign);
         var landedNextTwoCell = this.cells[landedNextTwoIndex];
         if (landedNextCell.isMaster()) {
-           this.turn = this.turn * (-1);
-           console.log('doi luot vi o tiep la o quan', new Date().getTime() / 1000);
+            this.turn = this.turn * (-1);
+            console.log('doi luot vi o tiep la o quan', new Date().getTime() / 1000);
         } else if (landedNextCell.isEmpty()) {
             //while (landedNextCell.isEmpty()) {
-                if (!landedNextTwoCell.isEmpty()) {
-                    var n;
-                    if (this.turn == -1) {
-                        n = 1;
-                    } else {
-                        n = 0;
-                    }
-                    console.log('an gem', landedNextTwoCell.getTotalGem(), landedNextTwoCell, new Date().getTime() / 1000);
-                    if (landedNextTwoCell.isMaster()) {
-                        var smallGem = landedNextTwoCell.getTotalGem();
-                        var bigGem = landedNextTwoCell.getTotalBigGem();
-                        this.users[n].gainGem(smallGem, bigGem);
-                        landedNextTwoCell.resetMaster();
-                    } else {
-                        var smallGem = landedNextTwoCell.getTotalGem();
-                        this.users[n].gainGem(smallGem, bigGem);
-                        landedNextTwoCell.reset();
-                    }
-                    // Updating the totalGem and total bigGem to the user 
-                    //var n = this.turn * (-1);
-              //      cell = landedNextTwoIndex;
-                    this.turn = this.turn * (-1);
+            if (!landedNextTwoCell.isEmpty()) {
+                var n;
+                if (this.turn == -1) {
+                    n = 1;
                 } else {
-                    console.log('doi luot vi ko co o an', new Date().getTime() / 1000);
-                    this.turn = this.turn * (-1);
+                    n = 0;
                 }
+                console.log('an gem', landedNextTwoCell.getTotalGem(), landedNextTwoCell, new Date().getTime() / 1000);
+                if (landedNextTwoCell.isMaster()) {
+                    var smallGem = landedNextTwoCell.getTotalGem();
+                    var bigGem = landedNextTwoCell.getTotalBigGem();
+                    this.users[n].gainGem(smallGem, bigGem);
+                    landedNextTwoCell.resetMaster();
+                } else {
+                    var smallGem = landedNextTwoCell.getTotalGem();
+                    this.users[n].gainGem(smallGem, bigGem);
+                    landedNextTwoCell.reset();
+                }
+                // Updating the totalGem and total bigGem to the user 
+                //var n = this.turn * (-1);
+                //      cell = landedNextTwoIndex;
+                this.turn = this.turn * (-1);
+            } else {
+                console.log('doi luot vi ko co o an', new Date().getTime() / 1000);
+                this.turn = this.turn * (-1);
+            }
             //}
         } else {
             // Taking the next landed cell to start over again
