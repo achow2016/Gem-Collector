@@ -64,7 +64,8 @@ GameBoard.prototype = {
     //Mouse listener
     setupEventListener: function() {
         var that = this;
-        $('div.cell').on('click', function() {
+        $('div.cell').off('click')
+            .on('click', function() {
             var cell = $(this);
             var cellId = cell.data('cell');
             var validRange = CELL_RANGE[that.turn];
@@ -114,7 +115,8 @@ GameBoard.prototype = {
         // Now setup click event for these arrows
         var left = directionDiv.find('.arrowSignLeft');
         var that = this;
-        left.on('click', function() {
+        left.off('click')
+            .on('click', function() {
             // Updating the selected direction
             that.direction = DIRECTION.LEFT;
             // Hiding the arrow sign after user choose
@@ -123,7 +125,8 @@ GameBoard.prototype = {
             done.resolve(); 
         });
         var right = directionDiv.find('.arrowSignRight');
-        right.on('click', function() {
+        right.off('click')
+            .on('click', function() {
             that.direction = DIRECTION.RIGHT; 
             directionDiv.toggle(false);
             done.resolve();
