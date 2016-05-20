@@ -23,7 +23,7 @@
 
         <!--Music-->
          <div id="music">
-            <img id="SkeSke" src="pictures/skeske.png" alt="skeske" onclick="changeSkeSke()">
+            <img id="SkeSke" src="pictures/skeleton10default.gif" alt="skeske" onclick="changeSkeSke()">
         </div>
 
         <!--Play-->
@@ -53,6 +53,16 @@
                 <h4 class="modal-title">Modal Header</h4>
             </div>
             <div class="modal-body">
+
+                    <!--Leaderboard-->
+                <div id="leaderboard">
+                <form id="scoreForm">
+                Name<input type="text" name="name"></input>
+                <br>Score<input type="text" name="score"></input>
+                <button type="button" onclick="sendScore()">Send</button>
+                </form>
+                </div>
+
                 <!--Leaderboard-->
                 <?php
                 $servername = "mysql7.000webhost.com";
