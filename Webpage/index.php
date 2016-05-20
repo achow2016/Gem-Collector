@@ -30,7 +30,7 @@
 
         <!--Play-->
 	    <div id="playButton" class="LinkButton">
-            <a href="levels.html">Play</a>
+            <a href="playMode.html">Play</a>
         </div>
 
         <!--Tutorial-->

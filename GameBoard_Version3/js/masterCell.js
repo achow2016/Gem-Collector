@@ -10,6 +10,7 @@ MasterCell.prototype.totalBigGem = null;
 MasterCell.prototype.getTotalBigGem = function() {
 	return this.totalBigGem;
 }
+// Creating the reset method for master cell 
 MasterCell.prototype.reset = function() {
 	this.totalBigGem = 0;
 	this.totalGem = 0;

@@ -26,7 +26,7 @@ Cell.prototype = {
     getTotalGem: function () {
         return this.totalGem;
     },
-    //Display Gem
+    //Display Gem on cell 
     displayGem: function () {
         var id = '#Square' + this.index;
         if ( this.totalGem == 0) {
@@ -63,6 +63,7 @@ Cell.prototype = {
         var numDiv = div.find('.NumberMark');
         numDiv.html(this.totalGem);
     },
+    // Get the id of the next cell 
     getNextOneIndex: function (sign, currentIndex) {
         // If user want to get next index for a given index we use that index to start 
         // otherwise use the index of this cell
@@ -75,27 +76,9 @@ Cell.prototype = {
         }
         return nextOneIndex;
     },
-    getNextTwoIndex: function (sign, currentIndex) {
-        var index = typeof currentIndex != 'undefined' ? currentIndex : this.index;
-        var nextOneIndex = this.getNextOneIndex(sign, index);
-        var nextTwoIndex = this.getNextOneIndex(sign, nextOneIndex);
-        return nextTwoIndex;
-    },
+    // Checking the cell is master cell or not 
     isMaster: function () {
         return this instanceof MasterCell;
-    },
-    isEmpty: function () {
-        return this.totalGem == 0;
-    },
-    highLight: function () {
-        var id = '#Square' + this.index;
-        var div = $(id);
-        div.toggleClass('high-light', true);
-    },
-    unHighLight: function () {
-        var id = '#Square' + this.index;
-        var div = $(id);
-        div.toggleClass('high-light', false);
     }
 }
 
