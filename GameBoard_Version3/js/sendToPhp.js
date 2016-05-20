@@ -16,7 +16,7 @@ function transmitToPhp(array) {
 	//Set content type for POSTing string.
     xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
     //Send it.
-    xmlhttp.send(stringsent);
+    xmlhttp.send(payload);
 		
 	//get response ID.
     if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
