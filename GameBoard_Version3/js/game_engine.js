@@ -7,22 +7,13 @@ var MAX_USER = 2;
 //Chosen cell number
 var chosenCell;
 
-//Creating turn object
-var TURN = {
-    BLACK: 1,
-    WHITE: -1
-};
+var DURATION = 500;
 
 //Creating direction object
 var DIRECTION = {
     LEFT: 1,
     RIGHT: -1
 };
-
-//Creating cell range 
-var CELL_RANGE = {};
-CELL_RANGE[TURN.BLACK] = [1, 5];
-CELL_RANGE[TURN.WHITE] = [7, 11];
 
 //Creating class GameBoard to store turn, direction and setupInternalCells method
 function GameBoard() {
@@ -38,7 +29,7 @@ GameBoard.prototype = {
     cells: null,
     users: null,
     //Setup cell variable
-    setupInternalCells: function () {
+    setupInternalCells: function() {
         var i;
         //Creating an array name cells
         this.cells = [];
@@ -53,7 +44,7 @@ GameBoard.prototype = {
             }
         }
     },
-    setupUsers: function () {
+    setupUsers: function() {
         var i;
         this.users = [];
         for (i = 0; i < MAX_USER; i++) {
@@ -62,35 +53,36 @@ GameBoard.prototype = {
         }
     },
     //Mouse listener
-    setupEventListener: function () {
+    setupEventListener: function() {
         var that = this;
-        $('div.cell').on('click', function () {
+        $('div.cell')
+          .off('click')
+          .on('click', function() {
             var cell = $(this);
             var cellId = cell.data('cell');
-            var validRange = CELL_RANGE[that.turn];
+            var validRange = User.CELL_RANGE[that.turn];
             if (cellId >= validRange[0] && cellId <= validRange[1]) {
-                // checking totalGem in a cell 
-                // if the totalGem == 0 
-                // dissable the click function
+            // checking totalGem in a cell 
+            // if the totalGem == 0 
+            // dissable the click function
                 if (that.cells[cellId].getTotalGem() == 0) {
                     return false;
                 } else {
-                    that.getDirection(cellId).done(function () {
+                    that.getDirection(cellId).done(function() {
                         that.makeMove(cellId);
                     });
                 }
-                updateGameboard();
             } else {
                 return false;
             }
         });
     },
     // Deciding player turn
-    setupTurn: function (turn) {
+    setupTurn: function(turn) {
         this.turn = turn;
     },
     // Get the direction from player (not done yet)
-    getDirection: function (cellId) {
+    getDirection: function(cellId) {
         // Because we want the user to be blocked when we show the arrows
         // until they clicked one of these arrow no code should run
         // To do so, we firstly create a defer object and return a promise 
@@ -103,7 +95,7 @@ GameBoard.prototype = {
         // Build the ID to select the cell 
         var id = '#Square' + cellId;
         // Using JQuery to grab that
-        var cellDiv = $(id);
+		var cellDiv = $(id);
         // Getting the position of the clicked cell
         var offset = cellDiv.offset();
         // Moving the arrow container to that new position
@@ -115,81 +107,105 @@ GameBoard.prototype = {
         // Now setup click event for these arrows
         var left = directionDiv.find('.arrowSignLeft');
         var that = this;
-        left.on('click', function () {
+        left.off('click')
+            .on('click', function() {
             // Updating the selected direction
             that.direction = DIRECTION.LEFT;
             // Hiding the arrow sign after user choose
             directionDiv.toggle(false);
             // Resolve the promise
-            done.resolve();
+            done.resolve(); 
         });
         var right = directionDiv.find('.arrowSignRight');
-        right.on('click', function () {
-            that.direction = DIRECTION.RIGHT;
+        right
+            .off('click')
+            .on('click', function() {
+            that.direction = DIRECTION.RIGHT; 
             directionDiv.toggle(false);
             done.resolve();
         });
         return done.promise();
     },
-    makeMove: function (cellId) {
+    endGame: function() {
+        $('div.cell').off('click');
+    },
+    handleGainGem: function(cellId) {
+        // This cellId is where user gain gem
         var sign = this.direction * this.turn;
-        //console.log(this.direction * this.turn);
-        // Getting cell location
         var cell = this.cells[cellId];
-        // Storing the gem that we pick up
-        var holdingGem = cell.getTotalGem();
-        console.log(holdingGem);
+        var smallGem = cell.getTotalGem();
+        var bigGem = cell.isMaster() ? cell.getTotalBigGem() : 0;
+        var userId = (this.turn == User.TURN.BLACK) ? 0 : 1;
+        this.users[userId].gainGem(smallGem, bigGem);
         cell.reset();
-        while (holdingGem > 0) {
-            var nextOneCellIndex = cell.getNextOneIndex(sign);
-            var nextOneCell = this.cells[nextOneCellIndex];
-            nextOneCell.addUp();
-            cell = nextOneCell;
-            //nextOneCell.highLight();
-            //this.delay(400);
-            //nextOneCell.unHighLight();
-            holdingGem--;
+        if (this.users[userId].isWinner(this.users, this.cells)) {
+            alert('User '+ userId + ' win!!!');
+            this.endGame();
+            return; 
         }
-        var landedNextIndex = cell.getNextOneIndex(sign);
-        var landedNextCell = this.cells[landedNextIndex];
-        var landedNextTwoIndex = cell.getNextTwoIndex(sign);
-        var landedNextTwoCell = this.cells[landedNextTwoIndex];
-        if (landedNextCell.isMaster()) {
+        var nextOneCellIndex = cell.getNextOneIndex(sign);
+        var nextOneCell = this.cells[nextOneCellIndex];
+        if (nextOneCell.getTotalGem() != 0) {
+            // No more gem to gain. Change turn
             this.turn = this.turn * (-1);
-            console.log('doi luot vi o tiep la o quan', new Date().getTime() / 1000);
-        } else if (landedNextCell.isEmpty()) {
-            //while (landedNextCell.isEmpty()) {
-            if (!landedNextTwoCell.isEmpty()) {
-                var n;
-                if (this.turn == -1) {
-                    n = 1;
-                } else {
-                    n = 0;
-                }
-                console.log('an gem', landedNextTwoCell.getTotalGem(), landedNextTwoCell, new Date().getTime() / 1000);
-                if (landedNextTwoCell.isMaster()) {
-                    var smallGem = landedNextTwoCell.getTotalGem();
-                    var bigGem = landedNextTwoCell.getTotalBigGem();
-                    this.users[n].gainGem(smallGem, bigGem);
-                    landedNextTwoCell.resetMaster();
-                } else {
-                    var smallGem = landedNextTwoCell.getTotalGem();
-                    this.users[n].gainGem(smallGem, bigGem);
-                    landedNextTwoCell.reset();
-                }
-                // Updating the totalGem and total bigGem to the user 
-                //var n = this.turn * (-1);
-                //      cell = landedNextTwoIndex;
-                this.turn = this.turn * (-1);
+        } else {
+            this.handleGainGem(nextOneCell.getNextOneIndex(sign));
+        }
+    },
+    handleLandedCell: function(gameState) {
+        console.log('quyet dinh an, di tiep hoac het luot', gameState);
+        var sign = this.direction * this.turn;
+        var landedCell = this.cells[gameState.cellId];
+        var nextOneCellIndex = landedCell.getNextOneIndex(sign);
+        var nextOneCell = this.cells[nextOneCellIndex];
+        if (nextOneCell.getTotalGem() != 0) {
+            if (!nextOneCell.isMaster()) {
+                // continue spreading
+                gameState.holdingGem = nextOneCell.getTotalGem();
+                nextOneCell.reset();
+                gameState.cellId = nextOneCell.getNextOneIndex(sign);
+                this.spreadGem(gameState);
             } else {
-                console.log('doi luot vi ko co o an', new Date().getTime() / 1000);
                 this.turn = this.turn * (-1);
             }
-            //}
         } else {
-            // Taking the next landed cell to start over again
-            console.log('lay o landed index de di tiep', landedNextIndex, new Date().getTime() / 1000);
-            this.makeMove(landedNextIndex);
+            var landedNextTwoCellIndex = landedCell.getNextTwoIndex(sign); 
+            var landedNextTwoCell = this.cells[landedNextTwoCellIndex];
+            if (landedNextTwoCell.getTotalGem() == 0) {
+                this.turn = this.turn * (-1);
+            } else {
+                this.handleGainGem(landedNextTwoCellIndex);
+            }
+        } 
+    },
+    spreadGem: function(gameState) {
+        var sign = this.direction * this.turn;
+        var cellId = gameState.cellId;
+        var cell = this.cells[cellId];
+        cell.addUp();
+        gameState.holdingGem = gameState.holdingGem - 1;
+
+        var that = this;
+        setTimeout(function() {
+            console.log('after wait', gameState, that);
+            if (gameState.holdingGem > 0) {
+                var nextOneCellIndex = cell.getNextOneIndex(sign);
+                gameState.cellId = nextOneCellIndex;
+                that.spreadGem(gameState);
+            } else {
+                // gameState.cellId at this point is holding the landed cellId
+                that.handleLandedCell(gameState);
+            }
+        }, DURATION);
+    },
+    makeMove: function(cellId) {
+        var sign = this.direction * this.turn;
+        var cell = this.cells[cellId];
+        var holdingGem = cell.getTotalGem();
+        cell.reset();
+        if (holdingGem > 0) {
+            var nextOneCellIndex = cell.getNextOneIndex(sign);
+            this.spreadGem(new GameState(holdingGem, nextOneCellIndex));
         }
     }
 };
@@ -202,7 +218,7 @@ GameEngine.prototype = {
     start: function() {
         var gameBoard = new GameBoard();
         gameBoard.setupEventListener();
-        gameBoard.setupTurn(TURN.BLACK);
+        gameBoard.setupTurn(User.TURN.BLACK);
     }
 };
 //Creating method startGameEngine
