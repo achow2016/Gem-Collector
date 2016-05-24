@@ -1,0 +1,26 @@
+#TitleBox {
+    width: 60em;
+    height: 7.5em;
+    float: left;
+    background-image: url(../pictures/referenceBoard.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center;
+}
+
+#TitleBox p{
+    padding-top: 0.15em;
+}
+
+#referenceContent {
+    width: 120em;
+    height: 25em;
+    padding-left: 1em;
+    font-size: 0.5em;
+    float: left;
+    background-image: url();
+}
+
+#exitButton {
+    float: right;
+}
