@@ -103,6 +103,14 @@ body {
     position: relative;
 }
 
+#Boss6 {
+    background-position: right;
+}
+
+#Boss0 {
+    background-position: left;
+}
+
 .GameBoard {
 	width: 7.5em;
 	height: 8em;

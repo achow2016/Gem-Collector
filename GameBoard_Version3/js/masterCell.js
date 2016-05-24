@@ -3,6 +3,7 @@ function MasterCell(index, totalGem, totalBigGem) {
 	Cell.call(this, index, totalGem);
 	this.totalBigGem = totalBigGem;	
 	this.updateGui();
+	this.displayGem();
 }
 //Creating the object of MasterCell
 MasterCell.prototype = Object.create(Cell.prototype);
@@ -15,6 +16,7 @@ MasterCell.prototype.reset = function() {
 	this.totalBigGem = 0;
 	this.totalGem = 0;
 	this.updateGui();
+    this.displayGem();
 }
 // Displaying the number of gem on normal cell
 MasterCell.prototype.updateGui = function() {
@@ -24,3 +26,14 @@ MasterCell.prototype.updateGui = function() {
 	numDiv.html(this.totalGem + ' ' + this.totalBigGem);
 }
 MasterCell.prototype.constructor = MasterCell;
+
+MasterCell.prototype.displayGem = function() {
+    var id = '#Boss' + this.index;
+    if ( this.totalBigGem == 0 && this.totalGem == 0) {
+        $(id).css("background-image", "url()")
+    } else if (this.totalBigGem == 0) {
+        $(id).css("background-image", "url()");
+    } else if (this.totalBigGem == 1) {
+        $(id).css("background-image", "url(pictures/gems/b10.png)");
+    }
+}
