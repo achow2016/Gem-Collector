@@ -3,10 +3,10 @@ function changeSkeSke() {
     var skeske = document.getElementById('SkeSke');
 
     if (skeskeCount == 0) {
-        skeske.src = "pictures/skeleton10gifOn_s.gif";
+        skeske.src = "pictures/skeleton10gifoff_s.gif";
         skeskeCount = 1;
     }  else if (skeskeCount == 1) {
-        skeske.src = "pictures/skeleton10gifoff_s.png";
+        skeske.src = "pictures/skeleton10gifOn_s.png";
         skeskeCount = 0;
     }
 }
