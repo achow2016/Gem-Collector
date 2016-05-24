@@ -9,7 +9,7 @@ body {
 
 #Wrapper {
     padding: 0px 0px 0px 0px;
-    width: 62em;
+    width: 65em;
 	height: 29em;
 }
 
@@ -17,12 +17,17 @@ body {
     width: 30em;
     height: 29em;
     float: left;
+    background-image: url(../pictures/titleBox.png);
+    background-repeat: no-repeat;
 }
 
 .title {
-    font-size: 5em;
-    color: red;
+    font-size: 4.25em;
+    color: #f1dede;
     font-family: "Showcard Gothic", 'Times New Roman';
+    padding-top: 0.75em;
+    line-height: 0.5em;
+    text-align: center;
 }
 
 #music {
@@ -37,8 +42,9 @@ body {
 	height: 6em;
     text-align: center;
     background-repeat: no-repeat;
-    background-image: url(../pictures/woodenBoard.png);
+    background-image: url(../pictures/lable.png);
     margin-bottom: 1em;
+    margin-left: 5em;
     float: left;
 }
 
@@ -51,7 +57,7 @@ body {
     top: 15%;
 }
 
-.LinkButton a:hover, p:hover{
+.LinkButton a:hover{
     color: red;
     transition: 0.35s;
 }
