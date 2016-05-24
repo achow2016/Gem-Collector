@@ -1,6 +1,6 @@
 <?php
-
-echo var_dump($_POST);
+//raw string data.
+$rawdata = var_export($_POST, true);
 /*
 connect to database.
 */
@@ -17,5 +17,16 @@ if (!$conn) {
 $sql = "INSERT INTO Leaderboard (Name, Score) VALUES ($name,$score)";
 
 //debug this
-
+echo $raw_data;
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+    </head>
+    <body>
+        
+    </body>
+</html>

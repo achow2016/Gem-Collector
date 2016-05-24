@@ -58,14 +58,17 @@
 
                     <!--Leaderboard-->
                 <div id="leaderboard">
+                
+                <!---
                 <form id="scoreForm" action="">
                 Name<input type="text" name="name" id="name"></input>
                 <br>Score<input type="text" name="score" id="score"></input>
                 <button type="button" onclick="sendScore()" id="select">Send</button>
                 </form>
+                    -->
                 </div>
-
-                <!--Leaderboard-->
+                
+                <!--Leaderboard displayed-->
                 <?php
                 $servername = "mysql7.000webhost.com";
                 $username = "a1753342_user";
