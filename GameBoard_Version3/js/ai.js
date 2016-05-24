@@ -29,36 +29,37 @@ AI.findTheBestMove = function (level, cells) {
 AI.findTheBestMoveAmateur = function (cells) {
     // Simple algorithm: randomly picking the cell which has at least 1 gem inside
     // and randomly choosing direction
-    var i;
     var validRange = User.CELL_RANGE[User.TURN.WHITE];
     var cell = null;
     var randomIndex;
     while (cell == null || cell.getTotalGem() == 0) {
-        randomIndex = //random lay gia tri tu valid range 0 -> valid range 1;
-        // cell = cells[randomIndex];    
+        randomIndex = Math.floor((Math.random() * (11 - 7 + 1)) + 7);
+        cellId = randomIndex;
+        cell = cells[cellId];
     }
     var randomDirection = Math.floor((Math.random() + 0.5));
     var direction = randomDirection == 1 ? GameBoard.DIRECTION.RIGHT : GameBoard.DIRECTION.LEFT;
     return {
-        cellId: randomIndex,
+        cellId: cell,
         direction: direction
     };
 }
 
 // Semi-Pro
 AI.findTheBestMoveSemiPro = function (cells) {
-    var i;
+    // more complex algorithm: randomly picking the cell which has at least 1 gem inside
+    // and randomly choosing direction
     var validRange = User.CELL_RANGE[User.TURN.WHITE];
-    for (i = validRange[0]; i <= validRange[1]; i++) {
-        var cell = cells[i];
-        if (cell.getTotalGem() > 0) {
-            cellId = i;
-            break;
-        }
+    while (cell == null || cell.getTotalGem() == 0) {
+         randomIndex = Math.floor((Math.random() * (11 - 7 + 1)) + 7);
+         cellId = randomIndex;
+         cell = cells[cellId];
     }
+    var randomDirection = Math.floor((Math.random() + 0.5));
+    var direction = randomDirection == 1 ? GameBoard.DIRECTION.RIGHT : GameBoard.DIRECTION.LEFT;
     return {
-        cellId: cellId,
-        direction: GameBoard.DIRECTION.RIGHT
+        cellId: cell,
+        direction: direction
     };
 }
 
