@@ -105,10 +105,12 @@ body {
 
 #Boss6 {
     background-position: right;
+    background-repeat: no-repeat;
 }
 
 #Boss0 {
     background-position: left;
+    background-repeat: no-repeat;
 }
 
 .GameBoard {
