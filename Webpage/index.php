@@ -40,7 +40,7 @@
 
         <!--LeaderBoard-->
 	    <div id="rankingButton" class="LinkButton">
-            <a data-toggle="modal" data-target="#myModal">Leaderborad</a>
+            <a data-toggle="modal" data-target="#myModal">Leaderboard</a>
         </div>
 
         <!--Reference-->

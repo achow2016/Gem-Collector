@@ -120,7 +120,7 @@ GameBoard.prototype = {
         var offset = cellDiv.offset();
         // Moving the arrow container to that new position
         directionDiv.css({
-            top: offset.top + 12,
+            top: offset.top,
             left: offset.left,
             position: 'absolute'
         });
