@@ -15,6 +15,7 @@ Cell.prototype = {
 		this.totalGem = 0;
 		if (!trialMove) {
 			this.updateGui();
+			this.displayGem();
 		}
 	},
 	//add gem when user moving 
@@ -22,6 +23,7 @@ Cell.prototype = {
 		this.totalGem++;
 		if (!trialMove) {
 			this.updateGui();
+			this.displayGem();
 		}
 	},
 	//get the total gem on a cell
