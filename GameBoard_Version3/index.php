@@ -20,12 +20,20 @@
 		var rowCount = 1;
 		//var achieveCol = 3;
 		var selectTable = document.getElementById("scoreTable").rows[rowCount].cells[3];
-		for(var rowCount = 1; rowCount < 12; rowCount++) {
-			if(selectTable.innerHTML == 111){
-				selectTable.innerHTML = "ha";
-				}
+		for(rowCount = 1; rowCount < 12; rowCount++) {
+			
+				if(selectTable.innerHTML == 3){
+					selectTable.innerHTML = "<img src=\"pictures/level0.png\"><img src=\"pictures/level1.png\"><img src=\"pictures/level2.png\">";
+					}
+				if(selectTable.innerHTML == 2){
+					selectTable.innerHTML =  "<img src=\"pictures/level0.png\"><img src=\"pictures/level1.png\">";
+					}
+				if(selectTable.innerHTML == 1){
+					selectTable.innerHTML =  "<img src=\"pictures/level0.png\">";
+					}
+				
 			selectTable = document.getElementById("scoreTable").rows[rowCount].cells[3];
-			}  
+		}
 		}
 
 	
@@ -109,7 +117,7 @@
                     die("Connection failed: " . $conn->connect_error);
                 } 
 
-                $sql = "SELECT Name, Level, Score, Achievement FROM Leaderboard ORDER BY Score DESC, Level DESC LIMIT 10";
+                $sql = "SELECT Name, Level, Score, Achievement FROM Leaderboard ORDER BY Level DESC, Score DESC LIMIT 10";
 
                 $result = $conn->query($sql);
 

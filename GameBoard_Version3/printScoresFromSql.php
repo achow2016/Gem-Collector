@@ -10,7 +10,7 @@
 				die("Connection failed: " . $conn->connect_error);
 			} 
 
-			$sql = "SELECT (Name, Level, Score, Achievement FROM Leaderboard ORDER BY Score DESC, Level DESC LIMIT 10";
+			$sql = "SELECT (Name, Level, Score, Achievement FROM Leaderboard ORDER BY Level DESC, Score DESC LIMIT 10";
 			$result = $conn->query($sql);
 
 			if ($result->num_rows > 0) {
