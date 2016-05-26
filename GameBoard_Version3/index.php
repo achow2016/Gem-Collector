@@ -42,7 +42,7 @@
 
 
 </head>
-<body>
+<body onload="setBackMusic()">
     <div id="Wrapper">
 
         <!--Title-->
