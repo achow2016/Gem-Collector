@@ -39,7 +39,7 @@ GameBoard.prototype = {
     cells: null,
     users: null,
     //Setup cell variable
-    setupInternalCells: function () {
+    setupInternalCells: function() {
         var i;
         //Creating an array name cells
         this.cells = [];
@@ -54,7 +54,7 @@ GameBoard.prototype = {
             }
         }
     },
-    setupUsers: function () {
+    setupUsers: function() {
         var i;
         this.users = [];
         for (i = 0; i < MAX_USER; i++) {
@@ -63,46 +63,46 @@ GameBoard.prototype = {
         }
     },
     //Mouse listener
-    setupEventListener: function () {
+    setupEventListener: function() {
         var that = this;
         $('div.cell')
           .off('click')
-          .on('click', function () {
-              var cell = $(this);
-              var cellId = cell.data('cell');
-              var validRange = User.CELL_RANGE[that.turn];
-              if (that.direction == GameBoard.DIRECTION.LEFT
+          .on('click', function() {
+            var cell = $(this);
+            var cellId = cell.data('cell');
+            var validRange = User.CELL_RANGE[that.turn];
+            if (that.direction == GameBoard.DIRECTION.LEFT 
                 || that.direction == GameBoard.DIRECTION.RIGHT) {
-                  return false;
-              }
-              if (cellId >= validRange[0] && cellId <= validRange[1]) {
-                  // checking totalGem in a cell 
-                  // if the totalGem == 0 
-                  // dissable the click function
-                  if (that.cells[cellId].getTotalGem() == 0) {
-                      return false;
-                  } else {
-                      that.getDirection(cellId).done(function () {
-                          that.makeMove(cellId);
-                      });
-                  }
-              } else {
-                  return false;
-              }
-          });
+                return false;
+            }
+            if (cellId >= validRange[0] && cellId <= validRange[1]) {
+            // checking totalGem in a cell 
+            // if the totalGem == 0 
+            // dissable the click function
+                if (that.cells[cellId].getTotalGem() == 0) {
+                    return false;
+                } else {
+                    that.getDirection(cellId).done(function() {
+                        that.makeMove(cellId);
+                    });
+                }
+            } else {
+                return false;
+            }
+        });
     },
     // Deciding player turn
-    setupTurn: function (turn) {
+    setupTurn: function(turn) {
         this.turn = turn;
     },
-    setupGameType: function (gameType) {
+    setupGameType: function(gameType) {
         this.gameType = gameType;
     },
-    setupLevel: function (level) {
+    setupLevel: function(level) {
         this.level = level;
     },
     // Get the direction from player (not done yet)
-    getDirection: function (cellId) {
+    getDirection: function(cellId) {
         // Because we want the user to be blocked when we show the arrows
         // until they clicked one of these arrow no code should run
         // To do so, we firstly create a defer object and return a promise 
@@ -115,7 +115,7 @@ GameBoard.prototype = {
         // Build the ID to select the cell 
         var id = '#Square' + cellId;
         // Using JQuery to grab that
-        var cellDiv = $(id);
+		var cellDiv = $(id);
         // Getting the position of the clicked cell
         var offset = cellDiv.offset();
         // Moving the arrow container to that new position
@@ -128,41 +128,48 @@ GameBoard.prototype = {
         var left = directionDiv.find('.arrowSignLeft');
         var that = this;
         left.off('click')
-            .on('click', function () {
-                // Updating the selected direction
-                that.direction = GameBoard.DIRECTION.LEFT;
-                // Hiding the arrow sign after user choose
-                directionDiv.toggle(false);
-                // Resolve the promise
-                done.resolve();
-            });
+            .on('click', function() {
+            // Updating the selected direction
+            that.direction = GameBoard.DIRECTION.LEFT;
+            // Hiding the arrow sign after user choose
+            directionDiv.toggle(false);
+            // Resolve the promise
+            done.resolve(); 
+        });
         var right = directionDiv.find('.arrowSignRight');
         right
             .off('click')
-            .on('click', function () {
-                that.direction = GameBoard.DIRECTION.RIGHT;
-                directionDiv.toggle(false);
-                done.resolve();
-            });
+            .on('click', function() {
+            that.direction = GameBoard.DIRECTION.RIGHT; 
+            directionDiv.toggle(false);
+            done.resolve();
+        });
         return done.promise();
     },
-    changeTurn: function () {
+    changeTurn: function() {
         this.turn = this.turn * (-1);
         this.direction = null;
+        var userId = (this.turn == User.TURN.BLACK) ? 0 : 1;
+        if (this.users[userId].isWinner(this.users, this.cells)) {
+            alert('User '+ userId + ' win!!!');
+            this.endGame();
+            return; 
+        }
         if (this.gameType == GameBoard.TYPE.HUMAN_VS_COMPUTER && this.turn == User.TURN.WHITE) {
             var computerMove = AI.findTheBestMove(this.level, this.cells);
+            console.log(computerMove);
             // Expected computerMove will contain {
             //   cellId: the best cell index to move, 
             //   direction: the best direction to move,
             // }
             this.direction = computerMove.direction;
             this.makeMove(computerMove.cellId);
-        }
+        }  
     },
-    endGame: function () {
+    endGame: function() {
         $('div.cell').off('click');
     },
-    handleGainGem: function (cellId) {
+    handleGainGem: function(cellId) {
         // This cellId is where user gain gem
         var sign = this.direction * this.turn;
         var cell = this.cells[cellId];
@@ -172,13 +179,12 @@ GameBoard.prototype = {
         this.users[userId].gainGem(smallGem, bigGem);
         cell.reset();
         if (this.users[userId].isWinner(this.users, this.cells)) {
-            alert('User ' + userId + ' win!!!');
+            alert('User '+ userId + ' win!!!');
             this.endGame();
-            return;
+            return; 
         }
         var nextOneCellIndex = cell.getNextOneIndex(sign);
         var nextOneCell = this.cells[nextOneCellIndex];
-        //getGemAnimaiton();
         if (nextOneCell.getTotalGem() != 0) {
             // No more gem to gain. Change turn
             this.changeTurn();
@@ -186,8 +192,7 @@ GameBoard.prototype = {
             this.handleGainGem(nextOneCell.getNextOneIndex(sign));
         }
     },
-    handleLandedCell: function (gameState) {
-        //console.log('quyet dinh an, di tiep hoac het luot', gameState);
+    handleLandedCell: function(gameState) {
         var sign = this.direction * this.turn;
         var landedCell = this.cells[gameState.cellId];
         var nextOneCellIndex = landedCell.getNextOneIndex(sign);
@@ -203,16 +208,16 @@ GameBoard.prototype = {
                 this.changeTurn();
             }
         } else {
-            var landedNextTwoCellIndex = landedCell.getNextTwoIndex(sign);
+            var landedNextTwoCellIndex = landedCell.getNextTwoIndex(sign); 
             var landedNextTwoCell = this.cells[landedNextTwoCellIndex];
             if (landedNextTwoCell.getTotalGem() == 0) {
                 this.changeTurn();
             } else {
                 this.handleGainGem(landedNextTwoCellIndex);
             }
-        }
+        } 
     },
-    spreadGem: function (gameState) {
+    spreadGem: function(gameState) {
         var sign = this.direction * this.turn;
         var cellId = gameState.cellId;
         var cell = this.cells[cellId];
@@ -220,8 +225,7 @@ GameBoard.prototype = {
         gameState.holdingGem = gameState.holdingGem - 1;
 
         var that = this;
-        setTimeout(function () {
-            //console.log('after wait', gameState, that);
+        setTimeout(function() {
             if (gameState.holdingGem > 0) {
                 var nextOneCellIndex = cell.getNextOneIndex(sign);
                 gameState.cellId = nextOneCellIndex;
@@ -232,7 +236,7 @@ GameBoard.prototype = {
             }
         }, DURATION);
     },
-    makeMove: function (cellId) {
+    makeMove: function(cellId) {
         var sign = this.direction * this.turn;
         var cell = this.cells[cellId];
         var holdingGem = cell.getTotalGem();
@@ -254,7 +258,7 @@ GameEngine.prototype = {
         gameBoard.setupGameType(GameBoard.TYPE.HUMAN_VS_COMPUTER);
         gameBoard.setupEventListener();
         gameBoard.setupTurn(User.TURN.BLACK);
-        gameBoard.setupLevel(AI.LEVEL.AMATEUR);
+        gameBoard.setupLevel(AI.LEVEL.SEMI_PRO);
     }
 };
 //Creating method startGameEngine

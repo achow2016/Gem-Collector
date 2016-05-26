@@ -11,12 +11,13 @@ MasterCell.prototype.totalBigGem = null;
 MasterCell.prototype.getTotalBigGem = function() {
 	return this.totalBigGem;
 }
-// Creating the reset method for master cell 
-MasterCell.prototype.reset = function() {
+MasterCell.prototype.reset = function(trialMove) {
 	this.totalBigGem = 0;
 	this.totalGem = 0;
-	this.updateGui();
-    this.displayGem();
+	if (!trialMove) {
+		this.updateGui();
+		this.displayGem();
+	}
 }
 // Displaying the number of gem on normal cell
 MasterCell.prototype.updateGui = function() {
@@ -26,7 +27,6 @@ MasterCell.prototype.updateGui = function() {
 	numDiv.html(this.totalGem + ' ' + this.totalBigGem);
 }
 MasterCell.prototype.constructor = MasterCell;
-
 MasterCell.prototype.displayGem = function () {
     var id = '#Boss' + this.index;
     if (this.totalBigGem == 0 && this.totalGem == 0) {
