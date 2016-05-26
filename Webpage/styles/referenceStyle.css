@@ -14,11 +14,11 @@
 
 #referenceContent {
     width: 120em;
-    height: 25em;
-    padding-left: 1em;
+    height: 35em;
+    padding-left: 10em;
     font-size: 0.5em;
     float: left;
-    background-image: url();
+    background-image: url(../pictures/referenceScoll.png);
 }
 
 #exitButton {
