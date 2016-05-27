@@ -4,5 +4,4 @@ function GameState(holdingGem, cellId) {
 }
 
 GameState.prototype = {
-    
 }

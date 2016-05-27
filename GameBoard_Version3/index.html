@@ -3,6 +3,7 @@
 <head>
 	<title>Gem Collector - Game</title>
 	<link href="GameBoardStyle.css" rel="stylesheet" type="text/css">
+
 	
     <!--Game board engine script-->
     <script src="js/jquery-2.2.3.min.js"></script>
@@ -12,7 +13,55 @@
     <script src="js/ai.js"></script>
     <script src="js/game_state.js"></script>
 	<script src="js/game_engine.js"></script>
-    
+    <script>
+        // First rename index.html to gameBoard.php
+        
+        // This is where php code need to check REQUEST['type']
+        // and REQUEST['level'] to generate the global config
+        // for game engine.
+        // for example, if the link of button Easy points to
+        // /gameBoard.php?type=computer&level=0 then the php should
+        // generate 
+        //    var gameConfig = {
+        //        type: GameBoard.TYPE.HUMAN_VS_COMPUTER,
+        //        level: AI.LEVEL.AMATEUR
+        //    }
+        //
+        // another example, if the link of button Normal points to
+        // /gameBoard.php?type=computer&level=1 then the php should
+        // generate 
+        //    var gameConfig = {
+        //        type: GameBoard.TYPE.HUMAN_VS_COMPUTER,
+        //        level: AI.LEVEL.SEMI_PRO
+        //    }
+        //
+        // another example if the link of button 2 player points to
+        // /gameBoard.php?type=human then the php should
+        // generate
+        //    var gameConfig = {
+        //        type: GameBoard.TYPE.HUMAN_VS_COMPUTER,
+        //    }
+        //
+        //
+        /*
+        <?php
+            $type = $_REQUEST['type'];
+            $level = $_REQUEST['level'];
+            if ($type == 'computer') {
+                if ($level ==0) {
+                    echo "var gameConfig = {";
+                    echo "    type: GameBoard.TYPE.HUMAN_VS_COMPUTER,";
+                    echo "    level: AI.LEVEL.AMATEUR";
+                    echo "}";
+                }
+            }
+        ?>
+        */
+        var gameConfig = {
+             type: GameBoard.TYPE.HUMAN_VS_HUMAN,
+        };
+        
+    </script>    
 	
     <!--Up date GameBoard-->
     <script src="js/updateGameBoard.js"></script>

@@ -253,16 +253,18 @@ function GameEngine() {
 }
 //Creating object for GameEngine
 GameEngine.prototype = {
-    start: function() {
+    start: function(gameConfig) {
         var gameBoard = new GameBoard();
-        gameBoard.setupGameType(GameBoard.TYPE.HUMAN_VS_COMPUTER);
+        gameBoard.setupGameType(gameConfig.type);
         gameBoard.setupEventListener();
         gameBoard.setupTurn(User.TURN.BLACK);
-        gameBoard.setupLevel(AI.LEVEL.SEMI_PRO);
+        if (gameConfig.hasOwnProperty('level')) {
+            gameBoard.setupLevel(gameConfig.level);
+        }
     }
 };
 //Creating method startGameEngine
 function startGameEngine() {
-    var gameEngine = new GameEngine();   
-    gameEngine.start();
+    var gameEngine = new GameEngine();
+    gameEngine.start(gameConfig);
 }

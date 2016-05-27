@@ -1,14 +1,10 @@
-function AI() {
-    
+function AI() { 
 }
+
 AI.LEVEL = {
     AMATEUR: 0,
     SEMI_PRO: 1,
     PROFESSIONAL: 2
-};
-
-AI.prototype = {
-    
 };
 
 AI.findTheBestMove = function (level, cells) {
@@ -19,7 +15,7 @@ AI.findTheBestMove = function (level, cells) {
     } else {
         return AI.findTheBestMoveProfessional(cells);
     }
-}
+};
 
 // Amateur
 AI.findTheBestMoveAmateur = function (cells) {
@@ -40,7 +36,7 @@ AI.findTheBestMoveAmateur = function (cells) {
         cellId: cellId,
         direction: direction
     };
-}
+};
 
 // Semi-Pro
 AI.findTheBestMoveSemiPro = function (cells) {
@@ -57,10 +53,8 @@ AI.findTheBestMoveSemiPro = function (cells) {
         var direction = directionType == 1 ? GameBoard.DIRECTION.RIGHT : GameBoard.DIRECTION.LEFT; 
         for (possibleCellId = validRange[0]; possibleCellId <= validRange[1]; possibleCellId++) {
             var aiMove = new AIMove(cells, direction, possibleCellId);
-
             var possibleGainGem = aiMove.makeTrialMove();
-
-            if ((possibleGainGem.smallGem + (possibleGainGem.bigGem * 10)) > 0) {
+            if (Cell.calculateGemValue(possibleGainGem.smallGem, possibleGainGem.bigGem) > 0) {
                 return {
                     cellId: possibleCellId,
                     direction: direction
@@ -71,7 +65,7 @@ AI.findTheBestMoveSemiPro = function (cells) {
     // At this point no possible direction or possible cellId that can gain gem
     // Let fall back to AI.findTheBestMoveAmatuer(); to make move
     return AI.findTheBestMoveAmateur(cells);
-}
+};
 
 // Professional
 AI.findTheBestMoveProfessional = function (cells) {
@@ -81,11 +75,33 @@ AI.findTheBestMoveProfessional = function (cells) {
     // In each inner for loop we will create a new AI move object and let it run 
     // to return the gem gain for each move.
     // Finally compare the gained gem in all steps to make the best move
+    var validRange = User.CELL_RANGE[User.TURN.WHITE];
+    var directionType;
+    var maxGainGem = 0;
+    var foundDirection = null;
+    var foundCellId = null;
+    for (directionType = 0; directionType <= 1; directionType++) {
+        var possibleCellId;
+        var direction = directionType == 1 ? GameBoard.DIRECTION.RIGHT : GameBoard.DIRECTION.LEFT; 
+        for (possibleCellId = validRange[0]; possibleCellId <= validRange[1]; possibleCellId++) {
+            var aiMove = new AIMove(cells, direction, possibleCellId);
+            var possibleGainGem = aiMove.makeTrialMove();
+            var maxPossibleGainGem = Cell.calculateGemValue(possibleGainGem.smallGem, possibleGainGem.bigGem);
+            if (maxPossibleGainGem > maxGainGem) {
+                maxGainGem = maxPossibleGainGem;
+                foundDirection = direction;
+                foundCellId = possibleCellId;
+            }
+        }
+    } 
+    if (foundCellId == null || foundDirection == null) {
+        return AI.findTheBestMoveSemiPro(cells);
+    } 
     return {
-        cellId: cellId,
-        direction: GameBoard.DIRECTION.RIGHT
+        direction: foundDirection,
+        cellId: foundCellId
     };
-}
+};
 
 function AIMove(cells, trialDirection, trialCellId) {
     // Deep copy the cells so that each trial move doesn't change
@@ -106,7 +122,6 @@ AIMove.prototype = {
     // until gain something or end turn. (should return the total gain gem)
     makeTrialMove: function() {
         var gainGem = this.makeMove(this.trialCellId);
-
         return gainGem;
     },
     makeMove: function(cellId) {
@@ -188,9 +203,9 @@ AIMove.prototype = {
         } else {
             var continuousGain = this.handleGainGem(nextOneCell.getNextOneIndex(sign));
             return {
-                smallGem: totalSmallGem + continuousGain.totalSmallGem,
-                bigGem: totalBigGem + continuousGain.totalBigGem
+                smallGem: totalSmallGem + continuousGain.smallGem,
+                bigGem: totalBigGem + continuousGain.bigGem
             };
         }
-    } 
+    }
 }

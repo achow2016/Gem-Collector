@@ -6,6 +6,12 @@ function Cell(index, totalGem) {
 	this.updateGui();
 	this.displayGem();
 };
+
+// This function is a utility which help the other function calculate how many small gem and big gem on this cell
+Cell.calculateGemValue = function(totalGem, totalBigGem) {
+	return (totalGem + totalBigGem * 10);
+}
+
 //Creating object for Cell
 Cell.prototype = {
 	totalGem: null,
@@ -99,6 +105,9 @@ Cell.prototype = {
 		var id = '#Square' + this.index;
 		var div = $(id);
 		div.toggleClass('high-light', false);
+	},
+	getGemValue: function() {
+		return this.totalGem + this.totalBigGem * 10;
 	}
 }
 
