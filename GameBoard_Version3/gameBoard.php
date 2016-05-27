@@ -102,6 +102,9 @@
     <script src="js/animationP2.js"></script>
     <script src="js/animationP3.js"></script>
 
+    <!--Set Profiles-->
+    <script src="js/setProfiles.js"></script>
+
 </head>
 <body>
 	<div id="Border">
