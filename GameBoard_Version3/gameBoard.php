@@ -49,12 +49,32 @@
             $type = $_REQUEST['type'];
             $level = $_REQUEST['level'];
             if ($type == 'computer') {
-                if ($level ==0) {
+                if ($level == 0) {
                     echo "var gameConfig = {";
                     echo "    type: GameBoard.TYPE.HUMAN_VS_COMPUTER,";
                     echo "    level: AI.LEVEL.AMATEUR";
                     echo "}";
+                    echo "var comLv = 0;"
                 }
+
+                if ($level == 1) {
+                    echo "var gameConfig = {";
+                    echo "    type: GameBoard.TYPE.HUMAN_VS_COMPUTER,";
+                    echo "    level: AI.LEVEL.SEMI_PRO";
+                    echo "}";
+                    echo "var comLv = 1;"
+                }
+
+                if ($level == 2) {
+                    echo "var gameConfig = {";
+                    echo "    type: GameBoard.TYPE.HUMAN_VS_COMPUTER,";
+                    echo "    level: AI.LEVEL.PROFESSIONAL";
+                    echo "}";
+                    echo "var comLv = 2;"
+                }
+            }
+            if ($type == '2players') {
+                
             }
         ?>
         

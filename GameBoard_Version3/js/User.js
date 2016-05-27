@@ -2,7 +2,6 @@ function User(id, totalGem, totalBigGem) {
     this.id = id;
     this.totalGem = totalGem;
     this.totalBigGem = totalBigGem;
-
     this.updateGui();
     }
     
@@ -38,7 +37,7 @@ User.prototype = {
         this.totalGem = this.totalGem + totalGem;
         this.totalBigGem = this.totalBigGem + totalBigGem;
 
-        switch (0) {
+        switch (comLv) {
             case 1:
                 getGemAnimationP1();
                 break;
