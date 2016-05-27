@@ -9,16 +9,23 @@
 }
 
 #TitleBox p{
-    padding-top: 0.15em;
+    margin-top: 0.15em;
 }
 
 #referenceContent {
     width: 120em;
     height: 35em;
-    padding-left: 10em;
-    font-size: 0.5em;
+    margin-left: 2em;
+    font-size: 0.75em;
     float: left;
-    background-image: url(../pictures/referenceScoll.png);
+    background-image: url(../pictures/referenceScoll2.png);
+    background-repeat: no-repeat;
+    line-height: 3;
+}
+
+#referenceContent p{
+    margin-left: 1em;
+    margin-top: -2em;
 }
 
 #exitButton {
