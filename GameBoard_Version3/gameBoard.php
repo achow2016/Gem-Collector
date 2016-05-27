@@ -55,7 +55,6 @@
                     echo "    level: AI.LEVEL.AMATEUR";
                     echo "}";
                     echo "\n";
-                    echo "var comLv = 0;";
                 }
 
                 if ($level == 1) {
@@ -64,7 +63,6 @@
                     echo "    level: AI.LEVEL.SEMI_PRO";
                     echo "}";
                     echo "\n";
-                    echo "var comLv = 1;";
                 }
 
                 if ($level == 2) {
@@ -73,7 +71,6 @@
                     echo "    level: AI.LEVEL.PROFESSIONAL";
                     echo "}";
                     echo "\n";
-                    echo "var comLv = 2;";
                 }
             }
 
