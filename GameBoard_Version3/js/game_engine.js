@@ -151,11 +151,7 @@ GameBoard.prototype = {
         this.direction = null;
         var userId = (this.turn == User.TURN.BLACK) ? 0 : 1;
         if (this.users[userId].isWinner(this.users, this.cells)) {
-            if (userId == 0) {
-                alert('Congratulation! You are the winner!!!');
-            } else {
-                alert('Sorry! Try better next time.')
-            }
+            alert(UserId + ' is the winner!!!');
             this.endGame();
             return; 
         }
@@ -183,11 +179,7 @@ GameBoard.prototype = {
         this.users[userId].gainGem(smallGem, bigGem);
         cell.reset();
         if (this.users[userId].isWinner(this.users, this.cells)) {
-            if (userId == 0) {
-                alert('Congratulation! You are the winner!!!');
-            } else {
-                alert('Sorry! Try better next time.')
-            }
+            alert(UserId + ' is the winner!!!');
             this.endGame();
             return; 
         }
