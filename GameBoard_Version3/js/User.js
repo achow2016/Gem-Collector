@@ -2,6 +2,22 @@ function User(id, totalGem, totalBigGem) {
     this.id = id;
     this.totalGem = totalGem;
     this.totalBigGem = totalBigGem;
+
+    switch (this.getId()){    	
+        case 0:
+        	getGemAnimaitonP1();
+        	break;
+        case 1:
+        	getGemAnimaitonP2();
+        	break;
+        case 2:
+        	getGemAnimaitonP3();
+        	break;
+	    default:
+        	getGemAnimaitonP0();
+        	break;
+        }
+
     this.updateGui();
 }
 

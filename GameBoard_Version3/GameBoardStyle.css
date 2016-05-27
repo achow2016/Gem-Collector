@@ -266,3 +266,15 @@ body {
 	opacity: 0;
     transition: 0.3s
 }
+
+#arm0 {
+    position: absolute;
+    left : 500px;
+	top : 300px;
+}
+
+#arm1, #arm2, #arm3 {
+    position: absolute;
+    left : 500px;
+	top : 300px;
+}
