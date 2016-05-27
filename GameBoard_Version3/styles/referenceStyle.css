@@ -20,12 +20,12 @@
     float: left;
     background-image: url(../pictures/referenceScoll2.png);
     background-repeat: no-repeat;
-    line-height: 3;
+    line-height: 0.5;
 }
 
-#referenceContent p{
-    margin-left: 1em;
-    margin-top: -2em;
+#referenceContent ul li{
+    margin-top: 2em;
+    font-size: 3em;
 }
 
 #exitButton {
