@@ -63,7 +63,7 @@
 
         <!--Tutorial-->
 	    <div id="demoButton" class="LinkButton">
-            <a href="">Tutorial</a>
+            <a href="tutorial.html">Tutorial</a>
         </div>
 
         <!--LeaderBoard-->

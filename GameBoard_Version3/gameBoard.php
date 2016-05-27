@@ -54,7 +54,8 @@
                     echo "    type: GameBoard.TYPE.HUMAN_VS_COMPUTER,";
                     echo "    level: AI.LEVEL.AMATEUR";
                     echo "}";
-                    echo "var comLv = 0;"
+                    echo "\n";
+                    echo "var comLv = 0;";
                 }
 
                 if ($level == 1) {
@@ -62,7 +63,8 @@
                     echo "    type: GameBoard.TYPE.HUMAN_VS_COMPUTER,";
                     echo "    level: AI.LEVEL.SEMI_PRO";
                     echo "}";
-                    echo "var comLv = 1;"
+                    echo "\n";
+                    echo "var comLv = 1;";
                 }
 
                 if ($level == 2) {
@@ -70,17 +72,21 @@
                     echo "    type: GameBoard.TYPE.HUMAN_VS_COMPUTER,";
                     echo "    level: AI.LEVEL.PROFESSIONAL";
                     echo "}";
-                    echo "var comLv = 2;"
+                    echo "\n";
+                    echo "var comLv = 2;";
                 }
             }
-            if ($type == '2players') {
-                
+
+            if ($type == '2 players') {
+                echo "var gameConfig = {";
+                echo "type: GameBoard.TYPE.HUMAN_VS_HUMAN,";
+                echo "}";
+                echo "\n";
+                echo "var comLv = null;";
             }
         ?>
+How can I make a new line in php        
         
-        var gameConfig = {
-             type: GameBoard.TYPE.HUMAN_VS_HUMAN,
-        };
         
     </script>    
 	
