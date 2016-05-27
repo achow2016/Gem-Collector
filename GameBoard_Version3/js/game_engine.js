@@ -151,7 +151,11 @@ GameBoard.prototype = {
         this.direction = null;
         var userId = (this.turn == User.TURN.BLACK) ? 0 : 1;
         if (this.users[userId].isWinner(this.users, this.cells)) {
-            alert('User '+ userId + ' win!!!');
+            if (userId == 0) {
+                alert('Congratulation! You are the winner!!!');
+            } else {
+                alert('Sorry! Try better next time.')
+            }
             this.endGame();
             return; 
         }
