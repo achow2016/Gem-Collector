@@ -74,12 +74,11 @@
                 }
             }
 
-            if ($type == '2 players') {
+            if ($type == 'human') {
                 echo "var gameConfig = {";
                 echo "type: GameBoard.TYPE.HUMAN_VS_HUMAN,";
                 echo "}";
                 echo "\n";
-                echo "var comLv = null;";
             }
         ?>
 How can I make a new line in php        
