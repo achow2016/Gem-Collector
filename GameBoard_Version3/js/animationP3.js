@@ -1,7 +1,7 @@
-﻿function getGemAnimaitonP3(){	
+﻿$(function getGemAnimaitonP3(){	
 	//set picture to html and disapper
-	$('#arm img').attr("src","../pictures/profiles/side/lighteffect.png");
-	$("#arm").css("display","none")
+	$('#arm3').attr("src","Pictures/Profiles/side/lighteffect.png");
+	$("#arm3").css("display","none")
 	
 	var target = new Object();
 	

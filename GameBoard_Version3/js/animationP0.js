@@ -1,4 +1,4 @@
-﻿function getGemAnimaitonP0() {
+﻿$(function getGemAnimaitonP0(){
 	var target = new Object();
 	var parent = new Object();
 	
@@ -31,13 +31,13 @@
 	
 	//apper picture of armOpen on first time
 	setTimeout(function(){
-        $('#arm0').attr("src","../pictures/profiles/side/armOpen.png");
+        $('#arm0').attr("src","Pictures/Profiles/side/armOpen.png");
     },0)
 
 	
 	//switch picture to armClose on delay time
 	setTimeout(function(){
-        $('#arm0').attr("src","../pictures/profiles/side/armClose.png");
+        $('#arm0').attr("src","Pictures/Profiles/side/armClose.png");
     },1400)
 
 
@@ -46,4 +46,4 @@
         $('#arm0').attr("src","");
     },2750)
 
-};
+});

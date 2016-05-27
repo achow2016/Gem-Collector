@@ -1,4 +1,4 @@
-﻿function getGemAnimaitonP1() {
+﻿$(function getGemAnimaitonP1() {
 	var target = new Object();
 	var parent = new Object();
 	
@@ -31,13 +31,13 @@
 	
 	//apper picture of wingOpen on first time
 	setTimeout(function(){
-        $('#arm1').attr("src","../pictures/profiles/side/wingOpen.png");
+        $('#arm1').attr("src","Pictures/Profiles/side/wingOpen.png");
     },0)
 
 	
 	//switch picture to wingClose on delay time
 	setTimeout(function(){
-        $('#arm1').attr("src","../pictures/profiles/side/pictures/wingClose.png");
+        $('#arm1').attr("src","Pictures/Profiles/side/wingClose.png");
     },1400)
 
 
@@ -46,4 +46,4 @@
         $('#arm1').attr("src","");
     },2750)
 
-};
+});

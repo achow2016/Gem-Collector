@@ -3,7 +3,7 @@ function User(id, totalGem, totalBigGem) {
     this.totalGem = totalGem;
     this.totalBigGem = totalBigGem;
 
-    switch (this.getId()){    	
+        switch (){    	
         case 0:
         	getGemAnimaitonP1();
         	break;
@@ -19,7 +19,9 @@ function User(id, totalGem, totalBigGem) {
         }
 
     this.updateGui();
-}
+    }
+    
+
 
 //Creating turn object
 User.TURN = {

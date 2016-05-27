@@ -1,4 +1,4 @@
-﻿function getGemAnimaitonP2() {
+﻿$(function getGemAnimaitonP2() {
 	var target = new Object();
 	var parent = new Object();
 	
@@ -31,13 +31,13 @@
 	
 	//apper picture of fookOpen on first time
 	setTimeout(function(){
-        $('#arm2').attr("src","../pictures/profiles/side/fookOpen.png");
+        $('#arm2').attr("src","Pictures/Profiles/side/fookOpen.png");
     },0)
 
 	
 	//switch picture to fookClose on delay time
 	setTimeout(function(){
-        $('#arm2').attr("src","../pictures/profiles/side/fookClose.png");
+        $('#arm2').attr("src","Pictures/Profiles/side/fookClose.png");
     },1400)
 
 
@@ -46,4 +46,4 @@
         $('#arm2').attr("src","");
     },2750)
 
-};
+});
