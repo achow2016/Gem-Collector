@@ -183,7 +183,11 @@ GameBoard.prototype = {
         this.users[userId].gainGem(smallGem, bigGem);
         cell.reset();
         if (this.users[userId].isWinner(this.users, this.cells)) {
-            alert('User '+ userId + ' win!!!');
+            if (userId == 0) {
+                alert('Congratulation! You are the winner!!!');
+            } else {
+                alert('Sorry! Try better next time.')
+            }
             this.endGame();
             return; 
         }
