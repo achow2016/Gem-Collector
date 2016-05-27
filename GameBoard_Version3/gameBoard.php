@@ -81,8 +81,6 @@
                 echo "\n";
             }
         ?>
-How can I make a new line in php        
-        
         
     </script>    
 	
