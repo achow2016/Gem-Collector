@@ -38,14 +38,14 @@ User.prototype = {
         this.totalGem = this.totalGem + totalGem;
         this.totalBigGem = this.totalBigGem + totalBigGem;
 
-        switch (2) {
-            case 0:
+        switch (0) {
+            case 1:
                 getGemAnimationP1();
                 break;
-            case 1:
+            case 2:
                 getGemAnimationP2();
                 break;
-            case 2:
+            case 3:
                 getGemAnimationP3();
                 break;
             default:
