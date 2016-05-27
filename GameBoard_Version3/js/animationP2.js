@@ -2,20 +2,26 @@
 	var target = new Object();
 	var parent = new Object();
 	
+    //array list for setting box position
+	var cellX = ['825px','675px','550px','425px','300px','175px','50px','175px','300px','425px','550px','675px'];
+    var cellY = ['100px','150px','150px','150px','150px','150px','100px','25px','25px','25px','25px','25px'];
+
+    var i = 0;
+
 	//Boxs' position
-	target.X = "100px";
-	target.Y = "100px";
+	target.X = cellX[i];
+	target.Y = cellY[i];
 	
 	//set original point of hand
-	parent.X = "500px";
-	parent.Y = "300px";
+	parent.X = "340px";
+	parent.Y = "-100px";
 		
 	//move hand to target box
-	$('#arm2')
+	$('#arm1')
 	.animate({
 	    'left': target.X,
 	    'top': target.Y	    
-	},750)
+	},0)
 
 	//keep hand at target box for a second	
 	.animate({
@@ -30,20 +36,21 @@
 	},750)
 	
 	//apper picture of fookOpen on first time
-	setTimeout(function(){
-        $('#arm2').attr("src","Pictures/Profiles/side/fookOpen.png");
-    },0)
+
+        $('#OppntLeft2').css("visibility", "hidden");
+        $('#arm1').attr("src","Pictures/Profiles/side/fookOpen.png");
 
 	
 	//switch picture to fookClose on delay time
 	setTimeout(function(){
-        $('#arm2').attr("src","Pictures/Profiles/side/fookClose.png");
-    },1400)
+        $('#arm1').attr("src","Pictures/Profiles/side/fookClose.png");
+    },300)
 
 
 	//disapper picture at last
 	setTimeout(function(){
-        $('#arm2').attr("src","");
-    },2750)
+        $('#arm1').attr("src","");
+        $('#OppntLeft2').css("visibility", "visible");
+    },1750)
 
 }

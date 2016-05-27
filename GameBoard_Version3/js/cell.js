@@ -34,7 +34,7 @@ Cell.prototype = {
 	},
 	//get the total gem on a cell
 	getTotalGem: function() {
-		return this.totalGem;
+  		return this.totalGem;
 	},
 	// Displaying the number of gem on normal cell
 	updateGui: function() {

@@ -3,21 +3,6 @@ function User(id, totalGem, totalBigGem) {
     this.totalGem = totalGem;
     this.totalBigGem = totalBigGem;
 
-        switch (4){    	
-        case 0:
-        	getGemAnimationP1();
-        	break;
-        case 1:
-        	getGemAnimationP2();
-        	break;
-        case 2:
-        	getGemAnimationP3();
-        	break;
-	    default:
-        	getGemAnimationP0();
-        	break;
-        }
-
     this.updateGui();
     }
     
@@ -41,33 +26,48 @@ User.prototype = {
     totalGem: null,
     totalBigGem: null,
     id: null,
-    updateGui: function() {
+    updateGui: function () {
         id = '#ScoreBox' + this.id;
-		var div = $(id);
-		var gemDiv = div.find('.gem');
+        var div = $(id);
+        var gemDiv = div.find('.gem');
         var bigGemDiv = div.find('.big');
-		gemDiv.html(this.totalGem);
+        gemDiv.html(this.totalGem);
         bigGemDiv.html(this.totalBigGem)
     },
-    gainGem: function(totalGem, totalBigGem) {
+    gainGem: function (totalGem, totalBigGem) {
         this.totalGem = this.totalGem + totalGem;
         this.totalBigGem = this.totalBigGem + totalBigGem;
+
+        switch (2) {
+            case 0:
+                getGemAnimationP1();
+                break;
+            case 1:
+                getGemAnimationP2();
+                break;
+            case 2:
+                getGemAnimationP3();
+                break;
+            default:
+                getGemAnimationP0();
+                break;
+        }
         this.updateGui();
     },
-    isWinner: function(users, cells) {
+    isWinner: function (users, cells) {
         // the winner is:
         // - has 40 gem units more than the other has
         var gemUnit = this.totalGem + (this.totalBigGem * 10);
         if (gemUnit > 40) {
             return true;
-        } 
+        }
         // - the other user is a loser
         var otherUserId = this.id == 0 ? 1 : 0;
         var otherUser = users[otherUserId];
         SCORE = gemUnit;
         return otherUser.isLoser(cells);
     },
-    isLoser: function(cells) {
+    isLoser: function (cells) {
         var turn = (this.id == 0) ? User.TURN.BLACK : User.TURN.WHITE;
         var i;
         var range = User.CELL_RANGE[turn];
