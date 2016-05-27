@@ -16,6 +16,9 @@ body {
     text-align: center;
     color: red;
     font-size: 5em;
+    background-image: url(../pictures/referenceBoard.png);
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 #stepMenu {
@@ -45,6 +48,7 @@ body {
     float: left;
     font-family: "Showcard Gothic", 'Times New Roman';
     margin-left: 18em;
+    background-image: url(../pictures/tutorialBack.png);
     background-color: #4cff00;
 }
 
