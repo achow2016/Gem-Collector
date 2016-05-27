@@ -1,4 +1,4 @@
-﻿$(function getGemAnimaitonP3(){	
+﻿function getGemAnimationP3(){	
 	//set picture to html and disapper
 	$('#arm3').attr("src","Pictures/Profiles/side/lighteffect.png");
 	$("#arm3").css("display","none")
@@ -21,4 +21,4 @@
 		$('#arm3').fadeOut(850);
 	},1900);
 
-});
+}

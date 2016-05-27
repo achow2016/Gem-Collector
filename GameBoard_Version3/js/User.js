@@ -3,18 +3,18 @@ function User(id, totalGem, totalBigGem) {
     this.totalGem = totalGem;
     this.totalBigGem = totalBigGem;
 
-        switch (){    	
+        switch (4){    	
         case 0:
-        	getGemAnimaitonP1();
+        	getGemAnimationP1();
         	break;
         case 1:
-        	getGemAnimaitonP2();
+        	getGemAnimationP2();
         	break;
         case 2:
-        	getGemAnimaitonP3();
+        	getGemAnimationP3();
         	break;
 	    default:
-        	getGemAnimaitonP0();
+        	getGemAnimationP0();
         	break;
         }
 

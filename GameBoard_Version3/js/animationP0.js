@@ -1,4 +1,4 @@
-﻿$(function getGemAnimaitonP0(){
+﻿function getGemAnimationP0(){
 	var target = new Object();
 	var parent = new Object();
 	
@@ -46,4 +46,4 @@
         $('#arm0').attr("src","");
     },2750)
 
-});
+}
