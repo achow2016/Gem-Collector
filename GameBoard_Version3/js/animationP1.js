@@ -21,7 +21,7 @@
 	.animate({
 	    'left': target.X,
 	    'top': target.Y	    
-	},0)
+	},200)
 
 	//keep hand at target box for a second	
 	.animate({
@@ -45,7 +45,7 @@
 	//switch picture to wingClose on delay time
 	setTimeout(function(){
         $('#arm1').attr("src","Pictures/Profiles/side/wingClose.png");
-    },300)
+    },500)
 
 
 	//disapper picture at last

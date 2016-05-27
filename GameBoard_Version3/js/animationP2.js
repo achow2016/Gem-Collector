@@ -21,7 +21,7 @@
 	.animate({
 	    'left': target.X,
 	    'top': target.Y	    
-	},0)
+	},300)
 
 	//keep hand at target box for a second	
 	.animate({
@@ -44,7 +44,7 @@
 	//switch picture to fookClose on delay time
 	setTimeout(function(){
         $('#arm1').attr("src","Pictures/Profiles/side/fookClose.png");
-    },300)
+    },600)
 
 
 	//disapper picture at last
