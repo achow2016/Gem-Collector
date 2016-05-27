@@ -23,13 +23,13 @@
 		for(rowCount = 1; rowCount < 12; rowCount++) {
 			
 				if(selectTable.innerHTML == 3){
-					selectTable.innerHTML = "<img src=\"pictures/level0.png\"><img src=\"pictures/level1.png\"><img src=\"pictures/level2.png\">";
+					selectTable.innerHTML = "<img src=\"pictures/level0.png\"><img src=\"pictures/level1.png\"><img src=\"pictures/level2.png\"><small>Captain</small>";
 					}
 				if(selectTable.innerHTML == 2){
-					selectTable.innerHTML =  "<img src=\"pictures/level0.png\"><img src=\"pictures/level1.png\">";
+					selectTable.innerHTML =  "<img src=\"pictures/level0.png\"><img src=\"pictures/level1.png\"><small>Parrot</small>";
 					}
 				if(selectTable.innerHTML == 1){
-					selectTable.innerHTML =  "<img src=\"pictures/level0.png\">";
+					selectTable.innerHTML =  "<img src=\"pictures/level0.png\"><small>Deckhand</small>";
 					}
 				
 			selectTable = document.getElementById("scoreTable").rows[rowCount].cells[3];
