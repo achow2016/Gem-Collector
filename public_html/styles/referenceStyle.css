@@ -1,0 +1,34 @@
+#TitleBox {
+    width: 60em;
+    height: 7.5em;
+    float: left;
+    background-image: url(../pictures/referenceBoard.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center;
+}
+
+#TitleBox p{
+    margin-top: 0.15em;
+}
+
+#referenceContent {
+    width: 120em;
+    height: 35em;
+    margin-left: 2em;
+    font-size: 0.75em;
+    float: left;
+    background-image: url(../pictures/referenceScoll2.png);
+    background-repeat: no-repeat;
+    line-height: 0.5;
+}
+
+#referenceContent ul li{
+    margin-top: 2em;
+    font-size: 3em;
+}
+
+#exitButton {
+    float: right;
+    margin-top: 0em;
+}

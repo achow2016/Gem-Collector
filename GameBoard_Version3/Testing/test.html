@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+
+
+</head>
+<body>
+<script>
+
+var Square = [1,2,3,4,5,1,2,3,4,5,1,2];
+
+var moveId;
+
+function clickone(array) {
+
+				var xmlhttp = new XMLHttpRequest();
+				squaresToStr = Square.toString();
+				var stringsent = "datasent=" + encodeURIComponent(squaresToStr);
+				xmlhttp.open( "POST", "storeMoveToSql.php", true);
+				xmlhttp.onreadystatechange = function() {
+				if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				document.getElementById("two").innerHTML = xmlhttp.responseText;
+				moveId = xmlhttp.responseText; 
+				//moveId = parseInt(moveId.substr(0,4));
+				alert(moveId);
+				document.getElementById("three").innerHTML = moveId;
+				
+				}
+				};
+				
+				
+				xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+				//xmlhttp.setRequestHeader("Content-length", squaresToStr.length);
+				//xmlhttp.setRequestHeader("Connection", "close");
+				
+				
+				//alert(squaresToStr);
+				xmlhttp.send(stringsent);
+				
+				
+				
+
+}
+
+</script>
+<button onclick="clickone(Square)">Click to start</button>
+<!--ID only for JQUERY eventhandler.-->
+<p id="one" onclick="clickone(Square)" onmouseup="" 
+style="background-color:yellow; width:100px; height:100px"></p>
+<p id="two"></p>
+<p id="three"></p>
+
+</body>
+</html>

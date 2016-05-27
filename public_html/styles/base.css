@@ -1,0 +1,67 @@
+body {
+    padding: 0px 0px 0px 0px;
+	background-image: url(../pictures/Background.jpg);
+    background-repeat: no-repeat;
+    background-color: #7dd4f1;
+    width: 100%;
+    height: 100%;
+}
+
+#Wrapper {
+    padding: 0px 0px 0px 0px;
+    width: 65em;
+	height: 29em;
+}
+
+#TitleBox {
+    width: 30em;
+    height: 29em;
+    float: left;
+    background-image: url(../pictures/titleBox.png);
+    background-repeat: no-repeat;
+}
+
+.title {
+    font-size: 4.25em;
+    color: black;
+    font-family: "Showcard Gothic", 'Times New Roman';
+    padding-top: 0.75em;
+    line-height: 0.5em;
+    text-align: center;
+}
+
+#music {
+    width: 30em;
+    height: 6em;
+    float: left;
+    text-align: right;
+}
+
+.LinkButton {
+    width: 30em;
+	height: 6em;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-image: url(../pictures/lable.png);
+    margin-bottom: 1em;
+    margin-left: 5em;
+    float: left;
+}
+
+.LinkButton a, p{
+    text-decoration: none;
+    font-size: 3em;
+    color: black;
+    font-family: "Showcard Gothic", 'Times New Roman';
+    position: relative;
+    top: 15%;
+}
+
+.LinkButton a:hover{
+    color: red;
+    transition: 0.35s;
+}
+
+#exitButton {
+    margin-top: 2.5em;
+}
