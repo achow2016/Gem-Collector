@@ -11,6 +11,7 @@ MasterCell.prototype.totalBigGem = null;
 MasterCell.prototype.getTotalBigGem = function() {
 	return this.totalBigGem;
 }
+// Trial move of the AI
 MasterCell.prototype.reset = function(trialMove) {
 	this.totalBigGem = 0;
 	this.totalGem = 0;
@@ -27,6 +28,7 @@ MasterCell.prototype.updateGui = function() {
 	numDiv.html(this.totalGem + ' ' + this.totalBigGem);
 }
 MasterCell.prototype.constructor = MasterCell;
+// Displaying gem in the master cell
 MasterCell.prototype.displayGem = function () {
     var id = '#Boss' + this.index;
     if (this.totalBigGem == 0 && this.totalGem == 0) {

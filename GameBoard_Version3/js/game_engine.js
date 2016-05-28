@@ -18,7 +18,7 @@ function GameBoard() {
     this.setupInternalCells();
     this.setupUsers();
 }
-
+// Game type
 GameBoard.TYPE = {
     HUMAN_VS_COMPUTER: 0,
     HUMAN_VS_HUMAN: 1
@@ -54,6 +54,7 @@ GameBoard.prototype = {
             }
         }
     },
+    // Setup userId
     setupUsers: function() {
         var i;
         this.users = [];
@@ -95,9 +96,11 @@ GameBoard.prototype = {
     setupTurn: function(turn) {
         this.turn = turn;
     },
+    // Setup game type
     setupGameType: function(gameType) {
         this.gameType = gameType;
     },
+    // Setup level if user choose to play with computer
     setupLevel: function(level) {
         this.level = level;
     },
@@ -146,10 +149,12 @@ GameBoard.prototype = {
         });
         return done.promise();
     },
+    // Change turn function
     changeTurn: function() {
         this.turn = this.turn * (-1);
         this.direction = null;
         var userId = (this.turn == User.TURN.BLACK) ? 0 : 1;
+        // Check the user is winning or not.
         if (this.users[userId].isWinner(this.users, this.cells)) {
             if (userId == 0) {
                 alert('Congratulation! You are the winner!!!');
@@ -159,6 +164,7 @@ GameBoard.prototype = {
             this.endGame();
             return; 
         }
+        // AI method
         if (this.gameType == GameBoard.TYPE.HUMAN_VS_COMPUTER && this.turn == User.TURN.WHITE) {
             var computerMove = AI.findTheBestMove(this.level, this.cells);
             console.log(computerMove);
@@ -170,9 +176,12 @@ GameBoard.prototype = {
             this.makeMove(computerMove.cellId);
         }  
     },
+    // End game function 
+    // When the game end, we disable the mouse listener on the page
     endGame: function() {
         $('div.cell').off('click');
     },
+    // Handle the gain gem
     handleGainGem: function(cellId) {
         // This cellId is where user gain gem
         var sign = this.direction * this.turn;
@@ -197,9 +206,11 @@ GameBoard.prototype = {
             // No more gem to gain. Change turn
             this.changeTurn();
         } else {
+            // Checking is it a combo or not
             this.handleGainGem(nextOneCell.getNextOneIndex(sign));
         }
     },
+    // Handle landed cell 
     handleLandedCell: function(gameState) {
         var sign = this.direction * this.turn;
         var landedCell = this.cells[gameState.cellId];
@@ -225,13 +236,13 @@ GameBoard.prototype = {
             }
         } 
     },
+    // Spreading gem method
     spreadGem: function(gameState) {
         var sign = this.direction * this.turn;
         var cellId = gameState.cellId;
         var cell = this.cells[cellId];
         cell.addUp();
         gameState.holdingGem = gameState.holdingGem - 1;
-
         var that = this;
         setTimeout(function() {
             if (gameState.holdingGem > 0) {
@@ -244,6 +255,7 @@ GameBoard.prototype = {
             }
         }, DURATION);
     },
+    // Making a moverment
     makeMove: function(cellId) {
         var sign = this.direction * this.turn;
         var cell = this.cells[cellId];

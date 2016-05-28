@@ -1,3 +1,4 @@
+// Setup User class
 function User(id, totalGem, totalBigGem) {
     this.id = id;
     this.totalGem = totalGem;
@@ -23,6 +24,7 @@ User.prototype = {
     totalGem: null,
     totalBigGem: null,
     id: null,
+    // Updating the game board
     updateGui: function() {
         id = '#ScoreBox' + this.id;
 		var div = $(id);
@@ -31,11 +33,13 @@ User.prototype = {
 		gemDiv.html(this.totalGem);
         bigGemDiv.html(this.totalBigGem)
     },
+    // Gain gem
     gainGem: function(totalGem, totalBigGem) {
         this.totalGem = this.totalGem + totalGem;
         this.totalBigGem = this.totalBigGem + totalBigGem;
         this.updateGui();
     },
+    // Checking is any user winning or not
     isWinner: function(users, cells) {
         // the winner is:
         // - has 40 gem units more than the other has
@@ -49,6 +53,7 @@ User.prototype = {
         SCORE = gemUnit;
         return otherUser.isLoser(cells);
     },
+    // Checking is any user losing
     isLoser: function(cells) {
         var turn = (this.id == 0) ? User.TURN.BLACK : User.TURN.WHITE;
         var i;

@@ -1,6 +1,7 @@
+// Creating AI 
 function AI() {
-    
 }
+// Creating AI levels
 AI.LEVEL = {
     AMATEUR: 0,
     SEMI_PRO: 1,
@@ -8,9 +9,8 @@ AI.LEVEL = {
 };
 
 AI.prototype = {
-    
 };
-
+// Creating the method for each levels
 AI.findTheBestMove = function (level, cells) {
     if (level == AI.LEVEL.AMATEUR) {
         return AI.findTheBestMoveAmateur(cells);
@@ -21,7 +21,7 @@ AI.findTheBestMove = function (level, cells) {
     }
 }
 
-// Amateur
+// Amateur (easy)
 AI.findTheBestMoveAmateur = function (cells) {
     // Simple algorithm: randomly picking the cell which has at least 1 gem inside
     // and randomly choosing direction
@@ -42,7 +42,7 @@ AI.findTheBestMoveAmateur = function (cells) {
     };
 }
 
-// Semi-Pro
+// Semi-Pro (normal)
 AI.findTheBestMoveSemiPro = function (cells) {
     console.log('findTheBestMoveSemiPro');
     // The first for loop is using the two possible direction 
@@ -73,7 +73,7 @@ AI.findTheBestMoveSemiPro = function (cells) {
     return AI.findTheBestMoveAmateur(cells);
 }
 
-// Professional
+// Professional (hard)
 AI.findTheBestMoveProfessional = function (cells) {
     console.log('findTheBestMoveProfessional');
      // The first for loop is using the two possible direction 
@@ -109,6 +109,7 @@ AIMove.prototype = {
 
         return gainGem;
     },
+    // Scope for a moverment
     makeMove: function(cellId) {
         var sign = this.trialDirection * User.TURN.WHITE;
         var cell = this.cells[cellId];
@@ -124,6 +125,8 @@ AIMove.prototype = {
         };
     },
     // This cellId is the cellId of the first cell to spread the gem 
+    // Virtual spearding gem
+    // This method doesn't change the current game board
     spreadGem: function(holdingGem, cellId) {
         var sign = this.trialDirection * User.TURN.WHITE;
         var cell = this.cells[cellId];
@@ -137,6 +140,8 @@ AIMove.prototype = {
             return this.handleLandedCell(cellId);
        }
     },
+    // Virtual handle landed cell
+    // This method doesn't change the current game board
     handleLandedCell: function(cellId) {
         var sign = this.trialDirection * User.TURN.WHITE;
         var landedCell = this.cells[cellId];
@@ -168,6 +173,8 @@ AIMove.prototype = {
             }
         }
     },
+    // Virtual handle gain gem
+    // This method doesn't change the current game board
     handleGainGem: function(cellId) {
         // This cellId is where user gain gem
         var sign = this.trialDirection * User.TURN.WHITE;

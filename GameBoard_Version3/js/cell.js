@@ -66,6 +66,7 @@ Cell.prototype = {
             $(id).css("background-image", "url(pictures/gems/gg.png)");
         }
     },
+	// Get the next cell's index
 	getNextOneIndex: function(sign, currentIndex) {
 		// If user want to get next index for a given index we use that index to start 
 		// otherwise use the index of this cell
@@ -78,15 +79,18 @@ Cell.prototype = {
 		}
 		return nextOneIndex;
 	},
+	// Get the next two cell index
 	getNextTwoIndex: function(sign, currentIndex) {
 		var index = typeof currentIndex != 'undefined' ? currentIndex : this.index;
 		var nextOneIndex = this.getNextOneIndex(sign, index);
 		var nextTwoIndex = this.getNextOneIndex(sign, nextOneIndex);
 		return nextTwoIndex;
 	},
+	// Checking a cell is a master cell or not
 	isMaster: function() {
 		return this instanceof MasterCell;
 	},
+	// Checking a cell is empty or not
 	isEmpty: function() {
 		return this.totalGem == 0;
 	},
